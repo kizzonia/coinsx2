@@ -1,0 +1,1897 @@
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT pg_try_advisory_lock(233100873938780085)[0m
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(233100873938780085)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (421.2ms)[0m  [1m[35mCREATE DATABASE "jackville3_development" ENCODING = 'unicode'[0m
+  [1m[35m (118.3ms)[0m  [1m[35mCREATE DATABASE "jackville3_test" ENCODING = 'unicode'[0m
+  [1m[35m (57.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (4.7ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7555992778213260780)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateAdminUsers (20221112042554)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.8ms)[0m  [1m[35mCREATE TABLE "admin_users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admin_users_on_email" ON "admin_users" ("email")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admin_users_on_reset_password_token" ON "admin_users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221112042554"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateActiveAdminComments (20221112042558)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "active_admin_comments" ("id" bigserial primary key, "namespace" character varying, "body" text, "resource_type" character varying, "resource_id" bigint, "author_type" character varying, "author_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_active_admin_comments_on_resource" ON "active_admin_comments" ("resource_type", "resource_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_active_admin_comments_on_author" ON "active_admin_comments" ("author_type", "author_id")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE INDEX "index_active_admin_comments_on_namespace" ON "active_admin_comments" ("namespace")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221112042558"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateWelcomes (20221112042829)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "welcomes" ("id" bigserial primary key, "title" character varying, "logoimg" character varying, "desc" character varying, "whatsapp" character varying, "ig" character varying, "ln" character varying, "section" character varying, "link" character varying, "footer" character varying, "phone" character varying, "address" character varying, "twitter" character varying, "email" character varying, "youtube" character varying, "telegram" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221112042829"]]
+  [1m[36mTRANSACTION (13.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DeviseCreateUsers (20221112043312)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying, "last_sign_in_ip" character varying, "confirmation_token" character varying, "confirmed_at" timestamp, "confirmation_sent_at" timestamp, "unconfirmed_email" character varying, "failed_attempts" integer DEFAULT 0 NOT NULL, "unlock_token" character varying, "locked_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_unlock_token" ON "users" ("unlock_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221112043312"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateHeaders (20221112043501)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE TABLE "headers" ("id" bigserial primary key, "abouts_title" character varying, "abouts_sub_title" character varying, "services_title" character varying, "services_sub_title" character varying, "boards_title" character varying, "boards_sub_title" character varying, "features_title" character varying, "features_sub_title" character varying, "feedbacks_title" character varying, "feedbacks_sub_title" character varying, "blogs_title" character varying, "blogs_sub_title" character varying, "projects_title" character varying, "projects_sub_title" character varying, "cta1" character varying, "cta2" character varying, "headerimg" character varying, "plans_title" character varying, "plans_sub_title" character varying, "abouttrade_title" character varying, "abouttrade_sub_title" character varying, "tradeservices_title" character varying, "tradeservices_sub_title" character varying, "tradesignal_title" character varying, "tradesignal_sub_title" character varying, "servicemain_title" character varying, "servicemain_sub_title" character varying, "tradeplan_title" character varying, "tradeplan_sub_title" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221112043501"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAbouts (20221112044023)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "abouts" ("id" bigserial primary key, "title" character varying, "sub_title" character varying, "body" character varying, "abtimg" character varying, "slug" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_abouts_on_slug" ON "abouts" ("slug")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221112044023"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAbouttrades (20221114010204)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "abouttrades" ("id" bigserial primary key, "title" character varying, "sub_title" character varying, "body" text, "link" character varying, "slug" character varying, "icon" character varying, "abouttradeimg" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_abouttrades_on_slug" ON "abouttrades" ("slug")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114010204"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAccounts (20221114010538)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (17.5ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "account_type" character varying, "wallet" character varying, "balance" character varying, "user_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_b1e30bebc8"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_accounts_on_user_id" ON "accounts" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114010538"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBanners (20221114010716)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "banners" ("id" bigserial primary key, "bannerimg" character varying, "title" character varying, "sub_title" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114010716"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBlogs (20221114011047)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE TABLE "blogs" ("id" bigserial primary key, "title" character varying, "sub_title" character varying, "body" text, "blogimg" character varying, "videolink" character varying, "blogvideoimg" character varying, "slug" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE INDEX "index_blogs_on_slug" ON "blogs" ("slug")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114011047"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBoards (20221114011527)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "boards" ("id" bigserial primary key, "title" character varying, "name" character varying, "body" text, "boardimg" character varying, "slug" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_boards_on_slug" ON "boards" ("slug")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114011527"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDeposits (20221114012828)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "deposits" ("id" bigserial primary key, "payment_type" character varying, "amount" character varying, "plan" character varying, "email" character varying, "status" boolean, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_88307c7ed2"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE INDEX "index_deposits_on_user_id" ON "deposits" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114012828"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateWithdraws (20221114012857)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "withdraws" ("id" bigserial primary key, "payment_type" character varying, "amount" character varying, "plan" character varying, "email" character varying, "status" boolean, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_910faa0ea7"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_withdraws_on_user_id" ON "withdraws" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114012857"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFaqs (20221114013104)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "faqs" ("id" bigserial primary key, "title" character varying, "body" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114013104"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFeatures (20221114092831)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "features" ("id" bigserial primary key, "fimg" character varying, "title" character varying, "sub_title" character varying, "body" character varying, "slug" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_features_on_slug" ON "features" ("slug")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114092831"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFxsignals (20221114095042)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE TABLE "fxsignals" ("id" bigserial primary key, "body" character varying, "entry_point" character varying, "exit_point" character varying, "slug" character varying, "stop_loss" character varying, "sell_point1" character varying, "sell_point2" character varying, "tradetype" character varying, "odds" character varying, "status" character varying, "date" character varying, "pairs" character varying, "leverage" character varying, "call_type" character varying, "exchange" character varying, "sub" character varying, "info" character varying, "archive_id" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE INDEX "index_fxsignals_on_slug" ON "fxsignals" ("slug")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_fxsignals_on_status" ON "fxsignals" ("status")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114095042"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePlans (20221114100044)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "plans" ("id" bigserial primary key, "amount" character varying, "name" character varying, "referal" character varying, "duration" character varying, "plan" character varying, "plan_name" character varying, "mini" character varying, "maxi" character varying, "body" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114100044"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTradeplans (20221114130001)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "tradeplans" ("id" bigserial primary key, "amount" character varying, "name" character varying, "referal" character varying, "duration" character varying, "plan" character varying, "plan_name" character varying, "mini" character varying, "maxi" character varying, "body" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114130001"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePms (20221114130741)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "pms" ("id" bigserial primary key, "title" character varying, "walletimg" character varying, "address" character varying, "con" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114130741"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateServices (20221114134334)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "services" ("id" bigserial primary key, "title" character varying, "slug" character varying, "icon" character varying, "sub_title" character varying, "body" text, "serviceimg" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_services_on_slug" ON "services" ("slug")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114134334"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSections (20221114134437)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "sections" ("id" bigserial primary key, "title" character varying, "body" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114134437"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTradeservices (20221114141459)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "tradeservices" ("id" bigserial primary key, "title" character varying, "slug" character varying, "icon" character varying, "sub_title" character varying, "body" text, "tserviceimg" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_tradeservices_on_slug" ON "tradeservices" ("slug")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114141459"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTrades (20221114143221)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "trades" ("id" bigserial primary key, "currency" character varying, "deposit" character varying, "expiration" character varying, "status" boolean, "tradetype" character varying, "entry" character varying, "rate" character varying, "return" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114143221"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateArchives (20221114145448)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE TABLE "archives" ("id" bigserial primary key, "title" character varying, "month" character varying, "year" character varying, "slug" character varying, "archimg" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_archives_on_slug" ON "archives" ("slug")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114145448"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProducts (20221114153128)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "sub_title" character varying, "price" character varying, "pimg" character varying, "link" character varying, "slug" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE INDEX "index_products_on_slug" ON "products" ("slug")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114153128"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFeedbacks (20221117202840)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "feedbacks" ("id" bigserial primary key, "title" character varying, "body" text, "icon" character varying, "slug" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_feedbacks_on_slug" ON "feedbacks" ("slug")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221117202840"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (2.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-03-19 08:55:46.442984"], ["updated_at", "2023-03-19 08:55:46.442984"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(7555992778213260780)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7555992778213260780)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddValuesToUsers (20230319085747)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (11.3ms)[0m  [1m[35mALTER TABLE "users" ADD "status" boolean[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "username" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "referal" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "phone" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230319085747"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7555992778213260780)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (4.7ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7555992778213260780)[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddKycvaluesToAccounts (20230320114503)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.6ms)[0m  [1m[35mALTER TABLE "accounts" ADD "first_name" character varying[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "accounts" ADD "last_name" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "accounts" ADD "address" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "accounts" ADD "city" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "accounts" ADD "state" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "accounts" ADD "country" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "accounts" ADD "zip_code" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "accounts" ADD "slug" character varying[0m
+  [1m[35m (37.9ms)[0m  [1m[35mCREATE INDEX "index_accounts_on_slug" ON "accounts" ("slug")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "accounts" ADD "rate" float[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "accounts" ADD "compound" boolean[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "accounts" ADD "roi" float[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "accounts" ADD "currency" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "accounts" ADD "tid" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230320114503"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddValuesToDeposits (20230320114823)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "deposits" ADD "confirmed" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "deposits" ADD "account_id" integer[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230320114823"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddExtravaluesToPlans (20230320114906)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "plans" ADD "roi" float[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230320114906"]]
+  [1m[36mTRANSACTION (15.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7555992778213260780)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2024-01-17 20:11:03 +0100
+  
+ActiveRecord::NoDatabaseError (connection to server on socket "/tmp/.s.PGSQL.5432" failed: FATAL:  database "coinsprofits3_development" does not exist
+):
+  
+activerecord (6.1.7) lib/active_record/connection_adapters/postgresql_adapter.rb:81:in `rescue in new_client'
+activerecord (6.1.7) lib/active_record/connection_adapters/postgresql_adapter.rb:77:in `new_client'
+activerecord (6.1.7) lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `postgresql_connection'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:882:in `public_send'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:882:in `new_connection'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:926:in `checkout_new_connection'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:905:in `try_to_checkout_new_connection'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:866:in `acquire_connection'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:588:in `checkout'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:428:in `connection'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:1128:in `retrieve_connection'
+activerecord (6.1.7) lib/active_record/connection_handling.rb:327:in `retrieve_connection'
+activerecord (6.1.7) lib/active_record/connection_handling.rb:283:in `connection'
+activerecord (6.1.7) lib/active_record/migration.rb:611:in `connection'
+activerecord (6.1.7) lib/active_record/migration.rb:606:in `build_watcher'
+activerecord (6.1.7) lib/active_record/migration.rb:588:in `block in call'
+activerecord (6.1.7) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.7) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.7) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.7) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.7) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.7) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.7) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.7) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.7) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.7) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.5) lib/rack/method_override.rb:24:in `call'
+rack (2.2.5) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.5) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/host_authorization.rb:148:in `call'
+rack-mini-profiler (2.3.4) lib/mini_profiler/profiler.rb:393:in `call'
+webpacker (5.4.3) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.7.4) lib/rack/proxy.rb:78:in `call'
+railties (6.1.7) lib/rails/engine.rb:539:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[35m (570.2ms)[0m  [1m[35mCREATE DATABASE "coinsprofits3_development" ENCODING = 'unicode'[0m
+  [1m[35m (148.4ms)[0m  [1m[35mCREATE DATABASE "coinsprofits3_test" ENCODING = 'unicode'[0m
+  [1m[35m (325.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (8.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (4.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(471539506876076100)[0m
+  [1m[35m (5.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateAdminUsers (20221112042554)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE TABLE "admin_users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admin_users_on_email" ON "admin_users" ("email")[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admin_users_on_reset_password_token" ON "admin_users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221112042554"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateActiveAdminComments (20221112042558)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "active_admin_comments" ("id" bigserial primary key, "namespace" character varying, "body" text, "resource_type" character varying, "resource_id" bigint, "author_type" character varying, "author_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE INDEX "index_active_admin_comments_on_resource" ON "active_admin_comments" ("resource_type", "resource_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE INDEX "index_active_admin_comments_on_author" ON "active_admin_comments" ("author_type", "author_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "index_active_admin_comments_on_namespace" ON "active_admin_comments" ("namespace")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221112042558"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateWelcomes (20221112042829)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "welcomes" ("id" bigserial primary key, "title" character varying, "logoimg" character varying, "desc" character varying, "whatsapp" character varying, "ig" character varying, "ln" character varying, "section" character varying, "link" character varying, "footer" character varying, "phone" character varying, "address" character varying, "twitter" character varying, "email" character varying, "youtube" character varying, "telegram" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221112042829"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DeviseCreateUsers (20221112043312)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying, "last_sign_in_ip" character varying, "confirmation_token" character varying, "confirmed_at" timestamp, "confirmation_sent_at" timestamp, "unconfirmed_email" character varying, "failed_attempts" integer DEFAULT 0 NOT NULL, "unlock_token" character varying, "locked_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (10.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")[0m
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_unlock_token" ON "users" ("unlock_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221112043312"]]
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateHeaders (20221112043501)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (51.0ms)[0m  [1m[35mCREATE TABLE "headers" ("id" bigserial primary key, "abouts_title" character varying, "abouts_sub_title" character varying, "services_title" character varying, "services_sub_title" character varying, "boards_title" character varying, "boards_sub_title" character varying, "features_title" character varying, "features_sub_title" character varying, "feedbacks_title" character varying, "feedbacks_sub_title" character varying, "blogs_title" character varying, "blogs_sub_title" character varying, "projects_title" character varying, "projects_sub_title" character varying, "cta1" character varying, "cta2" character varying, "headerimg" character varying, "plans_title" character varying, "plans_sub_title" character varying, "abouttrade_title" character varying, "abouttrade_sub_title" character varying, "tradeservices_title" character varying, "tradeservices_sub_title" character varying, "tradesignal_title" character varying, "tradesignal_sub_title" character varying, "servicemain_title" character varying, "servicemain_sub_title" character varying, "tradeplan_title" character varying, "tradeplan_sub_title" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221112043501"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAbouts (20221112044023)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE TABLE "abouts" ("id" bigserial primary key, "title" character varying, "sub_title" character varying, "body" character varying, "abtimg" character varying, "slug" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE INDEX "index_abouts_on_slug" ON "abouts" ("slug")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221112044023"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAbouttrades (20221114010204)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE TABLE "abouttrades" ("id" bigserial primary key, "title" character varying, "sub_title" character varying, "body" text, "link" character varying, "slug" character varying, "icon" character varying, "abouttradeimg" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "index_abouttrades_on_slug" ON "abouttrades" ("slug")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114010204"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAccounts (20221114010538)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (11.1ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "account_type" character varying, "wallet" character varying, "balance" character varying, "user_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_b1e30bebc8"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE INDEX "index_accounts_on_user_id" ON "accounts" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114010538"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBanners (20221114010716)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "banners" ("id" bigserial primary key, "bannerimg" character varying, "title" character varying, "sub_title" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114010716"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBlogs (20221114011047)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "blogs" ("id" bigserial primary key, "title" character varying, "sub_title" character varying, "body" text, "blogimg" character varying, "videolink" character varying, "blogvideoimg" character varying, "slug" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE INDEX "index_blogs_on_slug" ON "blogs" ("slug")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114011047"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBoards (20221114011527)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "boards" ("id" bigserial primary key, "title" character varying, "name" character varying, "body" text, "boardimg" character varying, "slug" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE INDEX "index_boards_on_slug" ON "boards" ("slug")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114011527"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDeposits (20221114012828)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "deposits" ("id" bigserial primary key, "payment_type" character varying, "amount" character varying, "plan" character varying, "email" character varying, "status" boolean, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_88307c7ed2"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_deposits_on_user_id" ON "deposits" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114012828"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateWithdraws (20221114012857)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "withdraws" ("id" bigserial primary key, "payment_type" character varying, "amount" character varying, "plan" character varying, "email" character varying, "status" boolean, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_910faa0ea7"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE INDEX "index_withdraws_on_user_id" ON "withdraws" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114012857"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFaqs (20221114013104)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "faqs" ("id" bigserial primary key, "title" character varying, "body" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114013104"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFeatures (20221114092831)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE TABLE "features" ("id" bigserial primary key, "fimg" character varying, "title" character varying, "sub_title" character varying, "body" character varying, "slug" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE INDEX "index_features_on_slug" ON "features" ("slug")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114092831"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFxsignals (20221114095042)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "fxsignals" ("id" bigserial primary key, "body" character varying, "entry_point" character varying, "exit_point" character varying, "slug" character varying, "stop_loss" character varying, "sell_point1" character varying, "sell_point2" character varying, "tradetype" character varying, "odds" character varying, "status" character varying, "date" character varying, "pairs" character varying, "leverage" character varying, "call_type" character varying, "exchange" character varying, "sub" character varying, "info" character varying, "archive_id" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_fxsignals_on_slug" ON "fxsignals" ("slug")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE INDEX "index_fxsignals_on_status" ON "fxsignals" ("status")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114095042"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePlans (20221114100044)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (19.1ms)[0m  [1m[35mCREATE TABLE "plans" ("id" bigserial primary key, "amount" character varying, "name" character varying, "referal" character varying, "duration" character varying, "plan" character varying, "plan_name" character varying, "mini" character varying, "maxi" character varying, "body" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114100044"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTradeplans (20221114130001)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.9ms)[0m  [1m[35mCREATE TABLE "tradeplans" ("id" bigserial primary key, "amount" character varying, "name" character varying, "referal" character varying, "duration" character varying, "plan" character varying, "plan_name" character varying, "mini" character varying, "maxi" character varying, "body" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114130001"]]
+  [1m[36mTRANSACTION (48.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePms (20221114130741)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "pms" ("id" bigserial primary key, "title" character varying, "walletimg" character varying, "address" character varying, "con" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114130741"]]
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateServices (20221114134334)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE TABLE "services" ("id" bigserial primary key, "title" character varying, "slug" character varying, "icon" character varying, "sub_title" character varying, "body" text, "serviceimg" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE INDEX "index_services_on_slug" ON "services" ("slug")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114134334"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSections (20221114134437)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE "sections" ("id" bigserial primary key, "title" character varying, "body" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114134437"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTradeservices (20221114141459)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE TABLE "tradeservices" ("id" bigserial primary key, "title" character varying, "slug" character varying, "icon" character varying, "sub_title" character varying, "body" text, "tserviceimg" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_tradeservices_on_slug" ON "tradeservices" ("slug")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114141459"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTrades (20221114143221)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "trades" ("id" bigserial primary key, "currency" character varying, "deposit" character varying, "expiration" character varying, "status" boolean, "tradetype" character varying, "entry" character varying, "rate" character varying, "return" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114143221"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateArchives (20221114145448)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "archives" ("id" bigserial primary key, "title" character varying, "month" character varying, "year" character varying, "slug" character varying, "archimg" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE INDEX "index_archives_on_slug" ON "archives" ("slug")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114145448"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProducts (20221114153128)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "sub_title" character varying, "price" character varying, "pimg" character varying, "link" character varying, "slug" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE INDEX "index_products_on_slug" ON "products" ("slug")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221114153128"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFeedbacks (20221117202840)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "feedbacks" ("id" bigserial primary key, "title" character varying, "body" text, "icon" character varying, "slug" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE INDEX "index_feedbacks_on_slug" ON "feedbacks" ("slug")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221117202840"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddValuesToUsers (20230319085747)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "status" boolean[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "username" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "referal" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "phone" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230319085747"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddKycvaluesToAccounts (20230320114503)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "accounts" ADD "first_name" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "accounts" ADD "last_name" character varying[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "accounts" ADD "address" character varying[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "accounts" ADD "city" character varying[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "accounts" ADD "state" character varying[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "accounts" ADD "country" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "accounts" ADD "zip_code" character varying[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "accounts" ADD "slug" character varying[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE INDEX "index_accounts_on_slug" ON "accounts" ("slug")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "accounts" ADD "rate" float[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "accounts" ADD "compound" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "accounts" ADD "roi" float[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "accounts" ADD "currency" character varying[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "accounts" ADD "tid" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230320114503"]]
+  [1m[36mTRANSACTION (8.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddValuesToDeposits (20230320114823)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "deposits" ADD "confirmed" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "deposits" ADD "account_id" integer[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230320114823"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddExtravaluesToPlans (20230320114906)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "plans" ADD "roi" float[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230320114906"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddSToAccounts (20240117133510)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "accounts" ADD "status" boolean[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20240117133510"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (6.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2024-01-17 19:11:31.338800"], ["updated_at", "2024-01-17 19:11:31.338800"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(471539506876076100)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2024-01-17 20:11:37 +0100
+  [1m[35m (10.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcomes/index.html.erb within layouts/application
+  [1m[36mBanner Exists? (2.2ms)[0m  [1m[34mSELECT 1 AS one FROM "banners" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_banner.html.erb:1
+  Rendered shared/_banner.html.erb (Duration: 28324.8ms | Allocations: 2356938)
+  [1m[36mSection Exists? (3.7ms)[0m  [1m[34mSELECT 1 AS one FROM "sections" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_section.html.erb:2
+  Rendered shared/_section.html.erb (Duration: 24.7ms | Allocations: 3168)
+  [1m[36mAbout Exists? (72.1ms)[0m  [1m[34mSELECT 1 AS one FROM "abouts" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_abouts.html.erb:1
+  Rendered shared/_abouts.html.erb (Duration: 124.5ms | Allocations: 2564)
+  [1m[36mService Exists? (3.0ms)[0m  [1m[34mSELECT 1 AS one FROM "services" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_services.html.erb:2
+  Rendered shared/_services.html.erb (Duration: 24.3ms | Allocations: 5197)
+  Rendered shared/_servicecta.html.erb (Duration: 2.5ms | Allocations: 195)
+  [1m[36mCACHE About Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "abouts" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_aboutloan.html.erb:1
+  Rendered shared/_aboutloan.html.erb (Duration: 15.5ms | Allocations: 2595)
+  Rendered shared/_ctr.html.erb (Duration: 1.3ms | Allocations: 187)
+  [1m[36mAbouttrade Exists? (32.7ms)[0m  [1m[34mSELECT 1 AS one FROM "abouttrades" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_abouttradeproccess.html.erb:2
+  Rendered shared/_abouttradeproccess.html.erb (Duration: 43.2ms | Allocations: 2176)
+  [1m[36mPlan Exists? (4.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plans" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_plans.html.erb:1
+  Rendered shared/_plans.html.erb (Duration: 16.9ms | Allocations: 2911)
+  [1m[36mFeedback Exists? (8.9ms)[0m  [1m[34mSELECT 1 AS one FROM "feedbacks" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_feedbacks.html.erb:1
+  Rendered shared/_feedbacks.html.erb (Duration: 16.5ms | Allocations: 1948)
+  [1m[36mBlog Exists? (15.1ms)[0m  [1m[34mSELECT 1 AS one FROM "blogs" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_blogs.html.erb:1
+  Rendered shared/_blogs.html.erb (Duration: 38.9ms | Allocations: 5021)
+  Rendered shared/_body.html.erb (Duration: 28652.9ms | Allocations: 2385361)
+  Rendered welcomes/index.html.erb within layouts/application (Duration: 28661.5ms | Allocations: 2385934)
+  [1m[36mWelcome Load (2.4ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:5
+  [1m[36mWelcome Exists? (2.4ms)[0m  [1m[34mSELECT 1 AS one FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_header.html.erb:1
+  Rendered shared/_header.html.erb (Duration: 17.9ms | Allocations: 3211)
+  [1m[36mCACHE Welcome Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_footer.html.erb:4
+  Rendered shared/_footer.html.erb (Duration: 5.0ms | Allocations: 1231)
+  Rendered layout layouts/application.html.erb (Duration: 29180.0ms | Allocations: 2450492)
+Completed 200 OK in 29257ms (Views: 28912.6ms | ActiveRecord: 285.9ms | Allocations: 2456580)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/images/logo-dark.png"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/images/services/shape-2.png"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/images/pricing/main-home/style2/2.png"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/images/pricing/main-home/style2/3.png"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/images/testimonial/main-home/quote-white.png"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/images/testimonial/main-home/1.jpg"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/images/testimonial/main-home/3.jpg"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/images/testimonial/main-home/4.jpg"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/images/logo-dark.png"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/images/services/shape-3.png"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/images/testimonial/main-home/2.jpg"):
+  
+Started GET "/users/sign_up" for ::1 at 2024-01-17 20:12:18 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/devise.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/devise
+  Rendered devise/shared/_links.html.erb (Duration: 1.9ms | Allocations: 634)
+  Rendered devise/registrations/new.html.erb within layouts/devise (Duration: 240.4ms | Allocations: 52192)
+  [1m[36mWelcome Load (2.1ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/devise.html.erb:5
+  [1m[36mCACHE Welcome Load (0.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/devise.html.erb:60
+  Rendered layout layouts/devise.html.erb (Duration: 5852.8ms | Allocations: 1365935)
+Completed 200 OK in 5910ms (Views: 5852.4ms | ActiveRecord: 14.5ms | Allocations: 1381775)
+
+
+Started POST "/users" for ::1 at 2024-01-17 20:12:42 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"dave", "email"=>"da@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "referal"=>"", "phone"=>"", "status"=>"1"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (63.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "da@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "dave"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "status", "username", "referal", "phone") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "da@gmail.com"], ["encrypted_password", "$2a$12$vNZ27Onw9m5FFb5Dm6rbaeCxrqDIf9OADcwm216xjbl173XWpV7OG"], ["created_at", "2024-01-17 19:12:43.461736"], ["updated_at", "2024-01-17 19:12:43.461736"], ["status", true], ["username", "dave"], ["referal", ""], ["phone", ""]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 483ms (ActiveRecord: 79.8ms | Allocations: 24952)
+
+
+Started GET "/" for ::1 at 2024-01-17 20:12:43 +0100
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/accounts.html.erb
+  Rendering accounts/index.html.erb within layouts/accounts
+  [1m[36mAccount Exists? (5.5ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/index.html.erb:1
+  [1m[36mWelcome Load (3.2ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" ORDER BY created_at DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/accounts/index.html.erb:57
+  Rendered accounts/index.html.erb within layouts/accounts (Duration: 18.3ms | Allocations: 3559)
+  [1m[36mWelcome Load (1.2ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:5
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:61
+  Rendered layout layouts/accounts.html.erb (Duration: 110.1ms | Allocations: 29269)
+Completed 200 OK in 135ms (Views: 103.5ms | ActiveRecord: 21.9ms | Allocations: 34729)
+
+
+Started GET "/accounts/new" for ::1 at 2024-01-17 20:12:49 +0100
+Processing by AccountsController#new as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/accounts.html.erb
+  Rendering accounts/new.html.erb within layouts/accounts
+  [1m[36mWelcome Load (1.7ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/accounts/new.html.erb:10
+  [1m[36mPlan Load (1.5ms)[0m  [1m[34mSELECT "plans".* FROM "plans" ORDER BY created_at DESC[0m
+  ↳ app/views/accounts/_form.html.erb:8
+  Rendered accounts/_form.html.erb (Duration: 116.2ms | Allocations: 35763)
+  Rendered accounts/new.html.erb within layouts/accounts (Duration: 123.1ms | Allocations: 37189)
+  [1m[36mCACHE Welcome Load (0.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:5
+  [1m[36mAccount Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:61
+  Rendered layout layouts/accounts.html.erb (Duration: 163.8ms | Allocations: 61252)
+Completed 200 OK in 275ms (Views: 160.3ms | ActiveRecord: 9.2ms | Allocations: 77404)
+
+
+Started POST "/accounts" for ::1 at 2024-01-17 20:13:05 +0100
+Processing by AccountsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "account"=>{"currency"=>"USD", "wallet"=>"ewewewewewewewewewewe", "first_name"=>"fortune", "last_name"=>"chibuike-ihesie", "country"=>"Nigeria", "address"=>"hse 1 plot2 winners highway", "city"=>"abuja", "state"=>"Federal capital territory"}, "commit"=>"Register"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[31mUnpermitted parameter: :currency[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/accounts_controller.rb:24:in `create'
+  [1m[36mAccount Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."id" IS NOT NULL AND "accounts"."slug" = $1 LIMIT $2[0m  [["slug", "fortune"], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:24:in `create'
+  [1m[36mAccount Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."wallet" = $1 LIMIT $2[0m  [["wallet", "ewewewewewewewewewewe"], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:24:in `create'
+  [1m[36mAccount Create (3.7ms)[0m  [1m[32mINSERT INTO "accounts" ("wallet", "balance", "user_id", "created_at", "updated_at", "first_name", "last_name", "address", "city", "state", "country", "slug", "status") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["wallet", "ewewewewewewewewewewe"], ["balance", "0.0"], ["user_id", 1], ["created_at", "2024-01-17 19:13:05.095323"], ["updated_at", "2024-01-17 19:13:05.095323"], ["first_name", "fortune"], ["last_name", "chibuike-ihesie"], ["address", "hse 1 plot2 winners highway"], ["city", "abuja"], ["state", "Federal capital territory"], ["country", "Nigeria"], ["slug", "fortune"], ["status", false]]
+  ↳ app/controllers/accounts_controller.rb:24:in `create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/accounts_controller.rb:24:in `create'
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/accounts_controller.rb:25:in `create'
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: bcc35b36-19fa-4369-b4cf-1807b89a345c) to Async(default) with arguments: "AccountMailer", "account_email", "deliver_now", {:args=>[#<GlobalID:0x00000001089e5760 @uri=#<URI::GID gid://jackville/User/1>>, #<GlobalID:0x00000001089e47c0 @uri=#<URI::GID gid://jackville/Account/1>>]}
+Redirected to http://localhost:3000/
+Completed 302 Found in 120ms (ActiveRecord: 11.6ms | Allocations: 20144)
+
+
+Started GET "/" for ::1 at 2024-01-17 20:13:05 +0100
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [bcc35b36-19fa-4369-b4cf-1807b89a345c] Performing ActionMailer::MailDeliveryJob (Job ID: bcc35b36-19fa-4369-b4cf-1807b89a345c) from Async(default) enqueued at 2024-01-17T19:13:05Z with arguments: "AccountMailer", "account_email", "deliver_now", {:args=>[#<GlobalID:0x0000000108aca888 @uri=#<URI::GID gid://jackville/User/1>>, #<GlobalID:0x0000000108aca068 @uri=#<URI::GID gid://jackville/Account/1>>]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [bcc35b36-19fa-4369-b4cf-1807b89a345c] AccountMailer#account_email: processed outbound mail in 20.3ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [bcc35b36-19fa-4369-b4cf-1807b89a345c] Error performing ActionMailer::MailDeliveryJob (Job ID: bcc35b36-19fa-4369-b4cf-1807b89a345c) from Async(default) in 21.84ms: ActionView::MissingTemplate (Missing template account_mailer/account_email with "mailer". Searched in:
+  * "account_mailer"
+):
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailer-6.1.7/lib/action_mailer/base.rb:967:in `each_template'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailer-6.1.7/lib/action_mailer/base.rb:955:in `collect_responses_from_templates'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailer-6.1.7/lib/action_mailer/base.rb:933:in `collect_responses'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailer-6.1.7/lib/action_mailer/base.rb:841:in `mail'
+/Users/fortune/sites/currentv6render/dapps/coinprofits/app/mailers/account_mailer.rb:6:in `account_email'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionpack-6.1.7/lib/abstract_controller/base.rb:228:in `process_action'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionpack-6.1.7/lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/callbacks.rb:117:in `block in run_callbacks'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actiontext-6.1.7/lib/action_text/rendering.rb:20:in `with_renderer'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actiontext-6.1.7/lib/action_text/engine.rb:59:in `block (4 levels) in <class:Engine>'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/callbacks.rb:126:in `instance_exec'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/callbacks.rb:126:in `block in run_callbacks'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/callbacks.rb:137:in `run_callbacks'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionpack-6.1.7/lib/abstract_controller/callbacks.rb:41:in `process_action'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionpack-6.1.7/lib/abstract_controller/base.rb:165:in `process'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailer-6.1.7/lib/action_mailer/rescuable.rb:25:in `block in process'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailer-6.1.7/lib/action_mailer/rescuable.rb:17:in `handle_exceptions'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailer-6.1.7/lib/action_mailer/rescuable.rb:24:in `process'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionview-6.1.7/lib/action_view/rendering.rb:39:in `process'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailer-6.1.7/lib/action_mailer/base.rb:615:in `block in process'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/notifications.rb:203:in `block in instrument'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/notifications.rb:203:in `instrument'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailer-6.1.7/lib/action_mailer/base.rb:614:in `process'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailer-6.1.7/lib/action_mailer/message_delivery.rb:128:in `block in processed_mailer'
+<internal:kernel>:90:in `tap'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailer-6.1.7/lib/action_mailer/message_delivery.rb:127:in `processed_mailer'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailer-6.1.7/lib/action_mailer/message_delivery.rb:118:in `deliver_now'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailer-6.1.7/lib/action_mailer/mail_delivery_job.rb:23:in `perform'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activejob-6.1.7/lib/active_job/execution.rb:48:in `block in perform_now'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/callbacks.rb:117:in `block in run_callbacks'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/i18n-1.12.0/lib/i18n.rb:322:in `with_locale'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activejob-6.1.7/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/callbacks.rb:126:in `instance_exec'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/callbacks.rb:126:in `block in run_callbacks'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/core_ext/time/zones.rb:66:in `use_zone'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activejob-6.1.7/lib/active_job/timezones.rb:9:in `block (2 levels) in <module:Timezones>'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/callbacks.rb:126:in `instance_exec'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/callbacks.rb:126:in `block in run_callbacks'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activejob-6.1.7/lib/active_job/instrumentation.rb:21:in `block in instrument'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/notifications.rb:203:in `block in instrument'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/notifications.rb:203:in `instrument'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activejob-6.1.7/lib/active_job/instrumentation.rb:31:in `instrument'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activejob-6.1.7/lib/active_job/instrumentation.rb:14:in `block (2 levels) in <module:Instrumentation>'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/callbacks.rb:126:in `instance_exec'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/callbacks.rb:126:in `block in run_callbacks'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activejob-6.1.7/lib/active_job/logging.rb:22:in `block in tag_logger'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/tagged_logging.rb:99:in `block in tagged'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/tagged_logging.rb:37:in `tagged'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/tagged_logging.rb:99:in `tagged'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activejob-6.1.7/lib/active_job/logging.rb:22:in `tag_logger'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activejob-6.1.7/lib/active_job/logging.rb:15:in `block (2 levels) in <module:Logging>'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/callbacks.rb:126:in `instance_exec'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/callbacks.rb:126:in `block in run_callbacks'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/callbacks.rb:137:in `run_callbacks'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activejob-6.1.7/lib/active_job/execution.rb:47:in `perform_now'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activejob-6.1.7/lib/active_job/execution.rb:25:in `block in execute'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/callbacks.rb:117:in `block in run_callbacks'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activejob-6.1.7/lib/active_job/railtie.rb:47:in `block (4 levels) in <class:Railtie>'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/execution_wrapper.rb:91:in `wrap'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/reloader.rb:72:in `block in wrap'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/execution_wrapper.rb:91:in `wrap'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/reloader.rb:71:in `wrap'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activejob-6.1.7/lib/active_job/railtie.rb:46:in `block (3 levels) in <class:Railtie>'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/callbacks.rb:126:in `instance_exec'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/callbacks.rb:126:in `block in run_callbacks'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7/lib/active_support/callbacks.rb:137:in `run_callbacks'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activejob-6.1.7/lib/active_job/execution.rb:23:in `execute'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activejob-6.1.7/lib/active_job/queue_adapters/async_adapter.rb:70:in `perform'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `run_task'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:343:in `block (3 levels) in create_worker'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `loop'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block (2 levels) in create_worker'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `catch'
+/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `block in create_worker'
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/accounts.html.erb
+  Rendering accounts/index.html.erb within layouts/accounts
+  [1m[36mAccount Exists? (2.6ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/index.html.erb:1
+  [1m[36mAccount Load (1.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:9
+  [1m[35m (4.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:15
+  [1m[35m (4.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "trades" WHERE "trades"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:32
+  Rendered accounts/_topbox.html.erb (Duration: 17.5ms | Allocations: 4790)
+  Rendered accounts/index.html.erb within layouts/accounts (Duration: 23.3ms | Allocations: 5815)
+  Rendered layout layouts/accounts.html.erb (Duration: 23.6ms | Allocations: 5893)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 12.6ms | Allocations: 6575)
+
+
+  
+ActionView::Template::Error (PG::UndefinedColumn: ERROR:  column trades.user_id does not exist
+LINE 1: SELECT COUNT(*) FROM "trades" WHERE "trades"."user_id" = $1
+                                            ^
+):
+    29:             <div class="row d-flex justify-content-center">
+    30:               <div class="col">
+    31:                 <p class="text-dark mb-1 fw-semibold">Trades</p>
+    32:                 <h4 class="my-1"><%= Trade.where(user_id: current_user.id).count %></h4>
+    33: 
+    34:                 <% if Trade.where(user_id: current_user.id).exists? %>
+    35:                 <p class="mb-0 text-truncate text-muted"><span class="badge badge-soft-success">
+  
+app/views/accounts/_topbox.html.erb:32
+app/views/accounts/index.html.erb:37
+Started GET "/" for ::1 at 2024-01-17 21:58:29 +0100
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (20.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/accounts.html.erb
+  Rendering accounts/index.html.erb within layouts/accounts
+  [1m[36mAccount Exists? (7.9ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/index.html.erb:1
+  [1m[36mAccount Load (1.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:9
+  [1m[35m (15.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:15
+  [1m[35m (12.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "trades" WHERE "trades"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:32
+  Rendered accounts/_topbox.html.erb (Duration: 62.2ms | Allocations: 13987)
+  Rendered accounts/index.html.erb within layouts/accounts (Duration: 79.7ms | Allocations: 15975)
+  Rendered layout layouts/accounts.html.erb (Duration: 80.5ms | Allocations: 16067)
+Completed 500 Internal Server Error in 133ms (ActiveRecord: 52.2ms | Allocations: 23795)
+
+
+  
+ActionView::Template::Error (PG::UndefinedColumn: ERROR:  column trades.user_id does not exist
+LINE 1: SELECT COUNT(*) FROM "trades" WHERE "trades"."user_id" = $1
+                                            ^
+):
+    29:             <div class="row d-flex justify-content-center">
+    30:               <div class="col">
+    31:                 <p class="text-dark mb-1 fw-semibold">Trades</p>
+    32:                 <h4 class="my-1"><%= Trade.where(user_id: current_user.id).count %></h4>
+    33: 
+    34:                 <% if Trade.where(user_id: current_user.id).exists? %>
+    35:                 <p class="mb-0 text-truncate text-muted"><span class="badge badge-soft-success">
+  
+app/views/accounts/_topbox.html.erb:32
+app/views/accounts/index.html.erb:37
+Started GET "/" for ::1 at 2024-01-17 22:01:46 +0100
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/accounts.html.erb
+  Rendering accounts/index.html.erb within layouts/accounts
+  [1m[36mAccount Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/index.html.erb:1
+  [1m[36mAccount Load (1.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:9
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:32
+  [1m[36mTrade Exists? (2.5ms)[0m  [1m[34mSELECT 1 AS one FROM "trades" WHERE "trades"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:34
+  Rendered accounts/_topbox.html.erb (Duration: 35.1ms | Allocations: 14558)
+  Rendered accounts/index.html.erb within layouts/accounts (Duration: 41.8ms | Allocations: 16546)
+  Rendered layout layouts/accounts.html.erb (Duration: 42.3ms | Allocations: 16638)
+Completed 500 Internal Server Error in 81ms (ActiveRecord: 19.2ms | Allocations: 24363)
+
+
+  
+ActionView::Template::Error (PG::UndefinedColumn: ERROR:  column trades.user_id does not exist
+LINE 1: SELECT 1 AS one FROM "trades" WHERE "trades"."user_id" = $1 ...
+                                            ^
+):
+    31:                 <p class="text-dark mb-1 fw-semibold">Trades</p>
+    32:                 <h4 class="my-1"><%= Account.where(user_id: current_user.id).count %></h4>
+    33: 
+    34:                 <% if Trade.where(user_id: current_user.id).exists? %>
+    35:                 <p class="mb-0 text-truncate text-muted"><span class="badge badge-soft-success">
+    36:                   Active</span> Daily Trades Sessions</p>
+    37:                   <% else %>
+  
+app/views/accounts/_topbox.html.erb:34
+app/views/accounts/index.html.erb:37
+Started GET "/" for ::1 at 2024-01-17 22:03:24 +0100
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/accounts.html.erb
+  Rendering accounts/index.html.erb within layouts/accounts
+  [1m[36mAccount Exists? (2.5ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/index.html.erb:1
+  [1m[36mAccount Load (2.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:9
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:32
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:34
+  [1m[35m (5.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "deposits" WHERE "deposits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:57
+  [1m[36mCACHE Account Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:81
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:82
+  Rendered accounts/_topbox.html.erb (Duration: 49.0ms | Allocations: 14581)
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_chartsindex.html.erb:16
+  Rendered accounts/_chartsindex.html.erb (Duration: 211.7ms | Allocations: 273701)
+  Rendered accounts/index.html.erb within layouts/accounts (Duration: 270.7ms | Allocations: 290468)
+  Rendered layout layouts/accounts.html.erb (Duration: 271.0ms | Allocations: 290560)
+Completed 500 Internal Server Error in 321ms (ActiveRecord: 29.7ms | Allocations: 298283)
+
+
+  
+ActionView::Template::Error (The asset "small/btc.png" is not present in the asset pipeline.
+):
+    19:           <div class="row">
+    20:             <div class="col-md-4 align-self-center">
+    21:               <div class="card-body">
+    22:                 <img src="<%= asset_path 'small/btc.png' %>" alt="" class="img-fluid d-block mx-auto">
+    23:               </div>
+    24:             </div>
+    25:             <div class="col-md-8 align-self-center">
+  
+app/views/accounts/_chartsindex.html.erb:22
+app/views/accounts/_chartsindex.html.erb:16:in `each'
+app/views/accounts/_chartsindex.html.erb:16
+app/views/accounts/index.html.erb:38
+Started GET "/" for ::1 at 2024-01-17 22:22:41 +0100
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/accounts.html.erb
+  Rendering accounts/index.html.erb within layouts/accounts
+  [1m[36mAccount Exists? (6.4ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/index.html.erb:1
+  [1m[36mAccount Load (8.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:9
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:32
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:34
+  [1m[35m (9.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "deposits" WHERE "deposits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:57
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:81
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:82
+  Rendered accounts/_topbox.html.erb (Duration: 68.8ms | Allocations: 5503)
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_chartsindex.html.erb:16
+  Rendered accounts/_chartsindex.html.erb (Duration: 6608.0ms | Allocations: 1629710)
+  [1m[36mDeposit Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "deposits" WHERE "deposits"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_tables.html.erb:2
+  Rendered accounts/_tables.html.erb (Duration: 10.4ms | Allocations: 2999)
+  Rendered accounts/index.html.erb within layouts/accounts (Duration: 6706.1ms | Allocations: 1640189)
+  Rendered layout layouts/accounts.html.erb (Duration: 6706.5ms | Allocations: 1640272)
+Completed 500 Internal Server Error in 6746ms (ActiveRecord: 28.5ms | Allocations: 1641490)
+
+
+  
+ActionView::Template::Error (Missing partial trades/_dhistory with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :arb, :jbuilder]}. Searched in:
+  * "/Users/fortune/sites/currentv6render/dapps/coinprofits/app/views"
+  * "/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-2.13.1/app/views"
+  * "/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/devise-4.8.1/app/views"
+  * "/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/kaminari-core-1.2.2/app/views"
+  * "/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actiontext-6.1.7/app/views"
+  * "/Users/fortune/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailbox-6.1.7/app/views"
+):
+    65: 
+    66: 
+    67:   <% end %>
+    68:   <%= render "trades/dhistory" %>
+    69: 
+    70: </div>
+  
+app/views/accounts/_tables.html.erb:68
+app/views/accounts/index.html.erb:40
+Started GET "/" for ::1 at 2024-01-17 22:28:16 +0100
+  [1m[35m (16.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/accounts.html.erb
+  Rendering accounts/index.html.erb within layouts/accounts
+  [1m[36mAccount Exists? (2.8ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/index.html.erb:1
+  [1m[36mAccount Load (2.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:9
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:32
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:34
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "deposits" WHERE "deposits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:57
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:81
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:82
+  Rendered accounts/_topbox.html.erb (Duration: 63.6ms | Allocations: 14581)
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_chartsindex.html.erb:16
+  Rendered accounts/_chartsindex.html.erb (Duration: 6112.9ms | Allocations: 1587745)
+  [1m[36mDeposit Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "deposits" WHERE "deposits"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_tables.html.erb:2
+  [1m[36mTrade Exists? (27.8ms)[0m  [1m[34mSELECT 1 AS one FROM "trades" WHERE "trades"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/trades/_dhistory.html.erb:1
+  Rendered trades/_dhistory.html.erb (Duration: 32.6ms | Allocations: 3326)
+  Rendered accounts/_tables.html.erb (Duration: 38.7ms | Allocations: 4760)
+  Rendered accounts/index.html.erb within layouts/accounts (Duration: 6230.2ms | Allocations: 1609443)
+  Rendered layout layouts/accounts.html.erb (Duration: 6230.4ms | Allocations: 1609535)
+Completed 500 Internal Server Error in 6276ms (ActiveRecord: 51.7ms | Allocations: 1617264)
+
+
+  
+ActionView::Template::Error (PG::UndefinedColumn: ERROR:  column trades.user_id does not exist
+LINE 1: SELECT 1 AS one FROM "trades" WHERE "trades"."user_id" = $1 ...
+                                            ^
+):
+    1:   <% if Trade.where(user_id: current_user.id).exists? %>
+    2: 
+    3:   <div class="col-8 col-md-8">
+    4:     <div class="card">
+  
+app/views/trades/_dhistory.html.erb:1
+app/views/accounts/_tables.html.erb:68
+app/views/accounts/index.html.erb:40
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(471539506876076100)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddUToTrades (20240117213204)
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.9ms)[0m  [1m[35mALTER TABLE "trades" ADD "status" character varying[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(471539506876076100)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(471539506876076100)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddUToTrades (20240117213204)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (19.5ms)[0m  [1m[35mALTER TABLE "trades" ADD "user_id" bigint NOT NULL[0m
+  [1m[35m (9.6ms)[0m  [1m[35mCREATE INDEX "index_trades_on_user_id" ON "trades" ("user_id")[0m
+  [1m[35m (449.5ms)[0m  [1m[35mALTER TABLE "trades" ADD CONSTRAINT "fk_rails_12b0ea7696"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (58.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20240117213204"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(471539506876076100)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2024-01-17 22:35:26 +0100
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/accounts.html.erb
+  Rendering accounts/index.html.erb within layouts/accounts
+  [1m[36mAccount Exists? (2.9ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/index.html.erb:1
+  [1m[36mAccount Load (2.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:9
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:32
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:34
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "deposits" WHERE "deposits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:57
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:81
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:82
+  Rendered accounts/_topbox.html.erb (Duration: 42.8ms | Allocations: 14581)
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_chartsindex.html.erb:16
+  Rendered accounts/_chartsindex.html.erb (Duration: 5472.2ms | Allocations: 1587754)
+  [1m[36mDeposit Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "deposits" WHERE "deposits"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_tables.html.erb:2
+  [1m[36mTrade Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "trades" WHERE "trades"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/trades/_dhistory.html.erb:1
+  Rendered trades/_dhistory.html.erb (Duration: 4.8ms | Allocations: 1331)
+  Rendered accounts/_tables.html.erb (Duration: 9.8ms | Allocations: 2751)
+  Rendered accounts/index.html.erb within layouts/accounts (Duration: 5535.7ms | Allocations: 1607442)
+  [1m[36mWelcome Load (4.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:5
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:61
+  Rendered shared/_sidebar.html.erb (Duration: 47.9ms | Allocations: 8787)
+  Rendered layout layouts/accounts.html.erb (Duration: 5706.6ms | Allocations: 1641257)
+Completed 500 Internal Server Error in 5760ms (ActiveRecord: 40.9ms | Allocations: 1653035)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `new_contact_path' for #<ActionView::Base:0x00000000031fd8>
+Did you mean?  new_account_path):
+    69: </li>
+    70: <li class="nav-item">
+    71: 
+    72:   <%= link_to new_contact_path, class: "nav-link" do %>
+    73:   <i class="ti-control-record"></i>  Contact Us <% end %>
+    74: </li>
+    75: </ul>
+  
+app/views/shared/_sidebar.html.erb:72
+app/views/layouts/accounts.html.erb:62
+Started GET "/" for ::1 at 2024-01-17 22:41:02 +0100
+  [1m[35m (12.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/accounts.html.erb
+  Rendering accounts/index.html.erb within layouts/accounts
+  [1m[36mAccount Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/index.html.erb:1
+  [1m[36mAccount Load (1.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:9
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:32
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:34
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "deposits" WHERE "deposits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:57
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:81
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:82
+  Rendered accounts/_topbox.html.erb (Duration: 34.8ms | Allocations: 14581)
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_chartsindex.html.erb:16
+  Rendered accounts/_chartsindex.html.erb (Duration: 5507.5ms | Allocations: 1587739)
+  [1m[36mDeposit Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "deposits" WHERE "deposits"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_tables.html.erb:2
+  [1m[36mTrade Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "trades" WHERE "trades"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/trades/_dhistory.html.erb:1
+  Rendered trades/_dhistory.html.erb (Duration: 4.5ms | Allocations: 1331)
+  Rendered accounts/_tables.html.erb (Duration: 9.9ms | Allocations: 2751)
+  Rendered accounts/index.html.erb within layouts/accounts (Duration: 5563.0ms | Allocations: 1607427)
+  [1m[36mWelcome Load (1.3ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:5
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:61
+  Rendered shared/_sidebar.html.erb (Duration: 2.1ms | Allocations: 1021)
+  Rendered shared/_menu.html.erb (Duration: 15.2ms | Allocations: 463)
+  Rendered layout layouts/accounts.html.erb (Duration: 5696.7ms | Allocations: 1636578)
+Completed 200 OK in 5747ms (Views: 5690.7ms | ActiveRecord: 33.8ms | Allocations: 1645687)
+
+
+Started GET "/www.cryptonator.com/ui/js/widget/calc_widget.js" for ::1 at 2024-01-17 22:41:08 +0100
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/www.cryptonator.com/ui/js/widget/calc_widget.js"):
+  
+Started GET "/" for ::1 at 2024-01-17 22:49:08 +0100
+  [1m[35m (26.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/accounts.html.erb
+  Rendering accounts/index.html.erb within layouts/accounts
+  [1m[36mAccount Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/index.html.erb:1
+  [1m[36mAccount Load (23.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:9
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:32
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:34
+  [1m[35m (25.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "deposits" WHERE "deposits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:57
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:81
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:82
+  Rendered accounts/_topbox.html.erb (Duration: 91.7ms | Allocations: 14581)
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_chartsindex.html.erb:16
+  Rendered accounts/_chartsindex.html.erb (Duration: 1636.0ms | Allocations: 392704)
+  Rendered accounts/index.html.erb within layouts/accounts (Duration: 1740.2ms | Allocations: 409471)
+  Rendered layout layouts/accounts.html.erb (Duration: 1740.6ms | Allocations: 409563)
+Completed 500 Internal Server Error in 1793ms (ActiveRecord: 71.7ms | Allocations: 417337)
+
+
+  
+ActionView::Template::Error (Error: Invalid CSS after "...-width:767px) {": expected "}", was ".main-timeline: bef"
+        on line 4616:44 of vendor/assets/stylesheets/waves2.scss
+        from line 10:1 of app/assets/stylesheets/accounts.scss.erb
+>> @media only screen and (max-width:767px) {
+
+   ------------------------------------------^
+):
+    19:           <div class="row">
+    20:             <div class="col-md-4 align-self-center">
+    21:               <div class="card-body">
+    22:                 <img src="<%= asset_path 'small/btc.png' %>" alt="" class="img-fluid d-block mx-auto">
+    23:               </div>
+    24:             </div>
+    25:             <div class="col-md-8 align-self-center">
+  
+app/views/accounts/_chartsindex.html.erb:22
+app/views/accounts/_chartsindex.html.erb:16:in `each'
+app/views/accounts/_chartsindex.html.erb:16
+app/views/accounts/index.html.erb:38
+Started GET "/" for ::1 at 2024-01-17 22:50:57 +0100
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/accounts.html.erb
+  Rendering accounts/index.html.erb within layouts/accounts
+  [1m[36mAccount Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/index.html.erb:1
+  [1m[36mAccount Load (1.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:9
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:32
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:34
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "deposits" WHERE "deposits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:57
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:81
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:82
+  Rendered accounts/_topbox.html.erb (Duration: 58.3ms | Allocations: 14517)
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_chartsindex.html.erb:16
+  Rendered accounts/_chartsindex.html.erb (Duration: 20671.9ms | Allocations: 2171128)
+  [1m[36mDeposit Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "deposits" WHERE "deposits"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_tables.html.erb:2
+  [1m[36mTrade Exists? (5.4ms)[0m  [1m[34mSELECT 1 AS one FROM "trades" WHERE "trades"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/trades/_dhistory.html.erb:1
+  Rendered trades/_dhistory.html.erb (Duration: 8.2ms | Allocations: 1332)
+  Rendered accounts/_tables.html.erb (Duration: 13.9ms | Allocations: 2936)
+  Rendered accounts/index.html.erb within layouts/accounts (Duration: 20754.6ms | Allocations: 2190737)
+  [1m[36mWelcome Load (4.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:5
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:61
+  [1m[36mCACHE Welcome Load (0.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_sidebar.html.erb:6
+  Rendered shared/_sidebar.html.erb (Duration: 4.0ms | Allocations: 1775)
+  Rendered shared/_menu.html.erb (Duration: 1.4ms | Allocations: 463)
+  Rendered layout layouts/accounts.html.erb (Duration: 21044.7ms | Allocations: 2223770)
+Completed 200 OK in 21106ms (Views: 21032.5ms | ActiveRecord: 41.3ms | Allocations: 2230950)
+
+
+Started GET "/www.cryptonator.com/ui/js/widget/calc_widget.js" for ::1 at 2024-01-17 22:51:19 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/www.cryptonator.com/ui/js/widget/calc_widget.js"):
+  
+Started GET "/trades" for ::1 at 2024-01-17 22:51:44 +0100
+Processing by TradesController#index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/accounts.html.erb
+  Rendering trades/index.html.erb within layouts/accounts
+  [1m[36mAccount Load (6.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:9
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:32
+  [1m[36mAccount Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:34
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "deposits" WHERE "deposits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:57
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:81
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:82
+  Rendered accounts/_topbox.html.erb (Duration: 32.5ms | Allocations: 5754)
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_charts.html.erb:118
+  Rendered accounts/_charts.html.erb (Duration: 19.5ms | Allocations: 1996)
+  [1m[36mTrade Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "trades" WHERE "trades"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/trades/_history.html.erb:2
+  Rendered trades/_history.html.erb (Duration: 7.9ms | Allocations: 1235)
+  Rendered trades/index.html.erb within layouts/accounts (Duration: 65.7ms | Allocations: 9789)
+  [1m[36mWelcome Load (1.2ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:5
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:61
+  [1m[36mCACHE Welcome Load (0.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_sidebar.html.erb:6
+  Rendered shared/_sidebar.html.erb (Duration: 5.8ms | Allocations: 1756)
+  Rendered shared/_menu.html.erb (Duration: 1.2ms | Allocations: 450)
+  Rendered layout layouts/accounts.html.erb (Duration: 172.5ms | Allocations: 37855)
+Completed 200 OK in 251ms (Views: 163.4ms | ActiveRecord: 34.8ms | Allocations: 46181)
+
+
+Started GET "/www.cryptonator.com/ui/js/widget/calc_widget.js" for ::1 at 2024-01-17 22:51:44 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/www.cryptonator.com/ui/js/widget/calc_widget.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/images/logos/btc.png"):
+  
+Started GET "/" for ::1 at 2024-01-17 22:51:51 +0100
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/accounts.html.erb
+  Rendering accounts/index.html.erb within layouts/accounts
+  [1m[36mAccount Exists? (2.8ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/index.html.erb:1
+  [1m[36mAccount Load (14.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:9
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:32
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:34
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "deposits" WHERE "deposits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:57
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:81
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:82
+  Rendered accounts/_topbox.html.erb (Duration: 88.3ms | Allocations: 14881)
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_chartsindex.html.erb:16
+  Rendered accounts/_chartsindex.html.erb (Duration: 5638.6ms | Allocations: 1587775)
+  [1m[36mDeposit Exists? (5.1ms)[0m  [1m[34mSELECT 1 AS one FROM "deposits" WHERE "deposits"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_tables.html.erb:2
+  [1m[36mTrade Exists? (2.4ms)[0m  [1m[34mSELECT 1 AS one FROM "trades" WHERE "trades"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/trades/_dhistory.html.erb:1
+  Rendered trades/_dhistory.html.erb (Duration: 6.3ms | Allocations: 1331)
+  Rendered accounts/_tables.html.erb (Duration: 18.3ms | Allocations: 2751)
+  Rendered accounts/index.html.erb within layouts/accounts (Duration: 5756.0ms | Allocations: 1608719)
+  [1m[36mWelcome Load (1.3ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:5
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:61
+  [1m[36mCACHE Welcome Load (0.1ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_sidebar.html.erb:6
+  Rendered shared/_sidebar.html.erb (Duration: 6.6ms | Allocations: 1765)
+  Rendered shared/_menu.html.erb (Duration: 2.3ms | Allocations: 463)
+  Rendered layout layouts/accounts.html.erb (Duration: 5931.0ms | Allocations: 1638669)
+Completed 200 OK in 5973ms (Views: 5905.3ms | ActiveRecord: 45.8ms | Allocations: 1651886)
+
+
+Started GET "/www.cryptonator.com/ui/js/widget/calc_widget.js" for ::1 at 2024-01-17 22:51:57 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/www.cryptonator.com/ui/js/widget/calc_widget.js"):
+  
+Started GET "/" for ::1 at 2024-01-17 22:53:08 +0100
+  [1m[36mUser Load (6.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/accounts.html.erb
+  Rendering accounts/index.html.erb within layouts/accounts
+  [1m[36mAccount Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/index.html.erb:1
+  [1m[36mAccount Load (5.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:9
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:32
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:34
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "deposits" WHERE "deposits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:57
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:81
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:82
+  Rendered accounts/_topbox.html.erb (Duration: 20.2ms | Allocations: 5322)
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_chartsindex.html.erb:16
+  Rendered accounts/_chartsindex.html.erb (Duration: 4882.8ms | Allocations: 1315947)
+  [1m[36mDeposit Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "deposits" WHERE "deposits"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_tables.html.erb:2
+  [1m[36mTrade Exists? (2.2ms)[0m  [1m[34mSELECT 1 AS one FROM "trades" WHERE "trades"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/trades/_dhistory.html.erb:1
+  Rendered trades/_dhistory.html.erb (Duration: 6.0ms | Allocations: 1331)
+  Rendered accounts/_tables.html.erb (Duration: 11.4ms | Allocations: 2749)
+  Rendered accounts/index.html.erb within layouts/accounts (Duration: 4923.7ms | Allocations: 1325984)
+  [1m[36mWelcome Load (2.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:5
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:61
+  [1m[36mCACHE Welcome Load (0.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_sidebar.html.erb:6
+  Rendered shared/_sidebar.html.erb (Duration: 4.6ms | Allocations: 1765)
+  Rendered shared/_menu.html.erb (Duration: 1.5ms | Allocations: 463)
+  Rendered layout layouts/accounts.html.erb (Duration: 5062.4ms | Allocations: 1355834)
+Completed 200 OK in 5071ms (Views: 5051.6ms | ActiveRecord: 15.5ms | Allocations: 1357128)
+
+
+Started GET "/www.cryptonator.com/ui/js/widget/calc_widget.js" for ::1 at 2024-01-17 22:53:13 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/www.cryptonator.com/ui/js/widget/calc_widget.js"):
+  
+Started GET "/" for ::1 at 2024-01-17 22:53:30 +0100
+  [1m[36mUser Load (3858.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/accounts.html.erb
+  Rendering accounts/index.html.erb within layouts/accounts
+  [1m[36mAccount Exists? (1088.8ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/index.html.erb:1
+  [1m[36mAccount Load (881.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:9
+  [1m[35m (3524.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:15
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:32
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:34
+  [1m[35m (48.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "deposits" WHERE "deposits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:57
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:81
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:82
+  Rendered accounts/_topbox.html.erb (Duration: 5806.2ms | Allocations: 5336)
+  [1m[36mCACHE Account Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_chartsindex.html.erb:16
+  Rendered accounts/_chartsindex.html.erb (Duration: 226.0ms | Allocations: 1685)
+  [1m[36mDeposit Exists? (302.6ms)[0m  [1m[34mSELECT 1 AS one FROM "deposits" WHERE "deposits"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_tables.html.erb:2
+  [1m[36mTrade Exists? (243.1ms)[0m  [1m[34mSELECT 1 AS one FROM "trades" WHERE "trades"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/trades/_dhistory.html.erb:1
+  Rendered trades/_dhistory.html.erb (Duration: 291.0ms | Allocations: 1249)
+  Rendered accounts/_tables.html.erb (Duration: 1173.0ms | Allocations: 2598)
+  Rendered accounts/index.html.erb within layouts/accounts (Duration: 8402.7ms | Allocations: 11586)
+  [1m[36mWelcome Load (272.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:5
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:61
+  [1m[36mCACHE Welcome Load (0.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_sidebar.html.erb:6
+  Rendered shared/_sidebar.html.erb (Duration: 72.8ms | Allocations: 1736)
+  Rendered shared/_menu.html.erb (Duration: 7.2ms | Allocations: 450)
+  Rendered layout layouts/accounts.html.erb (Duration: 9513.1ms | Allocations: 38603)
+Completed 200 OK in 9854ms (Views: 3410.9ms | ActiveRecord: 6361.1ms | Allocations: 39858)
+
+
+Started GET "/www.cryptonator.com/ui/js/widget/calc_widget.js" for ::1 at 2024-01-17 22:53:48 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/www.cryptonator.com/ui/js/widget/calc_widget.js"):
+  
+Started GET "/" for ::1 at 2024-01-17 22:57:17 +0100
+  [1m[36mUser Load (67.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/accounts.html.erb
+  Rendering accounts/index.html.erb within layouts/accounts
+  [1m[36mAccount Exists? (25.3ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/index.html.erb:1
+  [1m[36mAccount Load (11.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:9
+  [1m[35m (6.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:32
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:34
+  [1m[35m (5.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "deposits" WHERE "deposits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:57
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:81
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:82
+  Rendered accounts/_topbox.html.erb (Duration: 89.2ms | Allocations: 5359)
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_chartsindex.html.erb:16
+  Rendered accounts/_chartsindex.html.erb (Duration: 61.4ms | Allocations: 1677)
+  [1m[36mDeposit Exists? (2.2ms)[0m  [1m[34mSELECT 1 AS one FROM "deposits" WHERE "deposits"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_tables.html.erb:2
+  [1m[36mTrade Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "trades" WHERE "trades"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/trades/_dhistory.html.erb:1
+  Rendered trades/_dhistory.html.erb (Duration: 12.7ms | Allocations: 1248)
+  Rendered accounts/_tables.html.erb (Duration: 29.5ms | Allocations: 2597)
+  Rendered accounts/index.html.erb within layouts/accounts (Duration: 236.5ms | Allocations: 11599)
+  [1m[36mWelcome Load (1.7ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:5
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:61
+  [1m[36mCACHE Welcome Load (0.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_sidebar.html.erb:6
+  Rendered shared/_sidebar.html.erb (Duration: 9.7ms | Allocations: 1736)
+  Rendered shared/_menu.html.erb (Duration: 7.6ms | Allocations: 437)
+  Rendered layout layouts/accounts.html.erb (Duration: 641.5ms | Allocations: 38764)
+Completed 200 OK in 826ms (Views: 688.1ms | ActiveRecord: 55.3ms | Allocations: 40013)
+
+
+Started GET "/www.cryptonator.com/ui/js/widget/calc_widget.js" for ::1 at 2024-01-17 22:57:20 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/www.cryptonator.com/ui/js/widget/calc_widget.js"):
+  
+Started GET "/deposits/new" for ::1 at 2024-01-17 22:59:05 +0100
+Processing by DepositsController#new as HTML
+  [1m[36mUser Load (9.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/accounts.html.erb
+  Rendering deposits/new.html.erb within layouts/accounts
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/deposits/_form.html.erb:12
+  Rendered deposits/_form.html.erb (Duration: 277.5ms | Allocations: 40301)
+  Rendered deposits/new.html.erb within layouts/accounts (Duration: 283.8ms | Allocations: 40722)
+  [1m[36mWelcome Load (4.1ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:5
+  [1m[36mAccount Exists? (5.4ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:61
+  [1m[36mCACHE Welcome Load (0.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_sidebar.html.erb:6
+  Rendered shared/_sidebar.html.erb (Duration: 6.1ms | Allocations: 1739)
+  Rendered shared/_menu.html.erb (Duration: 2.0ms | Allocations: 439)
+  Rendered layout layouts/accounts.html.erb (Duration: 450.3ms | Allocations: 68457)
+Completed 200 OK in 1555ms (Views: 448.7ms | ActiveRecord: 394.3ms | Allocations: 84267)
+
+
+Started GET "/trades" for ::1 at 2024-01-17 22:59:46 +0100
+Processing by TradesController#index as HTML
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/accounts.html.erb
+  Rendering trades/index.html.erb within layouts/accounts
+  [1m[36mAccount Load (7.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:9
+  [1m[35m (3.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:32
+  [1m[36mAccount Exists? (2.4ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:34
+  [1m[35m (6.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "deposits" WHERE "deposits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:57
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:81
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:82
+  Rendered accounts/_topbox.html.erb (Duration: 69.0ms | Allocations: 5749)
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_charts.html.erb:118
+  Rendered accounts/_charts.html.erb (Duration: 48.9ms | Allocations: 1993)
+  [1m[36mTrade Exists? (7.3ms)[0m  [1m[34mSELECT 1 AS one FROM "trades" WHERE "trades"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/trades/_history.html.erb:2
+  Rendered trades/_history.html.erb (Duration: 17.1ms | Allocations: 1221)
+  Rendered trades/index.html.erb within layouts/accounts (Duration: 147.0ms | Allocations: 9759)
+  [1m[36mWelcome Load (1.2ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:5
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:61
+  [1m[36mCACHE Welcome Load (0.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_sidebar.html.erb:6
+  Rendered shared/_sidebar.html.erb (Duration: 12.2ms | Allocations: 1734)
+  Rendered shared/_menu.html.erb (Duration: 4.9ms | Allocations: 437)
+  Rendered layout layouts/accounts.html.erb (Duration: 327.7ms | Allocations: 36759)
+Completed 200 OK in 585ms (Views: 334.0ms | ActiveRecord: 76.7ms | Allocations: 44854)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/images/logos/btc.png"):
+  
+Started GET "/www.cryptonator.com/ui/js/widget/calc_widget.js" for ::1 at 2024-01-17 22:59:47 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/www.cryptonator.com/ui/js/widget/calc_widget.js"):
+  
+Started GET "/" for ::1 at 2024-01-17 23:00:22 +0100
+  [1m[36mUser Load (45.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/accounts.html.erb
+  Rendering accounts/index.html.erb within layouts/accounts
+  [1m[36mAccount Exists? (4.6ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/index.html.erb:1
+  [1m[36mAccount Load (3.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:9
+  [1m[35m (26.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:32
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:34
+  [1m[35m (64.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "deposits" WHERE "deposits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:57
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:81
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:82
+  Rendered accounts/_topbox.html.erb (Duration: 183.0ms | Allocations: 4733)
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_chartsindex.html.erb:16
+  Rendered accounts/_chartsindex.html.erb (Duration: 53.8ms | Allocations: 1381)
+  [1m[36mDeposit Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "deposits" WHERE "deposits"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_tables.html.erb:2
+  [1m[36mTrade Exists? (41.9ms)[0m  [1m[34mSELECT 1 AS one FROM "trades" WHERE "trades"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/trades/_dhistory.html.erb:1
+  Rendered trades/_dhistory.html.erb (Duration: 113.0ms | Allocations: 866)
+  Rendered accounts/_tables.html.erb (Duration: 190.6ms | Allocations: 1758)
+  Rendered accounts/index.html.erb within layouts/accounts (Duration: 464.4ms | Allocations: 8853)
+  [1m[36mWelcome Load (7.8ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:5
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:61
+  [1m[36mCACHE Welcome Load (0.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_sidebar.html.erb:6
+  Rendered shared/_sidebar.html.erb (Duration: 10.3ms | Allocations: 1031)
+  Rendered shared/_menu.html.erb (Duration: 0.6ms | Allocations: 156)
+  Rendered layout layouts/accounts.html.erb (Duration: 1254.0ms | Allocations: 33806)
+Completed 200 OK in 1312ms (Views: 1121.1ms | ActiveRecord: 149.9ms | Allocations: 34442)
+
+
+Started GET "/www.cryptonator.com/ui/js/widget/calc_widget.js" for ::1 at 2024-01-17 23:00:23 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/www.cryptonator.com/ui/js/widget/calc_widget.js"):
+  
+Started GET "/trades" for ::1 at 2024-01-17 23:00:32 +0100
+Processing by TradesController#index as HTML
+  [1m[36mUser Load (7.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/accounts.html.erb
+  Rendering trades/index.html.erb within layouts/accounts
+  [1m[36mAccount Load (8.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:9
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:32
+  [1m[36mAccount Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:34
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "deposits" WHERE "deposits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:57
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:81
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:82
+  Rendered accounts/_topbox.html.erb (Duration: 47.0ms | Allocations: 5753)
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_charts.html.erb:118
+  Rendered accounts/_charts.html.erb (Duration: 35.5ms | Allocations: 1998)
+  [1m[36mTrade Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "trades" WHERE "trades"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/trades/_history.html.erb:2
+  Rendered trades/_history.html.erb (Duration: 11.6ms | Allocations: 1235)
+  Rendered trades/index.html.erb within layouts/accounts (Duration: 104.5ms | Allocations: 9790)
+  [1m[36mWelcome Load (6.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:5
+  [1m[36mCACHE Account Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:61
+  [1m[36mCACHE Welcome Load (0.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_sidebar.html.erb:6
+  Rendered shared/_sidebar.html.erb (Duration: 9.7ms | Allocations: 1734)
+  Rendered shared/_menu.html.erb (Duration: 2.5ms | Allocations: 437)
+  Rendered layout layouts/accounts.html.erb (Duration: 333.9ms | Allocations: 36798)
+Completed 200 OK in 497ms (Views: 319.4ms | ActiveRecord: 62.9ms | Allocations: 45096)
+
+
+Started GET "/www.cryptonator.com/ui/js/widget/calc_widget.js" for ::1 at 2024-01-17 23:00:33 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/www.cryptonator.com/ui/js/widget/calc_widget.js"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/images/logos/btc.png"):
+  
+Started GET "/deposits" for ::1 at 2024-01-17 23:00:52 +0100
+Processing by DepositsController#index as HTML
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/accounts.html.erb
+  Rendering deposits/index.html.erb within layouts/accounts
+  [1m[36mDeposit Load (11.3ms)[0m  [1m[34mSELECT "deposits".* FROM "deposits" WHERE "deposits"."user_id" = $1 ORDER BY created_at DESC[0m  [["user_id", 1]]
+  ↳ app/views/deposits/index.html.erb:19
+  Rendered deposits/index.html.erb within layouts/accounts (Duration: 20.2ms | Allocations: 1385)
+  [1m[36mWelcome Load (1.2ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:5
+  [1m[36mAccount Exists? (5.6ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:61
+  [1m[36mCACHE Welcome Load (0.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_sidebar.html.erb:6
+  Rendered shared/_sidebar.html.erb (Duration: 5.7ms | Allocations: 1075)
+  Rendered shared/_menu.html.erb (Duration: 0.4ms | Allocations: 164)
+  Rendered layout layouts/accounts.html.erb (Duration: 193.2ms | Allocations: 27058)
+Completed 200 OK in 268ms (Views: 177.5ms | ActiveRecord: 21.2ms | Allocations: 29830)
+
+
+Started GET "/deposits" for ::1 at 2024-01-17 23:02:40 +0100
+Processing by DepositsController#index as HTML
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/accounts.html.erb
+  Rendering deposits/index.html.erb within layouts/accounts
+  [1m[36mAccount Load (2.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:9
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:32
+  [1m[36mAccount Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:34
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "deposits" WHERE "deposits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:57
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:81
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:82
+  Rendered accounts/_topbox.html.erb (Duration: 28.4ms | Allocations: 5714)
+  [1m[36mDeposit Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "deposits" WHERE "deposits"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/deposits/index.html.erb:47
+  Rendered deposits/index.html.erb within layouts/accounts (Duration: 47.5ms | Allocations: 7142)
+  [1m[36mWelcome Load (1.3ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:5
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:61
+  [1m[36mCACHE Welcome Load (0.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_sidebar.html.erb:6
+  Rendered shared/_sidebar.html.erb (Duration: 7.8ms | Allocations: 1732)
+  Rendered shared/_menu.html.erb (Duration: 1.9ms | Allocations: 428)
+  Rendered layout layouts/accounts.html.erb (Duration: 170.6ms | Allocations: 34434)
+Completed 200 OK in 211ms (Views: 163.8ms | ActiveRecord: 12.3ms | Allocations: 37473)
+
+
+Started GET "/deposits/new" for ::1 at 2024-01-17 23:02:48 +0100
+Processing by DepositsController#new as HTML
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/accounts.html.erb
+  Rendering deposits/new.html.erb within layouts/accounts
+  [1m[36mPlan Load (1.8ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/views/deposits/_form.html.erb:7
+  [1m[36mPm Load (36.2ms)[0m  [1m[34mSELECT "pms".* FROM "pms" ORDER BY created_at ASC[0m
+  ↳ app/views/deposits/_form.html.erb:8
+  Rendered deposits/_form.html.erb (Duration: 183.0ms | Allocations: 31440)
+  [1m[36mPlan Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "plans" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/deposits/new.html.erb:24
+  Rendered deposits/new.html.erb within layouts/accounts (Duration: 721.5ms | Allocations: 34110)
+  [1m[36mWelcome Load (1.2ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:5
+  [1m[36mAccount Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:61
+  [1m[36mCACHE Welcome Load (0.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_sidebar.html.erb:6
+  Rendered shared/_sidebar.html.erb (Duration: 12.5ms | Allocations: 1748)
+  Rendered shared/_menu.html.erb (Duration: 1.3ms | Allocations: 431)
+  Rendered layout layouts/accounts.html.erb (Duration: 814.0ms | Allocations: 61690)
+Completed 200 OK in 1188ms (Views: 249.6ms | ActiveRecord: 788.1ms | Allocations: 74649)
+
+
+Started GET "/withdraws" for ::1 at 2024-01-17 23:03:18 +0100
+Processing by WithdrawsController#index as HTML
+  [1m[36mUser Load (6.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/accounts.html.erb
+  Rendering withdraws/index.html.erb within layouts/accounts
+  [1m[36mWithdraw Load (10.5ms)[0m  [1m[34mSELECT "withdraws".* FROM "withdraws" WHERE "withdraws"."user_id" = $1 ORDER BY created_at DESC[0m  [["user_id", 1]]
+  ↳ app/views/withdraws/index.html.erb:19
+  Rendered withdraws/index.html.erb within layouts/accounts (Duration: 17.1ms | Allocations: 1394)
+  [1m[36mWelcome Load (1.1ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:5
+  [1m[36mAccount Exists? (5.5ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:61
+  [1m[36mCACHE Welcome Load (0.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_sidebar.html.erb:6
+  Rendered shared/_sidebar.html.erb (Duration: 3.5ms | Allocations: 1076)
+  Rendered shared/_menu.html.erb (Duration: 0.4ms | Allocations: 164)
+  Rendered layout layouts/accounts.html.erb (Duration: 150.8ms | Allocations: 26971)
+Completed 200 OK in 207ms (Views: 147.1ms | ActiveRecord: 24.0ms | Allocations: 29779)
+
+
+Started GET "/deposits/new" for ::1 at 2024-01-17 23:03:21 +0100
+Processing by DepositsController#new as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/accounts.html.erb
+  Rendering deposits/new.html.erb within layouts/accounts
+  [1m[36mPlan Load (1.4ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/views/deposits/_form.html.erb:7
+  [1m[36mPm Load (4.0ms)[0m  [1m[34mSELECT "pms".* FROM "pms" ORDER BY created_at ASC[0m
+  ↳ app/views/deposits/_form.html.erb:8
+  Rendered deposits/_form.html.erb (Duration: 69.7ms | Allocations: 24698)
+  [1m[36mPlan Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "plans" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/deposits/new.html.erb:24
+  Rendered deposits/new.html.erb within layouts/accounts (Duration: 75.6ms | Allocations: 25513)
+  [1m[36mWelcome Load (1.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:5
+  [1m[36mAccount Exists? (2.9ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:61
+  [1m[36mCACHE Welcome Load (0.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_sidebar.html.erb:6
+  Rendered shared/_sidebar.html.erb (Duration: 1.6ms | Allocations: 1029)
+  Rendered shared/_menu.html.erb (Duration: 0.3ms | Allocations: 156)
+  Rendered layout layouts/accounts.html.erb (Duration: 132.3ms | Allocations: 50879)
+Completed 200 OK in 147ms (Views: 122.5ms | ActiveRecord: 12.1ms | Allocations: 53019)
+
+
+Started GET "/" for ::1 at 2024-01-17 23:53:37 +0100
+  [1m[36mUser Load (7.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/accounts.html.erb
+  Rendering accounts/index.html.erb within layouts/accounts
+  [1m[36mAccount Exists? (10.2ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/index.html.erb:1
+  [1m[36mAccount Load (10.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:9
+  [1m[35m (9.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:32
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:34
+  [1m[35m (7.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "deposits" WHERE "deposits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:57
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:81
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:82
+  Rendered accounts/_topbox.html.erb (Duration: 260.0ms | Allocations: 5358)
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_chartsindex.html.erb:16
+  Rendered accounts/_chartsindex.html.erb (Duration: 63.1ms | Allocations: 1681)
+  [1m[36mDeposit Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "deposits" WHERE "deposits"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_tables.html.erb:2
+  [1m[36mTrade Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "trades" WHERE "trades"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/trades/_dhistory.html.erb:1
+  Rendered trades/_dhistory.html.erb (Duration: 17.8ms | Allocations: 1245)
+  Rendered accounts/_tables.html.erb (Duration: 28.4ms | Allocations: 2597)
+  Rendered accounts/index.html.erb within layouts/accounts (Duration: 406.1ms | Allocations: 11611)
+  [1m[36mWelcome Load (1.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:5
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:61
+  [1m[36mCACHE Welcome Load (0.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_sidebar.html.erb:6
+  Rendered shared/_sidebar.html.erb (Duration: 10.9ms | Allocations: 1736)
+  Rendered shared/_menu.html.erb (Duration: 6.8ms | Allocations: 428)
+  Rendered layout layouts/accounts.html.erb (Duration: 580.1ms | Allocations: 38621)
+Completed 200 OK in 696ms (Views: 613.3ms | ActiveRecord: 40.6ms | Allocations: 39884)
+
+
+Started GET "/www.cryptonator.com/ui/js/widget/calc_widget.js" for ::1 at 2024-01-17 23:53:38 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/www.cryptonator.com/ui/js/widget/calc_widget.js"):
+  
+Started GET "/trades" for ::1 at 2024-01-17 23:54:16 +0100
+Processing by TradesController#index as HTML
+  [1m[36mUser Load (5.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/accounts.html.erb
+  Rendering trades/index.html.erb within layouts/accounts
+  [1m[36mAccount Load (9.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:9
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:32
+  [1m[36mAccount Exists? (3.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:34
+  [1m[35m (10.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "deposits" WHERE "deposits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:57
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:81
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:82
+  Rendered accounts/_topbox.html.erb (Duration: 104.1ms | Allocations: 5748)
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_charts.html.erb:118
+  Rendered accounts/_charts.html.erb (Duration: 85.7ms | Allocations: 1997)
+  [1m[36mTrade Exists? (2.0ms)[0m  [1m[34mSELECT 1 AS one FROM "trades" WHERE "trades"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/trades/_history.html.erb:2
+  Rendered trades/_history.html.erb (Duration: 13.7ms | Allocations: 1221)
+  Rendered trades/index.html.erb within layouts/accounts (Duration: 239.9ms | Allocations: 9766)
+  [1m[36mWelcome Load (4.6ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:5
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:61
+  [1m[36mCACHE Welcome Load (0.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_sidebar.html.erb:6
+  Rendered shared/_sidebar.html.erb (Duration: 12.3ms | Allocations: 1734)
+  Rendered shared/_menu.html.erb (Duration: 5.7ms | Allocations: 428)
+  Rendered layout layouts/accounts.html.erb (Duration: 516.9ms | Allocations: 36766)
+Completed 200 OK in 1074ms (Views: 573.4ms | ActiveRecord: 129.4ms | Allocations: 44704)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/images/logos/btc.png"):
+  
+Started GET "/www.cryptonator.com/ui/js/widget/calc_widget.js" for ::1 at 2024-01-17 23:54:17 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/www.cryptonator.com/ui/js/widget/calc_widget.js"):
+  
+Started GET "/" for ::1 at 2024-01-17 23:54:32 +0100
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by AccountsController#index as HTML
+  Rendering layout layouts/accounts.html.erb
+  Rendering accounts/index.html.erb within layouts/accounts
+  [1m[36mAccount Exists? (14.3ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/index.html.erb:1
+  [1m[36mAccount Load (2.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:9
+  [1m[35m (4.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:32
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:34
+  [1m[35m (4.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "deposits" WHERE "deposits"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:57
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:81
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_topbox.html.erb:82
+  Rendered accounts/_topbox.html.erb (Duration: 73.6ms | Allocations: 5357)
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1 ORDER BY created_at DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_chartsindex.html.erb:16
+  Rendered accounts/_chartsindex.html.erb (Duration: 46.9ms | Allocations: 1681)
+  [1m[36mDeposit Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "deposits" WHERE "deposits"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/accounts/_tables.html.erb:2
+  [1m[36mTrade Exists? (3.6ms)[0m  [1m[34mSELECT 1 AS one FROM "trades" WHERE "trades"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/trades/_dhistory.html.erb:1
+  Rendered trades/_dhistory.html.erb (Duration: 11.5ms | Allocations: 1245)
+  Rendered accounts/_tables.html.erb (Duration: 29.5ms | Allocations: 2591)
+  Rendered accounts/index.html.erb within layouts/accounts (Duration: 218.7ms | Allocations: 11595)
+  [1m[36mWelcome Load (3.2ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:5
+  [1m[36mCACHE Account Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "accounts" WHERE "accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/accounts.html.erb:61
+  [1m[36mCACHE Welcome Load (0.0ms)[0m  [1m[34mSELECT "welcomes".* FROM "welcomes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_sidebar.html.erb:6
+  Rendered shared/_sidebar.html.erb (Duration: 20.7ms | Allocations: 1736)
+  Rendered shared/_menu.html.erb (Duration: 7.9ms | Allocations: 428)
+  Rendered layout layouts/accounts.html.erb (Duration: 527.0ms | Allocations: 38582)
+Completed 200 OK in 614ms (Views: 537.3ms | ActiveRecord: 35.0ms | Allocations: 39799)
+
+
+Started GET "/www.cryptonator.com/ui/js/widget/calc_widget.js" for ::1 at 2024-01-17 23:54:33 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/www.cryptonator.com/ui/js/widget/calc_widget.js"):
+  

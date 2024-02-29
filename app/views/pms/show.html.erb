@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @pm.title %>
+</p>
+
+<p>
+  <strong>Walletimg:</strong>
+  <%= @pm.walletimg %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @pm.address %>
+</p>
+
+<p>
+  <strong>Con:</strong>
+  <%= @pm.con %>
+</p>
+
+<%= link_to 'Edit', edit_pm_path(@pm) %> |
+<%= link_to 'Back', pms_path %>

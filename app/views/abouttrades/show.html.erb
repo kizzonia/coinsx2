@@ -1,0 +1,61 @@
+<!-- Breadcrumbs Start -->
+<div class="rs-breadcrumbs img4">
+    <div class="breadcrumbs-inner text-center">
+        <h1 class="page-title new-title pb-10"><%= @abouttrade.title %></h1>
+        <ul>
+            <li title="<%= @abouttrade.title %>">
+                <a class="active" href="index.html">Home</a>
+            </li>
+            <li title="View"><a class="active" href="#"><%= @abouttrade.title %></a></li>
+            <li><%= @abouttrade.title %></li>
+        </ul>
+    </div>
+</div>
+<!-- Breadcrumbs End -->
+<div class="rs-inner-blog pt-120 pb-120 md-pt-90 md-pb-90">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-12 order-last">
+
+
+                <%= render "shared/wigetside" %>
+            </div>
+            <div class="col-lg-8 pr-35 md-pr-15">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="blog-details">
+                            <div class="bs-img mb-35">
+                                <a href="#">
+
+                                </a>
+                            </div>
+                            <div class="blog-full">
+                                <ul class="single-post-meta">
+
+                                    <li>
+                                        <span class="p-date"> <i class="fa fa-user-o"></i> admin </span>
+                                    </li>
+
+                                </ul>
+                                <p>
+                                    <%= @abouttrade.title %>
+                                </p>
+                                <blockquote><p><%= @abouttrade.sub_title %>.<br>
+                                <cite>Board</cite></p></blockquote>
+                                <p>
+
+                                </p>
+                              <p><%= raw(@abouttrade.body) %></p>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<%= link_to 'Back', services_path %>

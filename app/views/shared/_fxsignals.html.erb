@@ -1,0 +1,258 @@
+
+
+<% if Fxsignal.exists? %>
+<% @fxsignals.take(6).each do |f| %>
+<% if f.sub? %>
+<div class="col-lg-6 col-md-6 col-sm-12 mb-2">
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-md-3 col-sm-3 col-3 border-right justify-content-center">
+          <p class="small"> Exchange</p>
+          <h6><%= f.exchange %></h6>
+        </div>
+        <div class="col-md-3 col-sm-3 col-3 border-right justify-content-center">
+          <p class="small"> Pair</p>
+          <h6><%= f.pairs %></h6>
+        </div>
+        <div class="col-md-3 col-sm-3 col-3 border-right justify-content-center">
+          <p class="small"> Leverage</p>
+          <h6><%= f.leverage %></h6>
+        </div>
+        <div class="col-md-3 col-sm-3 col-3 justify-content-center">
+          <p class="small"> Trade Type</p>
+          <h6><%= f.tradetype %></h6>
+        </div>
+      </div>
+    </div>
+
+    <% if f.info == "current" %>
+    <button type="button" class="btn btn-primary">
+      Current
+    </button>
+    <% elsif f.info == "running" %>
+    <button type="button" class="btn btn-warning">
+      Running
+    </button>
+    <% elsif f.info == "close" %>
+    <button type="button" class="btn btn-danger">
+      Abort Trade
+      </button
+      <% elsif f.info == "paid" %>
+      <%= link_to f do %>
+      <button type="button" class="btn btn-success">
+        Paid
+      </button>
+      <% end %>
+      <% else %>
+      <button type="button" class="btn btn-default">
+        no  stats
+      </button>
+      <% end %>
+
+      <img class="card-img-bottom" src="<%= asset_path "fx/fx1.png" %>" alt="Card image cap">
+      <p><small><%= f.date %></small></p>
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-6 justify-content-center">
+            <a class="ttm-btn ttm-btn-size-lg ttm-btn-shape-square ttm-btn-style-border ttm-icon-btn-right ttm-btn-color-skincolor" href="https://www.fxmarkettrade.com/users/sign_up" title="">
+              Upgrade To Pro <i class="ti ti-hand-point-right"></i>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+<% else %>
+<div class="col-lg-6 col-md-6 col-sm-12 mb-2">
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-md-3 col-sm-3 col-3 border-right justify-content-center">
+          <p class="small"> Exchange</p>
+          <h6><%= f.exchange %></h6>
+        </div>
+        <div class="col-md-3 col-sm-3 col-3 border-right justify-content-center">
+          <p class="small"> Pair</p>
+          <h6><%= f.pairs %></h6>
+        </div>
+        <div class="col-md-3 col-sm-3 col-3 border-right justify-content-center">
+          <p class="small"> Leverage</p>
+          <h6><%= f.leverage %></h6>
+        </div>
+        <div class="col-md-3 col-sm-3 col-3 justify-content-center">
+          <p class="small"> Trade Type</p>
+          <h6><%= f.tradetype %></h6>
+        </div>
+      </div>
+    </div>
+
+    <% if f.info == "current" %>
+    <button type="button" class="btn btn-primary">
+      Current
+    </button>
+    <% elsif f.info == "running" %>
+    <button type="button" class="btn btn-warning">
+      Running
+    </button>
+    <% elsif f.info == "close" %>
+    <button type="button" class="btn btn-danger">
+      Abort Trade
+      </button
+      <% elsif f.info == "paid" %>
+      <%= link_to f do %>
+      <button type="button" class="btn btn-success">
+        Paid
+      </button>
+      <% end %>
+      <% else %>
+      <button type="button" class="btn btn-default">
+        no  stats
+      </button>
+      <% end %>
+
+      <img class="card-img-bottom" src="<%= asset_path "fx/fx1.png" %>" alt="Card image cap">
+      <p><small><%= f.date %></small></p>
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-3 col-sm-3 col-3 border-right justify-content-center">
+            <p class="small"> Call Type</p>
+            <h6><%= f.call_type %></h6>
+          </div>
+          <div class="col-md-3 col-sm-3 col-3 border-right justify-content-center">
+            <p class="small">Entry Price</p>
+            <h6><%= f.entry_point %></h6>
+          </div>
+          <div class="col-md-3 col-sm-3 col-3 border-right justify-content-center">
+            <p class="small"> Sell point</p>
+            <h6><%= f.sell_point1 %></h6>
+          </div>
+
+          <div class="col-md-3  col-sm-3 col-3 justify-content-center">
+            <p class="small"> Stop Loss</p>
+            <h6><%= f.stop_loss %></h6>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <% end %>
+  <% end %>
+  <% else %>
+  <div class="col-lg-6 col-md-6 col-sm-12 ">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-3 col-sm-3 col-3 border-right justify-content-center">
+            <p class="small"> Exchange</p>
+            <h6>Bidmex</h6>
+          </div>
+          <div class="col-md-3 col-sm-3 col-3 border-right justify-content-center">
+            <p class="small"> Pair</p>
+            <h6>XBTC/USDT</h6>
+          </div>
+          <div class="col-md-3 col-sm-3 col-3 border-right justify-content-center">
+            <p class="small"> Leverage</p>
+            <h6>5X</h6>
+          </div>
+          <div class="col-md-3 col-sm-3 col-3 justify-content-center">
+            <p class="small"> Trade Type</p>
+            <h6>Intra Day</h6>
+          </div>
+        </div>
+      </div>
+
+
+      <img class="card-img-bottom" src="images/fx1.png" alt="Card image cap">
+
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-3 col-sm-3 col-3 border-right justify-content-center">
+            <p class="small"> Call Type</p>
+            <h6>Sell</h6>
+          </div>
+          <div class="col-md-3 col-sm-3 col-3 border-right justify-content-center">
+            <p class="small">Entry Price</p>
+            <h6>30689</h6>
+          </div>
+          <div class="col-md-3 col-sm-3 col-3 border-right justify-content-center">
+            <p class="small"> Sell point</p>
+            <h6>33,000</h6>
+          </div>
+
+          <div class="col-md-3  col-sm-3 col-3 justify-content-center">
+            <p class="small"> Stop Loss</p>
+            <h6>29,800</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="col-lg-6 col-md-6 col-sm-12 ">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-3 border-right justify-content-center">
+            <p class="small"> Exchange</p>
+            <h6>Bidmex</h6>
+          </div>
+          <div class="col-md-3 border-right justify-content-center">
+            <p class="small"> Pair</p>
+            <h6>XBTC/USDT</h6>
+          </div>
+          <div class="col-md-3 border-right justify-content-center">
+            <p class="small"> Leverage</p>
+            <h6>5X</h6>
+          </div>
+          <div class="col-md-3  justify-content-center">
+            <p class="small"> Trade Type</p>
+            <h6>Intra Day</h6>
+          </div>
+        </div>
+      </div>
+
+
+      <img class="card-img-bottom" src="images/fx1.png" alt="Card image cap">
+
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-3 border-right justify-content-center">
+            <p class="small"> Call Type</p>
+            <h6>Sell</h6>
+          </div>
+          <div class="col-md-3 border-right justify-content-center">
+            <p class="small">Entry Price</p>
+            <h6>30689</h6>
+          </div>
+          <div class="col-md-3 border-right justify-content-center">
+            <p class="small"> Sell point</p>
+            <h6>33,000</h6>
+          </div>
+
+          <div class="col-md-3  justify-content-center">
+            <p class="small"> Stop Loss</p>
+            <h6>29,800</h6>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+  <% end %>
+
+
+  <!-- portfolio-section end -->
+
+
+  <!-- our-partner-section END-->

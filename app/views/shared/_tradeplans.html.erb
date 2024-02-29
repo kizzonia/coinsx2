@@ -1,0 +1,152 @@
+<!-- blog-section end -->
+<!-- price-text-section end -->
+<section class="ttm-row price-text-section ttm-bgcolor-grey clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- section title -->
+                <div class="section-title text-center with-desc clearfix">
+                  <% if Header.exists? %>
+                  <% @headers.take(1).each do |h| %>
+                  <div class="title-header">
+                      <h5><%= h.tradeplan_title %></h5>
+                      <h2 class="title"><%= h.tradeplan_sub_title %></h2>
+                  </div>
+                  <% end %>
+                  <% else %>
+
+                    <div class="title-header">
+                        <h5>Our Pricing Plans</h5>
+                        <h2 class="title">Our Flexible  <span>Price Plans</span></h2>
+                    </div>
+                    <% end %>
+                </div><!-- section title end -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- price-text-section end -->
+
+
+<!-- price-section -->
+<section class="ttm-row topzero-padding-section  clearfix">
+    <div class="container">
+        <!-- row -->
+        <% if Tradeplan.exists? %>
+        <div class="row no-gutters mt_100">
+          <% @tradeplans.take(3).each do |p| %>
+          <div class="col-md-4">
+              <!--ttm-pricing-plan-->
+              <div class="ttm-pricing-plan box-shadow text-left clearfix">
+                  <div class="ttm-ptablebox-title"><h3><%= p.plan_name %></h3></div><!--title-->
+                  <div class="ttm-ptablebox-desc">
+                    <%= p.name %></div>
+                  <div class="ttm-ptablebox-content">
+                      <div class="ttm-ptablebox-price-w">
+                          <div class="ttm-ptablebox-cur-symbol-before">$</div>
+                          <div class="ttm-ptablebox-price"><%= p.amount %></div><!--price-->
+                          <div class="ttm-ptablebox-frequency">per <%= p.duration %></div>
+                      </div>
+                      <div class="ttm-ptablebox-features"><!--features-->
+                          <ul class="ttm-feature-lines">
+                            <%= raw(p.body) %>
+
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="price_btn">
+                    <%= link_to new_user_registration_path do %>
+                      <a class="ttm-btn ttm-btn-size-md ttm-btn-shape-square ttm-btn-bgcolor-grey mb-20 w-100" href="#">Get Started</a>
+                      <% end %>
+                  </div>
+              </div><!--ttm-pricing-plan-->
+          </div>
+
+          <% end %>
+
+
+          </div>
+        <% else %>
+        <div class="row no-gutters mt_100">
+            <div class="col-md-4">
+                <!--ttm-pricing-plan-->
+                <div class="ttm-pricing-plan box-shadow text-left clearfix">
+                    <div class="ttm-ptablebox-title"><h3>Professional</h3></div><!--title-->
+                    <div class="ttm-ptablebox-desc">Designed for businesses with standard health requirements</div>
+                    <div class="ttm-ptablebox-content">
+                        <div class="ttm-ptablebox-price-w">
+                            <div class="ttm-ptablebox-cur-symbol-before">$</div>
+                            <div class="ttm-ptablebox-price">70.00</div><!--price-->
+                            <div class="ttm-ptablebox-frequency">per month</div>
+                        </div>
+                        <div class="ttm-ptablebox-features"><!--features-->
+                            <ul class="ttm-feature-lines">
+                                <li>24/7 Support</li>
+                                <li>Advanced Options</li>
+                                <li>16 GB Storage</li>
+                                <li>Unlimited Support</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="price_btn">
+                        <a class="ttm-btn ttm-btn-size-md ttm-btn-shape-square ttm-btn-bgcolor-grey mb-20 w-100" href="#">Get Started</a>
+                    </div>
+                </div><!--ttm-pricing-plan-->
+            </div>
+            <div class="col-md-4">
+                <!--ttm-pricing-plan-->
+                <div class="ttm-pricing-plan ttm-pricing-plan-col box-shadow text-left clearfix">
+                    <div class="ttm-featured-title"><i class="fa fa-star"></i>MOST POPULAR</div>
+                    <div class="ttm-ptablebox-title"><h3>Standard</h3></div><!--title-->
+                    <div class="ttm-ptablebox-desc">Designed for businesses with standard health requirements</div>
+                    <div class="ttm-ptablebox-content">
+                        <div class="ttm-ptablebox-price-w">
+                            <div class="ttm-ptablebox-cur-symbol-before">$</div>
+                            <div class="ttm-ptablebox-price">90.00</div><!--price-->
+                            <div class="ttm-ptablebox-frequency">per month</div>
+                        </div>
+                        <div class="ttm-ptablebox-features"><!--features-->
+                            <ul class="ttm-feature-lines">
+                                <li>24/7 Support</li>
+                                <li>Advanced Options</li>
+                                <li>16 GB Storage</li>
+                                <li>Unlimited Support</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="price_btn">
+                        <a class="ttm-btn ttm-btn-size-md ttm-btn-bgcolor-skincolor mb-20 w-100" href="#">Get Started</a>
+                    </div>
+                </div><!--ttm-pricing-plan-->
+            </div>
+            <div class="col-md-4">
+                <!--ttm-pricing-plan-->
+                <div class="ttm-pricing-plan box-shadow text-left clearfix">
+                    <div class="ttm-ptablebox-title"><h3>Basic</h3></div><!--title-->
+                    <div class="ttm-ptablebox-desc">Designed for businesses with standard health requirements</div>
+                    <div class="ttm-ptablebox-content">
+                        <div class="ttm-ptablebox-price-w">
+                            <div class="ttm-ptablebox-cur-symbol-before">$</div>
+                            <div class="ttm-ptablebox-price">60.00</div><!--price-->
+                            <div class="ttm-ptablebox-frequency">per month</div>
+                        </div>
+                        <div class="ttm-ptablebox-features"><!--features-->
+                            <ul class="ttm-feature-lines">
+                                <li>24/7 Support</li>
+                                <li>Advanced Options</li>
+                                <li>16 GB Storage</li>
+                                <li>Unlimited Support</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="price_btn">
+                        <a class="ttm-btn ttm-btn-size-md ttm-btn-shape-square ttm-btn-bgcolor-grey mb-20 w-100" href="#">Get Started</a>
+                    </div>
+                </div><!--ttm-pricing-plan-->
+            </div>
+        </div><!-- row end -->
+        <% end %>
+
+    </div>
+</section>
+<!-- price-section end -->

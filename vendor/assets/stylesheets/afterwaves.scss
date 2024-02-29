@@ -1,0 +1,130 @@
+ul.steppedprogress li.complete.continuous:before {
+    background: #0b51b7;
+    color: #fff;
+    border: 2px solid #fff;
+    -webkit-box-shadow: 0 0 0 1.25px #0b51b7;
+    box-shadow: 0 0 0 1.25px #0b51b7;
+}
+ul.steppedprogress li.complete.continuous span {
+    color: #0b51b7;
+}
+ul.steppedprogress li.complete.finish:before {
+    background: #ef4d56;
+    color: #fff;
+    border: 2px solid #fff;
+    -webkit-box-shadow: 0 0 0 1.25px #ef4d56;
+    box-shadow: 0 0 0 1.25px #ef4d56;
+    content: "\F12C";
+    font: normal normal normal 24px/1 "Material Design Icons";
+    font-size: 16px;
+    line-height: 20px;
+}
+ul.steppedprogress li.complete.finish span {
+    color: #ef4d56;
+}
+ul.steppedprogress li.complete:after {
+    border-color: #dfe4ee;
+}
+ul.steppedprogress li:first-child:after {
+    content: none;
+}
+@media (max-width:480px) {
+    ul.steppedprogress {
+    display: block;
+}
+ul.steppedprogress li {
+    -webkit-box-flex: 0;
+    -ms-flex: none;
+    flex: none;
+    clear: both;
+    text-align: left;
+    padding: 0;
+    margin-left: 2px;
+    min-height: 2.2em;
+}
+ul.steppedprogress li span {
+    white-space: nowrap;
+}
+ul.steppedprogress li:before {
+    float: none;
+    display: inline-block;
+    margin-right: 10px;
+    text-align: center;
+    margin-left: 0;
+}
+ul.steppedprogress li:after {
+    content: '';
+    width: 6px;
+    height: 100%;
+    position: absolute;
+    left: 12px;
+    top: -50%;
+    z-index: -1;
+}
+}.kanban-board {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    white-space: nowrap;
+    overflow-x: scroll;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.kanban-board .kanban-col {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    width: calc(100vw - 24px);
+    max-height: 100%;
+    padding-right: 12px;
+    padding-bottom: 12px;
+    outline: 0!important;
+    position: relative;
+}
+.kanban-board .kanban-col .kanban-main-card {
+    max-height: 100%;
+    overflow: hidden;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    margin-bottom: 12px;
+    border-radius: 4px;
+    padding: 20px;
+    background: #fafbfb;
+}
+.kanban-board .kanban-col .kanban-main-card .kanban-box-title {
+    position: relative;
+    display: block;
+}
+.kanban-board .kanban-col .kanban-main-card .kanban-box-title .kanban-main-dropdown {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+@media (min-width:576px) {
+    .kanban-board .kanban-col {
+    max-width: 19.5rem;
+}
+}.auth-page .auth-header-box {
+    background-color: #232a3e;
+}
+.auth-bg {
+    background: -o-radial-gradient(39% 47%, circle, rgba(107, 107, 107, .08) 0, rgba(107, 107, 107, .08) 33.333%, rgba(72, 72, 72, .08) 33.333%, rgba(72, 72, 72, .08) 66.666%, rgba(36, 36, 36, .08) 66.666%, rgba(36, 36, 36, .08) 99.999%), -o-radial-gradient(53% 74%, circle, rgba(182, 182, 182, .08) 0, rgba(182, 182, 182, .08) 33.333%, rgba(202, 202, 202, .08) 33.333%, rgba(202, 202, 202, .08) 66.666%, rgba(221, 221, 221, .08) 66.666%, rgba(221, 221, 221, .08) 99.999%), -o-radial-gradient(14% 98%, circle, rgba(184, 184, 184, .08) 0, rgba(184, 184, 184, .08) 33.333%, rgba(96, 96, 96, .08) 33.333%, rgba(96, 96, 96, .08) 66.666%, rgba(7, 7, 7, .08) 66.666%, rgba(7, 7, 7, .08) 99.999%), -o-linear-gradient(45deg, #f79f9b, #0f4069);
+    background: radial-gradient(circle at 39% 47%, rgba(107, 107, 107, .08) 0, rgba(107, 107, 107, .08) 33.333%, rgba(72, 72, 72, .08) 33.333%, rgba(72, 72, 72, .08) 66.666%, rgba(36, 36, 36, .08) 66.666%, rgba(36, 36, 36, .08) 99.999%), radial-gradient(circle at 53% 74%, rgba(182, 182, 182, .08) 0, rgba(182, 182, 182, .08) 33.333%, rgba(202, 202, 202, .08) 33.333%, rgba(202, 202, 202, .08) 66.666%, rgba(221, 221, 221, .08) 66.666%, rgba(221, 221, 221, .08) 99.999%), radial-gradient(circle at 14% 98%, rgba(184, 184, 184, .08) 0, rgba(184, 184, 184, .08) 33.333%, rgba(96, 96, 96, .08) 33.333%, rgba(96, 96, 96, .08) 66.666%, rgba(7, 7, 7, .08) 66.666%, rgba(7, 7, 7, .08) 99.999%), linear-gradient(45deg, #f79f9b, #0f4069);
+}
+.ex-page-content h1 {
+    font-size: 98px;
+    font-weight: 700;
+    text-shadow: rgba(137, 151, 189, .2) 1px 1px, rgba(137, 151, 189, .2) 2px 2px, rgba(137, 151, 189, .2) 3px 3px;
+}

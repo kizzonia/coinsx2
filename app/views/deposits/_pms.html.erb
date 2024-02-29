@@ -1,0 +1,197 @@
+
+<% @pms.each do |p| %>
+<div class="modal fade" id="exampleModalRequest<%= p.id %>" tabindex="-1" aria-labelledby="exampleModalRequestLabel<%= p.id %>" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title m-0" id="exampleModalRequestLabel">Deposit Request</h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class=" mb-2">
+          <label for="toaddress">Address</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="W-Address" value="<%= p.address %>">
+            <button class="btn btn-outline-light" type="button" id="Copy_link"><i class="fas fa-copy"></i></button>
+          </div>
+        </div>
+
+        <div class=" card">
+          <label for="toaddress">Barcode</label>
+          <div class="card-body">
+            <img src="<%= p.walletimg_url.to_s %>" alt="" class="img-fluid">
+          </div>
+        </div>
+
+      </div><!--end modal-body-->
+      <div class="modal-footer">
+        <button class="btn btn-de-success btn-sm" type="button">Close</button>
+      </div><!--end modal-footer-->
+    </div><!--end modal-content-->
+  </div><!--end modal-dialog-->
+</div><!--end modal-->
+
+<% end %>
+
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-auto align-self-center mx-auto">
+            <div class="text-center">
+              <hr class="hr-dashed w-25 mx-auto">
+              <!-- <button class="btn btn-sm btn-soft-primary px-3">+ Invest</button>  -->
+            </div>
+          </div><!--end col-->
+          <div class="col align-self-center mt-4 mt-lg-0">
+            <ul class="nav nav-tabs" role="tablist">
+
+              <% @pms.each do |p| %>
+
+              <li class="nav-item">
+                <a class="nav-link  fw-semibold pt-0"
+                data-bs-toggle="tab"
+                href="#<%=p.title %>" role="tab">
+                <%= p.title %>
+              </a>
+            </li>
+            <% end %>
+
+          </ul>
+          <div class="tab-content my-4">
+            <% @pms.each do |p| %>
+            <div class="tab-pane " id="<%= p.title %>" role="tabpanel">
+              <div class="row">
+                <div class="col-12 col-lg">
+                  <div class="media">
+                    <div class="media-body align-self-center">
+                      <h5 class="m-0 font-24 mb-2"><%= p.title %></h5>
+
+                      <h3 class="m-0 font-24 fw-bold mb-2">$<%= @deposit.amount %></h3>
+                      <p class="text-muted font-12 mb-2">Make Payments</p>
+                    </div><!--end media body-->
+                  </div><!--end media-->
+                </div><!--end col-->
+
+
+
+                <div class="col-12 col-lg-auto align-self-center mt-2 mt-lg-0">
+                  <button type="button" class="btn btn-dark py-2 px-5 font-16" data-bs-toggle="modal" data-bs-target="#exampleModalRequest<%= p.id %>">
+                    +Pay</button>
+                  </div><!--end col-->
+                </div><!--end row-->
+              </div><!--end tab-pane-->
+              <% end %>
+            </div><!--end tab-content-->
+
+
+            <div class="bg-light p-3 rounded">
+              <div class="row">
+                <% @headers.take(1).each do |a| %>
+                <div class="col">
+
+                  <h6 class="font-15 mt-0">
+                    Deposit
+                    <!-- <span class="badge bg-soft-success ms-1">Confirmed</span> -->
+                  </h6>
+
+                  <p class="mb-0 text-muted"><%= a.deposit_title %>.</p>
+                  <p class="mb-0 text-muted"><%= a.dins %>.</p>
+
+                </div><!--end col-->
+                <% end %>
+                <div class="col-auto">
+                  <span class="fw-semibold font-14 text-success">-$<%= @deposit.amount %>.00</span>
+                </div><!--end col-->
+              </div><!--end row-->
+            </div>
+          </div><!--end col-->
+        </div><!--end row-->
+      </div><!--end card-body-->
+    </div><!--end card-->
+  </div> <!-- end col -->
+  <div class="col-lg-6">
+    <div class="row">
+      <% @accounts.take(1).each do |a| %>
+      <div class="col-lg-6 col-xl-6">
+        <div class="card">
+          <div class="card-body">
+            <span class="text-muted fw-semibold">Total Balence</span>
+            <div class="row">
+              <div class="col">
+                <h2 class="font-18 my-1">$<%= a.balance %></h2>
+              </div> <!--end col-->
+              <div class="col-auto">
+                <span class="fw-semibold font-15"><mark><%= a.account_type %></mark></span>
+              </div> <!--end col-->
+            </div> <!--end row-->
+            <div class="d-grid">
+              <%= link_to a, class: "btn btn-soft-primary btn-sm" do %>Open Ac.<% end %>
+            </div>
+          </div><!--end card-body-->
+        </div><!--end card-->
+      </div><!--end col-->
+      <% end %>
+      <div class="col-lg-6 col-xl-6">
+        <div class="card">
+          <div class="card-body">
+            <span class="text-muted fw-semibold">Deposit Amount</span>
+            <div class="row">
+              <div class="col">
+                <h2 class="font-18 my-1">$<%= @deposit.amount %></h2>
+              </div> <!--end col-->
+              <div class="col-auto">
+                <span class="fw-semibold font-15"><mark><%= @deposit.plan %></mark></span>
+              </div> <!--end col-->
+            </div> <!--end row-->
+            <div class="d-grid">
+              <%= link_to deposits_path, class: "btn btn-soft-primary btn-sm" do %>View More<% end %>
+            </div>
+          </div><!--end card-body-->
+        </div><!--end card-->
+      </div><!--end col-->
+      <% @withdraws.take(1).each do |a| %>
+
+      <div class="col-lg-6 col-xl-6">
+        <div class="card">
+          <div class="card-body">
+            <span class="text-muted fw-semibold">Withdrawl Balence</span>
+            <div class="row">
+              <div class="col">
+                <h2 class="font-18 my-1">$<%= a.amount %></h2>
+              </div> <!--end col-->
+              <div class="col-auto">
+                <span class="fw-semibold font-15"><mark><%= a.payment_type %> </mark></span>
+              </div> <!--end col-->
+            </div> <!--end row-->
+            <div class="d-grid">
+              <%= link_to withdraws_path, class: "btn btn-soft-primary btn-sm" do %>View More<% end %>
+            </div>
+          </div><!--end card-body-->
+        </div><!--end card-->
+      </div><!--end col-->
+      <% end %>
+      <div class="col-lg-6 col-xl-6">
+        <div class="card">
+          <div class="card-body">
+            <span class="text-muted fw-semibold">Trade Pool</span>
+            <div class="row">
+              <div class="col">
+                <h2 class="font-18 my-1">Daily</h2>
+              </div> <!--end col-->
+              <div class="col-auto">
+                <span class="fw-semibold font-15"><mark>Referals</mark</span>
+                </div> <!--end col-->
+              </div> <!--end row-->
+              <div class="d-grid">
+                <button type="button" class="btn btn-soft-primary btn-sm">Open Ac.</button>
+              </div>
+            </div><!--end card-body-->
+          </div><!--end card-->
+        </div><!--end col-->
+
+      </div><!--end row-->
+    </div><!--end col-->
+  </div><!--end row-->

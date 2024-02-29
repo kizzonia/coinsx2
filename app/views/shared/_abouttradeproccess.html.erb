@@ -1,0 +1,144 @@
+
+<% if Abouttrade.exists? %>
+
+            <!-- Process Section Start -->
+            <div id="rs-process" class="rs-process style3 gray-color pt-120 pb-120 md-pt-75 md-pb-80">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-5">
+                            <div class="process-wrap bg9">
+                              <%  @headers.each do |h| %>
+                                <div class="sec-title mb-30">
+                                    <div class="sub-text new">How We Works</div>
+                                    <h2 class="title title4 white-color pb-20">
+                                        <%= h.abouttrade_title %>
+                                    </h2>
+                                    <div class="desc white-color">
+                                      <%= h.abouttrade_sub_title %>
+                                    </div>
+                                    <div class="btn-part mt-40">
+                                      <%= link_to class:"readon discover started" do %>
+                                      Learn More
+                                      <% end %>
+                                    </div>
+                                </div>
+                                <% end %>
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-7 pl-35 md-pt-40 md-pl-15">
+                            <div class="row">
+                              <% @abouttrades.take(4).each do |a| %>
+                                <div class="col-md-6 mb-20">
+                                    <div class="rs-addon-number">
+                                        <div class="number-text">
+                                            <div class="number-area">
+                                                0<%= a.id %>
+                                            </div>
+                                            <div class="number-title">
+                                                <h3 class="title"><%= a.title %></h3>
+                                            </div>
+                                            <p class="number-txt">
+                                              <%= a.sub_title %>
+                                             </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% end %>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Process Section End -->
+
+<% else %>
+
+            <!-- Process Section Start -->
+            <div id="rs-process" class="rs-process style3 gray-color pt-120 pb-120 md-pt-75 md-pb-80">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-5">
+                            <div class="process-wrap bg9">
+
+                                <div class="sec-title mb-30">
+                                    <div class="sub-text new">How We Works</div>
+                                    <h2 class="title title4 white-color pb-20">
+                                        How braintech assist your business
+                                    </h2>
+                                    <div class="desc white-color">
+                                        Bring to the table win-win survival strategies to ensure dotted proactive domination. At the end of the day, on going forward, anew normal that has evolved from the generation on streamlined.
+                                    </div>
+                                    <div class="btn-part mt-40">
+                                        <a class="readon discover started" href="#">Learn More</a>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-7 pl-35 md-pt-40 md-pl-15">
+                            <div class="row">
+                                <div class="col-md-6 mb-20">
+                                    <div class="rs-addon-number">
+                                        <div class="number-text">
+                                            <div class="number-area">
+                                                01
+                                            </div>
+                                            <div class="number-title">
+                                                <h3 class="title">Discussion</h3>
+                                            </div>
+                                            <p class="number-txt">Quisque placerat vitae lacus ut scelerisque. Fusce luctus odio ac nibh theo lacus egestas.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-20">
+                                    <div class="rs-addon-number">
+                                        <div class="number-text">
+                                            <div class="number-area">
+                                                02
+                                            </div>
+                                            <div class="number-title">
+                                                <h3 class="title">Testing & Trying</h3>
+                                            </div>
+                                            <p class="number-txt">Quisque placerat vitae lacus ut scelerisque. Fusce luctus odio ac nibh theo lacus egestas.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 md-mb-20">
+                                    <div class="rs-addon-number">
+                                        <div class="number-text">
+                                            <div class="number-area">
+                                                03
+                                            </div>
+                                            <div class="number-title">
+                                                <h3 class="title">Ideas & Concepts</h3>
+                                            </div>
+                                            <p class="number-txt">Quisque placerat vitae lacus ut scelerisque. Fusce luctus odio ac nibh theo lacus egestas.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="rs-addon-number">
+                                        <div class="number-text">
+                                            <div class="number-area">
+                                                04
+                                            </div>
+                                            <div class="number-title">
+                                                <h3 class="title">Execute & install</h3>
+                                            </div>
+                                            <p class="number-txt">Quisque placerat vitae lacus ut scelerisque. Fusce luctus odio ac nibh theo lacus egestas.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Process Section End -->
+
+            <% end %>

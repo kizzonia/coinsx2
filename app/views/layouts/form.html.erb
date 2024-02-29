@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%  @welcomes = Welcome.all  %>
+  <% @welcomes.take(1).each do |w| %>
+  <title>JACKVILLE  || Online Account </title>
+  <meta name="description" content="<%= w.desc %>">
+  <% end %>
+
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <%= stylesheet_link_tag    'accounts', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+  <%= javascript_include_tag 'accounts', 'data-turbolinks-track': 'reload' %>
+  <%= favicon_link_tag asset_path('favicon.png') %>
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body>
+
+  <% unless flash.empty? %>
+  <script type="text/javascript">
+    <% flash.each do |f| %>
+    <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+    toastr['<%= type %>']('<%= f[1] %>');
+    <% end %>
+  </script>
+  <% end %>
+
+  <%   @users = User.where(user_id: current_user) %>
+  <%  @abouts = About.all  %>
+  <% @deposits = Deposit.where(user_id: current_user).order('created_at DESC') %>
+  <% @trades = Trade.where(user_id: current_user).order('created_at DESC') %>
+  <% @withdraws = Withdraw.where(user_id: current_user).order('created_at DESC') %>
+  <%  @accounts = Account.where(user_id: current_user).order('created_at DESC')  %>
+  <%  @plans = Plan.all  %>
+  <div class="app">
+    <div class="layout">
+      <% if Account.where(user_id: current_user.id).exists? %>
+
+      <%= render "shared/sidebar" %>
+      <div class="page-container">
+        <%= render "shared/menu" %>
+
+      <% else %>
+
+      <%end %>
+
+
+      <div class="main-content">
+        <div class="container-fluid">
+          <div class="container-fluid">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+  <script>
+    (function(b,i,t,C,O,I,N) {
+      window.addEventListener('load',function() {
+        if(b.getElementById(C))return;
+        I=b.createElement(i),N=b.getElementsByTagName(i)[0];
+        I.src=t;I.id=C;N.parentNode.insertBefore(I, N);
+      },false)
+    })(document,'script','https://widgets.bitcoin.com/widget.js','btcwdgt');
+  </script>
+  <%= javascript_include_tag 'app.min' %>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!-- end page title end breadcrumb -->
+<div class="row justify-content-center mb-4 ">
+  <div class="col-md-6 col-lg-3">
+    <div class="card report-card">
+      <div class="card-body">
+        <div class="row d-flex justify-content-center">
+          <div class="col">
+            <p class="text-dark mb-1 fw-semibold">Account Balance</p>
+            <% @accounts.take(1).each do |a| %>
+            <h4 class="my-1"><%= a.balance %></h4>
+            <% end %>
+            <p class="mb-0 text-truncate text-muted">
+              <span class="text-success">
+                <i class="mdi mdi-checkbox-marked-circle-outline me-1"></i></span>
+                <%= Account.where(user_id: current_user.id).count %> active accounts</p>
+              </div>
+              <div class="col-auto align-self-center">
+                <div class="bg-light-alt d-flex justify-content-center align-items-center thumb-md  rounded-circle">
+                  <i data-feather="layers" class="align-self-center text-muted icon-sm"></i>
+                </div>
+              </div>
+            </div>
+          </div><!--end card-body-->
+        </div><!--end card-->
+      </div> <!--end col-->
+      <div class="col-md-6 col-lg-3">
+        <div class="card report-card">
+          <div class="card-body">
+            <div class="row d-flex justify-content-center">
+              <div class="col">
+                <p class="text-dark mb-1 fw-semibold">Trades</p>
+                <h4 class="my-1"><%= Account.where(user_id: current_user.id).count %></h4>
+
+                <% if Account.where(user_id: current_user.id).exists? %>
+                <p class="mb-0 text-truncate text-muted"><span class="badge badge-soft-success">
+                  Active</span> Daily Trades Sessions</p>
+                  <% else %>
+                  <p class="mb-0 text-truncate text-muted"><span class="badge badge-soft-danger">
+                  </span> No Subscriptions</p>
+                  <% end %>
+                </div>
+                <div class="col-auto align-self-center">
+                  <div class="bg-light-alt d-flex justify-content-center align-items-center thumb-md  rounded-circle">
+                    <i data-feather="check-square" class="align-self-center text-muted icon-sm"></i>
+                  </div>
+                </div>
+              </div>
+            </div><!--end card-body-->
+          </div><!--end card-->
+        </div> <!--end col-->
+        <div class="col-md-6 col-lg-3">
+          <div class="card report-card">
+            <div class="card-body">
+              <div class="row d-flex justify-content-center">
+                <div class="col">
+                  <p class="text-dark mb-1 fw-semibold">Transactions</p>
+                  <h4 class="my-1"><%= Deposit.where(user_id: current_user.id).count %></h4>
+
+                  <p class="mb-0 text-truncate text-muted"><span class="text-muted"></span>
+                    <%= link_to deposits_path do %>
+                    <span class="text-muted">View</span>  More
+                    <% end %>
+                  </p>
+
+                </div>
+                <div class="col-auto align-self-center">
+                  <div class="bg-light-alt d-flex justify-content-center align-items-center thumb-md  rounded-circle">
+                    <i data-feather="clock" class="align-self-center text-muted icon-sm"></i>
+                  </div>
+                </div>
+              </div>
+            </div><!--end card-body-->
+          </div><!--end card-->
+        </div> <!--end col-->
+        <div class="col-md-6 col-lg-3">
+          <div class="card report-card">
+            <div class="card-body">
+              <div class="row d-flex justify-content-center">
+                <div class="col">
+
+                  <% if Account.where(user_id: current_user.id).exists? %>
+                  <% @accounts.take(1).each do |a| %>
+
+                  <p class="text-dark mb-1 fw-semibold">Subscriptions</p>
+                  <h4 class="my-1"><%= a.account_type %></h4>
+                  <%= link_to deposits_path do %>
+                  <p class="mb-0 text-truncate text-muted">
+                    <span class="text-dark">
+                      Upgrade Now</span> </p>
+                      <% end %>
+                      <% end %>
+
+                      <% else %>
+                      <p class="text-dark mb-1 fw-semibold">Subscriptions</p>
+                      <h4 class="my-1">$24100</h4>
+                      <p class="mb-0 text-truncate text-muted"><span class="text-dark">$14k</span> none</p>
+                      <% end %>
+
+                    </div>
+                    <div class="col-auto align-self-center">
+                      <div class="bg-light-alt d-flex justify-content-center align-items-center thumb-md  rounded-circle">
+                        <i data-feather="dollar-sign" class="align-self-center text-muted icon-sm"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div><!--end card-body-->
+              </div><!--end card-->
+            </div> <!--end col-->
+          </div><!--end row-->

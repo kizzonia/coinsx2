@@ -1,0 +1,133 @@
+  <div class="row">
+    <% if Trade.where(user_id: current_user.id).exists? %>
+
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+                                      <div class="row align-items-center">
+                                          <div class="col">
+                                              <h4 class="card-title">Transaction History</h4>
+                                          </div><!--end col-->
+                                          <div class="col-auto d-flex align-self-center">
+                                              <div class="input-group me-2">
+                                                  <input type="text" class="form-control form-control-sm" placeholder="Search" aria-describedby="wallet_search">
+                                                  <button class="btn btn-outline-light btn-sm" type="button" id="wallet_search">
+                                                      <i class="las la-search text-secondary"></i>
+                                                  </button>
+                                                </div>
+                                              <div class="dropdown">
+                                                  <a href="#" class="btn btn-sm btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                     Today<i class="las la-angle-down ms-1"></i>
+                                                  </a>
+                                                  <div class="dropdown-menu dropdown-menu-end">
+                                                      <a class="dropdown-item" href="#">Today</a>
+                                                      <a class="dropdown-item" href="#">Yesterday</a>
+                                                      <a class="dropdown-item" href="#">Last Week</a>
+                                                      <a class="dropdown-item" href="#">Last Month</a>
+                                                  </div>
+                                              </div>
+                                          </div><!--end col-->
+                                      </div>  <!--end row-->
+                                  </div>
+
+
+        <div class="card-body">
+          <div class="table-responsive dash-social">
+            <table id="datatable" class="table table-bordered">
+              <thead class="thead-light">
+                <tr>
+                                                <th>Date</th>
+                                                <th>Transaction ID</th>
+                                                <th>Rate</th>
+                                                <th>ROI</th>
+                                                <td>Status</td>
+                                            </tr>
+              </thead>
+              <tbody>
+                <!--If Legit Make Trades.where(user_id: current_user.each )-->
+                <% @trades.each do |t| %>
+                <tr>
+                  <td><%= t.created_at %></td>
+                  <td><%= t.tid %></td>
+                  <td><%= t.rate %></td>
+                  <td><%= $t.roi %></td>
+
+                  <% if t.status? %>
+                  <td><span class="badge badge-soft-success">Received</span></td>
+                  <% else %>
+                  <td><span class="badge badge-soft-danger">Lost</span></td>
+                  <% end %>
+                  <!-- <td class="text-end">
+                    <div class="dropdown d-inline-block">
+                      <a class="dropdown-toggle arrow-none" id="dLabel11" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <i class="las la-ellipsis-v font-20 text-muted"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dLabel11">
+                        <a class="dropdown-item" href="#">Creat Project</a>
+                        <a class="dropdown-item" href="#">Open Project</a>
+                        <a class="dropdown-item" href="#">Tasks Details</a>
+                      </div>
+                    </div>
+                  </td> -->
+                </tr>
+            <% end %>
+              </tbody>
+            </table><!--end /table-->
+          </div><!--end /tableresponsive-->
+        </div><!--end card-body-->
+      </div><!--end card-->
+    </div>
+    <% else %>
+
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+                                        <div class="row align-items-center">
+                                            <div class="col">
+                                                <h4 class="card-title">Transaction History</h4>
+                                            </div><!--end col-->
+                                            <div class="col-auto d-flex align-self-center">
+                                                <div class="input-group me-2">
+                                                    <input type="text" class="form-control form-control-sm" placeholder="Search" aria-describedby="wallet_search">
+                                                    <button class="btn btn-outline-light btn-sm" type="button" id="wallet_search">
+                                                        <i class="las la-search text-secondary"></i>
+                                                    </button>
+                                                  </div>
+                                                <div class="dropdown">
+                                                    <a href="#" class="btn btn-sm btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                       Today<i class="las la-angle-down ms-1"></i>
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-end">
+                                                        <a class="dropdown-item" href="#">Today</a>
+                                                        <a class="dropdown-item" href="#">Yesterday</a>
+                                                        <a class="dropdown-item" href="#">Last Week</a>
+                                                        <a class="dropdown-item" href="#">Last Month</a>
+                                                    </div>
+                                                </div>
+                                            </div><!--end col-->
+                                        </div>  <!--end row-->
+                                    </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered mb-0 table-centered">
+                <thead>
+                  <tr>
+                    <th>Transaction ID</th>
+                    <th>Date</th>
+                    <th>Price</th>
+                    <th> Status</th>
+                    <th class="text-end">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  No Data
+                </tbody>
+              </table><!--end /table-->
+            </div><!--end /tableresponsive-->
+          </div><!--end card-body-->
+        </div><!--end card-->
+      </div>
+
+
+    <% end %>
+  </div>

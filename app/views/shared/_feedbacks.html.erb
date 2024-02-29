@@ -1,0 +1,202 @@
+<% if Feedback.exists? %>
+<div class="rs-testimonial main-home style2 bg5 pt-120 pb-120 md-pt-80 md-pb-80">
+    <div class="container">
+      <div class="sec-title2 text-center mb-45">
+          <span class="sub-text white-color">Testimonial</span>
+          <h2 class="title testi-title white-color">
+             What Saying Our Customers
+          </h2>
+      </div>
+        <div class="rs-carousel owl-carousel"
+            data-loop="true"
+            data-items="2"
+            data-margin="30"
+            data-autoplay="true"
+            data-hoverpause="true"
+            data-autoplay-timeout="5000"
+            data-smart-speed="800"
+            data-dots="true"
+            data-nav="false"
+            data-nav-speed="false"
+
+            data-md-device="2"
+            data-md-device-nav="false"
+            data-md-device-dots="true"
+            data-center-mode="false"
+
+            data-ipad-device2="1"
+            data-ipad-device-nav2="false"
+            data-ipad-device-dots2="true"
+
+            data-ipad-device="1"
+            data-ipad-device-nav="false"
+            data-ipad-device-dots="true"
+
+            data-mobile-device="1"
+            data-mobile-device-nav="false"
+            data-mobile-device-dots="false">
+
+
+<% @feedbacks.each do |a| %>
+            <div class="testi-item">
+                <div class="author-desc">
+                    <div class="desc"><img class="quote" src="assets/images/testimonial/main-home/quote-white.png" alt="">
+
+
+                      <%= a.body %>
+
+                     </div>
+                    <div class="author-img">
+                        <!-- <img src="assets/images/testimonial/main-home/1.jpg" alt=""> -->
+                    </div>
+                </div>
+                <div class="author-part">
+                    <a class="name" href="#"><%= a.icon %></a>
+                    <span class="designation"><%= a.title %></span>
+                </div>
+            </div>
+        <% end %>
+
+        </div>
+    </div>
+</div>
+<% else %>
+<!-- Testimonial Section Start -->
+<div class="rs-testimonial main-home style2 bg5 pt-120 pb-120 md-pt-80 md-pb-80">
+    <div class="container">
+      <div class="sec-title2 text-center mb-45">
+          <span class="sub-text white-color">Testimonial</span>
+          <h2 class="title testi-title white-color">
+             What Saying Our Customers
+          </h2>
+      </div>
+        <div class="rs-carousel owl-carousel"
+            data-loop="true"
+            data-items="2"
+            data-margin="30"
+            data-autoplay="true"
+            data-hoverpause="true"
+            data-autoplay-timeout="5000"
+            data-smart-speed="800"
+            data-dots="true"
+            data-nav="false"
+            data-nav-speed="false"
+
+            data-md-device="2"
+            data-md-device-nav="false"
+            data-md-device-dots="true"
+            data-center-mode="false"
+
+            data-ipad-device2="1"
+            data-ipad-device-nav2="false"
+            data-ipad-device-dots2="true"
+
+            data-ipad-device="1"
+            data-ipad-device-nav="false"
+            data-ipad-device-dots="true"
+
+            data-mobile-device="1"
+            data-mobile-device-nav="false"
+            data-mobile-device-dots="false">
+            <div class="testi-item">
+                <div class="author-desc">
+                    <div class="desc"><img class="quote" src="assets/images/testimonial/main-home/quote-white.png" alt="">Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway.</div>
+                    <div class="author-img">
+                        <img src="assets/images/testimonial/main-home/1.jpg" alt="">
+                    </div>
+                </div>
+                <div class="author-part">
+                    <a class="name" href="#">Mariya Khan</a>
+                    <span class="designation">CEO, Brick Consulting</span>
+                </div>
+            </div>
+            <div class="testi-item">
+                <div class="author-desc">
+                    <div class="desc"><img class="quote" src="assets/images/testimonial/main-home/quote-white.png" alt="">Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway.</div>
+                    <div class="author-img">
+                        <img src="assets/images/testimonial/main-home/2.jpg" alt="">
+                    </div>
+                </div>
+                <div class="author-part">
+                    <a class="name" href="#">Sonia Akhter</a>
+                    <span class="designation">Graphic Designer</span>
+                </div>
+            </div>
+            <div class="testi-item">
+                <div class="author-desc">
+                    <div class="desc"><img class="quote" src="assets/images/testimonial/main-home/quote-white.png" alt="">Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway.</div>
+                    <div class="author-img">
+                        <img src="assets/images/testimonial/main-home/3.jpg" alt="">
+                    </div>
+                </div>
+                <div class="author-part">
+                    <a class="name" href="#">Deluar Hossen</a>
+                    <span class="designation">Web Developer</span>
+                </div>
+            </div>
+            <div class="testi-item">
+                <div class="author-desc">
+                    <div class="desc"><img class="quote" src="assets/images/testimonial/main-home/quote-white.png" alt="">Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway.</div>
+                    <div class="author-img">
+                        <img src="assets/images/testimonial/main-home/4.jpg" alt="">
+                    </div>
+                </div>
+                <div class="author-part">
+                    <a class="name" href="#">Asif Ahmed</a>
+                    <span class="designation">App Developer</span>
+                </div>
+            </div>
+            <div class="testi-item">
+                <div class="author-desc">
+                    <div class="desc"><img class="quote" src="assets/images/testimonial/main-home/quote-white.png" alt="">Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway.</div>
+                    <div class="author-img">
+                        <img src="assets/images/testimonial/main-home/1.jpg" alt="">
+                    </div>
+                </div>
+                <div class="author-part">
+                    <a class="name" href="#">Mariya Khan</a>
+                    <span class="designation">CEO, Brick Consulting</span>
+                </div>
+            </div>
+            <div class="testi-item">
+                <div class="author-desc">
+                    <div class="desc"><img class="quote" src="assets/images/testimonial/main-home/quote-white.png" alt="">Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway.</div>
+                    <div class="author-img">
+                        <img src="assets/images/testimonial/main-home/2.jpg" alt="">
+                    </div>
+                </div>
+                <div class="author-part">
+                    <a class="name" href="#">Sonia Akhter</a>
+                    <span class="designation">Graphic Designer</span>
+                </div>
+            </div>
+            <div class="testi-item">
+                <div class="author-desc">
+                    <div class="desc"><img class="quote" src="assets/images/testimonial/main-home/quote-white.png" alt="">Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway.</div>
+                    <div class="author-img">
+                        <img src="assets/images/testimonial/main-home/3.jpg" alt="">
+                    </div>
+                </div>
+                <div class="author-part">
+                    <a class="name" href="#">Deluar Hossen</a>
+                    <span class="designation">Web Developer</span>
+                </div>
+            </div>
+            <div class="testi-item">
+                <div class="author-desc">
+                    <div class="desc"><img class="quote" src="assets/images/testimonial/main-home/quote-white.png" alt="">Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway.</div>
+                    <div class="author-img">
+                        <img src="assets/images/testimonial/main-home/4.jpg" alt="">
+                    </div>
+                </div>
+                <div class="author-part">
+                    <a class="name" href="#">Asif Ahmed</a>
+                    <span class="designation">App Developer</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Testimonial Section End -->
+
+<% end %>

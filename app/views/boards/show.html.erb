@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @board.title %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @board.name %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @board.body %>
+</p>
+
+<p>
+  <strong>Boardimg:</strong>
+  <%= @board.boardimg %>
+</p>
+
+<p>
+  <strong>Slug:</strong>
+  <%= @board.slug %>
+</p>
+
+<%= link_to 'Edit', edit_board_path(@board) %> |
+<%= link_to 'Back', boards_path %>

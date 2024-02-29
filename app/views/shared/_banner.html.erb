@@ -1,0 +1,56 @@
+<% if Banner.exists? %>
+
+<% @banners.each do |b| %>
+<div class="rs-banner style4" style="background-image:url(<%= b.bannerimg_url.to_s %>)">
+    <div class="container">
+        <div class="banner-content">
+            <span class="sub-title">Investment's, Loans & Trading Solutions</span>
+           <h1 class="title"><%= b.title %></h1>
+            <p class="desc">
+              <%= b.sub_title %>
+            </p>
+            <ul class="banner-btn">
+              <li>  <%= link_to "Sign Up ", new_user_registration_path, class: "readon discover" %></li>
+              <li>
+
+                    <div class="rs-videos">
+                        <div class="animate-border white-color">
+                            <a class="popup-border popup-videos" href="https://www.youtube.com/watch?v=YLN1Argi7ik">
+                                <i class="fa fa-play"></i>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<% end %>
+<% else %>
+
+<!-- Banner Section Start -->
+<div class="rs-banner style4" style="background-image:url(<%= asset_path "banner/banner-6.jpg" %>)">
+    <div class="container">
+        <div class="banner-content">
+            <span class="sub-title">Investment's, Loans & Trading Solutions<</span>
+           <h1 class="title">Excellent Trading Solutions</h1>
+            <p class="desc">
+                We are Leading Leverage Trading Platform With tools and information that can Upgrade your Trading Portfolio
+            </p>
+            <ul class="banner-btn">
+              <li>  <%= link_to "Sign Up", new_user_registration_path, class: "readon discover" %></li>
+                <li>
+                    <div class="rs-videos">
+                        <div class="animate-border white-color">
+                            <a class="popup-border popup-videos" href="https://www.youtube.com/watch?v=YLN1Argi7ik">
+                                <i class="fa fa-play"></i>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Banner Section End -->
+<% end %>

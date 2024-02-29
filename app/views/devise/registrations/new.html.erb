@@ -1,0 +1,78 @@
+<div class="card-body pt-0">
+  <p class="mrg-btm-15 ">Please complete the form to Sign-up</p>
+  <p class="text-muted  mb-0">Sign up to continue</p>
+
+<div class="my-4">
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-group mb-2" >
+    <%= f.input :username, placeholder: "Unique Username", class:"form-control",  required: true %>
+    </div>
+
+    <div class="form-group mb-2">
+
+    <%= f.input :email,
+                class: "form-control",
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" }%>
+
+    </div>
+    <div class="form-group mb-2">
+
+    <%= f.input :password,
+                class: "form-control",
+                required: true,
+                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                input_html: { autocomplete: "new-password" } %>
+    </div>
+    <div class="form-group mb-2">
+
+    <%= f.input :password_confirmation,
+                class: "form-control",
+                required: true,
+                input_html: { autocomplete: "new-password" } %>
+
+  </div>
+
+<div class="form-group mb-2">
+  <%= f.input :referal, placeholder: "Your referal Email", class: "form-control" %>
+
+</div>
+
+<div class="form-group mb-2">
+  <%= f.input :phone, placeholder: "Enrer your mobile number", class: "form-control", id: "mobileNo" %>
+
+  </div><!--end form-group-->
+
+<div class="form-group row mt-3">
+    <div class="col-12">
+        <div class="form-check form-switch form-switch-success">
+          <%= f.input :status,class: "form-check-input", label: false, id: "customSwitchSuccess" %>
+
+            <label class="form-check-label" for="customSwitchSuccess">By registering you agree to Exchange DashBoard
+              <a href="#" class="text-primary">Terms of Use</a></label>
+        </div>
+    </div><!--end col-->
+</div><!--end form-group-->
+
+  <div class="form-group mb-0 row">
+      <div class="col-12">
+          <div class="d-grid mt-3">
+                <%= f.button :submit, "Sign up", class: "btn btn-primary" do %>
+                <i class="fas fa-sign-in-alt ms-1"></i>
+                <% end %>
+              </div>
+          </div><!--end col-->
+         </div> <!--end form-group-->
+
+
+
+<% end %>
+</div>
+<div class="m-3 text-center text-muted">
+
+<%= render "devise/shared/links" %>
+</div>
+</div>

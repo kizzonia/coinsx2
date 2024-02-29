@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @tradeplan.amount %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @tradeplan.name %>
+</p>
+
+<p>
+  <strong>Referal:</strong>
+  <%= @tradeplan.referal %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @tradeplan.duration %>
+</p>
+
+<p>
+  <strong>Plan:</strong>
+  <%= @tradeplan.plan %>
+</p>
+
+<p>
+  <strong>Plan name:</strong>
+  <%= @tradeplan.plan_name %>
+</p>
+
+<p>
+  <strong>Mini:</strong>
+  <%= @tradeplan.mini %>
+</p>
+
+<p>
+  <strong>Maxi:</strong>
+  <%= @tradeplan.maxi %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @tradeplan.body %>
+</p>
+
+<%= link_to 'Edit', edit_tradeplan_path(@tradeplan) %> |
+<%= link_to 'Back', tradeplans_path %>

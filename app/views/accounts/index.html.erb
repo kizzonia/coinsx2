@@ -1,0 +1,96 @@
+<% if Account.where(user_id: current_user.id).exists?%>
+<div class="container-fluid">
+  <!-- Page-Title -->
+  <!-- <div class="row">
+      <div class="col-sm-12">
+          <div class="page-title-box">
+              <div class="float-end">
+                  <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a href="#">jackvile</a>
+                      </li>
+
+                      <li class="breadcrumb-item active">Dashboard</li>
+                  </ol>
+              </div>
+              <h4 class="page-title">Dashboard</h4>
+          </div>
+      </div>
+  </div> -->
+  <div class="row">
+      <div class="col-sm-12">
+          <div class="page-title-box">
+              <div class="float-end">
+                  <ol class="breadcrumb">
+                      <li class=""><a href="#">Home</a>
+                      </li><!--end nav-item-->
+                    \ .. <li class=""><a href="#">Dashboard</a>
+                      </li><!--end nav-item-->
+                    \..  <li class="">Account</li>
+                  </ol>
+              </div>
+              <h4 class="page-title">Dashboard</h4>
+          </div><!--end page-title-box-->
+      </div><!--end col-->
+  </div>
+
+
+<%= render "accounts/topbox" %>
+<%= render "accounts/chartsindex" %>
+
+<%= render "accounts/tables" %>
+
+
+
+
+</div>
+      <% else %>
+
+      <div class="container-md">
+          <div class="row vh-100 d-flex justify-content-center">
+              <div class="col-12 align-self-center">
+                  <div class="card-body">
+                      <div class="row">
+                          <div class="col-lg-6 mx-auto">
+                              <div class="card">
+                                  <div class="card-body p-0 auth-header-box">
+
+              <% @welcomes.take(1).each do |w| %>
+
+                    <div class="text-center p-3">
+
+                      <%= link_to root_path, class: "logo logo-admin" do %>
+                      <img src="<%= w.logoimg_url.to_s %>" height="50" alt="logo" class="auth-logo">
+
+                      <% end %>
+                        <h4 class="mt-3 mb-1 fw-semibold font-18">
+                          <%= w.title %>
+                        </h4>
+
+                    </div>
+                <% end %>
+
+
+            </div>
+            <div class="card-body pt-0">
+              <h4 class="card-title mt-0">Please Continue To Account Opening </h4>
+              <p class="card-text text-muted ">
+                Opening An Account With Us Means i have read
+                and agreed to the terms of this institution.</p>
+                <!-- <p class="text-muted">You can view them below</p> -->
+              <ul>
+
+                <div class="text-center">
+                  <%= image_tag "front.png", class: "img-fluid" %>
+                </div>
+              </ul>
+              <%= link_to "Open An Account", new_account_path, class: "btn btn-primary" %>
+            </div><!--end card -body-->
+          </div><!--end card-->
+        </div><!--end col-->
+      </div>
+
+      </div><!--end card-body-->
+      </div><!--end col-->
+      </div><!--end row-->
+      </div><!--end container-->
+      <% end %>

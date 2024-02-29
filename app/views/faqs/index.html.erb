@@ -1,0 +1,127 @@
+
+<!-- Breadcrumbs Start -->
+<div class="rs-breadcrumbs img1"  style="background-image:url(<%= asset_path "breadcrumbs/1.jpg" %>)">
+  <div class="breadcrumbs-inner text-center">
+    <h1 class="page-title">FAQ's</h1>
+    <ul>
+      <li title="Who We Are">
+        <a class="active" href="#">Home</a>
+      </li>
+      <li>FAQ's</li>
+    </ul>
+  </div>
+</div>
+<!-- Breadcrumbs End -->
+<!-- Faq Section Start -->
+
+<% if Faq.exists? %>
+<div id="rs-faq" class="rs-faq gray-color pt-120 md-pb-395 pb-435 md-pt-90 md-pb-90">
+    <div class="container">
+        <div class="row">
+           <div class="col-lg-6 pr-40 md-pr-15">
+                <div class="images-part">
+                    <img src="<%= asset_path "about/about-home.png" %>" alt="">
+                </div>
+           </div>
+           <div class="col-lg-6">
+                <div class="sec-title2 mb-45">
+                    <span class="sub-text style-bg">Faqs</span>
+                    <h2 class="title title6">
+                       Do You Have Any Questions?
+                    </h2>
+                </div>
+               <div class="faq-content">
+                   <div id="accordion" class="accordion">
+
+                     <% @faqs.each do |a| %>
+
+                      <div class="card">
+                          <div class="card-header">
+                              <a class="card-link" data-toggle="collapse" href="#<%= a.title %>"><%= a.title %>?</a>
+                          </div>
+                          <div id="<%= a.title %>" class="collapse show" data-parent="#accordion">
+                              <div class="card-body">
+                                    <%= raw(a.body) %>
+                              </div>
+                          </div>
+                      </div>
+
+                      <% end %>
+
+                   </div>
+               </div>
+           </div>
+        </div>
+    </div>
+</div>
+
+<% else %>
+<div id="rs-faq" class="rs-faq gray-color pt-120 md-pb-395 pb-435 md-pt-90 md-pb-90">
+    <div class="container">
+        <div class="row">
+           <div class="col-lg-6 pr-40 md-pr-15">
+                <div class="images-part">
+                    <img src="<%= asset_path "about/about-home.png" %>" alt="">
+                </div>
+           </div>
+           <div class="col-lg-6">
+                <div class="sec-title2 mb-45">
+                    <span class="sub-text style-bg">Faqs</span>
+                    <h2 class="title title6">
+                       Do You Have Any Questions?
+                    </h2>
+                </div>
+               <div class="faq-content">
+                   <div id="accordion" class="accordion">
+                      <div class="card">
+                          <div class="card-header">
+                              <a class="card-link" data-toggle="collapse" href="#collapseOne">Where should I incorporate my business?</a>
+                          </div>
+                          <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                              <div class="card-body">
+                                    Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Impress clients new and existing with elite construction brochures. Impress clients.
+                              </div>
+                          </div>
+                      </div>
+                       <div class="card">
+                           <div class="card-header">
+                               <a class="card-link collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false">Where should I incorporate my business?</a>
+                           </div>
+                           <div id="collapseTwo" class="collapse" data-parent="#accordion" style="">
+                               <div class="card-body">
+                                    Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Impress clients new and existing with elite construction brochures. Impress clients.
+                               </div>
+                           </div>
+                       </div>
+                       <div class="card">
+                           <div class="card-header">
+
+                               <a class="card-link collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false">How can I safely use cleaning chemicals?</a>
+                           </div>
+                           <div id="collapseThree" class="collapse" data-parent="#accordion" style="">
+                               <div class="card-body">
+                                   Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Impress clients new and existing with elite construction brochures. Impress clients.
+                               </div>
+                           </div>
+                       </div>
+                       <div class="card">
+                           <div class="card-header">
+
+                               <a class="card-link collapsed" data-toggle="collapse" href="#collapsefour" aria-expanded="false">What type of company is measured?</a>
+                           </div>
+                           <div id="collapsefour" class="collapse" data-parent="#accordion" style="">
+                               <div class="card-body">
+                                    Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Impress clients new and existing with elite construction brochures. Impress clients.
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+        </div>
+    </div>
+</div>
+
+<% end %>
+<!-- Faq Section End -->
+<%= render "shared/section" %>

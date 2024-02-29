@@ -1,0 +1,118 @@
+
+<section class="faqs-section alternate">
+    <div class="auto-container">
+        <div class="row">
+<% if Faq.exists? %>
+<div class="faq-column col-lg-6 col-md-12 col-sm-12">
+    <ul class="accordion-box">
+<% @faqs.each do |f| %>
+<li class="accordion block ">
+    <div class="acc-btn"><%= f.title %>? <div class="icon fa fa-plus-circle"></div></div>
+    <div class="acc-content">
+        <div class="content">
+            <div class="text"><%=raw( f.body) %></div>
+        </div>
+    </div>
+</li>
+<% end %>
+</ul>
+</div>
+<% else %>
+
+            <!-- FAQ Column -->
+            <div class="faq-column col-lg-6 col-md-12 col-sm-12">
+                <ul class="accordion-box">
+                    <!--Block-->
+                    <li class="accordion block ">
+                        <div class="acc-btn">What is benefit for handmade furniture? <div class="icon fa fa-plus-circle"></div></div>
+                        <div class="acc-content">
+                            <div class="content">
+                                <div class="text">How all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth.</div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!--Block-->
+                    <li class="accordion block">
+                        <div class="acc-btn">From where I can purchase good furniture in teek wood?<div class="icon fa fa-plus-circle"></div></div>
+                        <div class="acc-content">
+                            <div class="content">
+                                <div class="text">How all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth.</div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!--Block-->
+                    <li class="accordion block active-block">
+                        <div class="acc-btn active">From where I can purchase good furniture in teek wood?<div class="icon fa fa-plus-circle"></div></div>
+                        <div class="acc-content current">
+                            <div class="content">
+                                <div class="text">How all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth.</div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!--Block-->
+                    <li class="accordion block">
+                        <div class="acc-btn">Can we make outdoor furniture in hardwood?<div class="icon fa fa-plus-circle"></div></div>
+                        <div class="acc-content">
+                            <div class="content">
+                                <div class="text">How all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth.</div>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+
+            <!-- FAQ Column -->
+            <div class="faq-column col-lg-6 col-md-12 col-sm-12">
+                <ul class="accordion-box">
+                    <!--Block-->
+                    <li class="accordion block ">
+                        <div class="acc-btn">Is saal wood is best for door and fences? <div class="icon fa fa-plus-circle"></div></div>
+                        <div class="acc-content">
+                            <div class="content">
+                                <div class="text">How all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth.</div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!--Block-->
+                    <li class="accordion block">
+                        <div class="acc-btn">From where I can purchase good furniture in teek wood?<div class="icon fa fa-plus-circle"></div></div>
+                        <div class="acc-content">
+                            <div class="content">
+                                <div class="text">How all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth.</div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!--Block-->
+                    <li class="accordion block">
+                        <div class="acc-btn">Can we make outdoor furniture in hardwood?<div class="icon fa fa-plus-circle"></div></div>
+                        <div class="acc-content">
+                            <div class="content">
+                                <div class="text">How all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth.</div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!--Block-->
+                    <li class="accordion block">
+                        <div class="acc-btn">What is benefit for handmade furniture?<div class="icon fa fa-plus-circle"></div></div>
+                        <div class="acc-content">
+                            <div class="content">
+                                <div class="text">How all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth.</div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+<% end %>
+
+        </div>
+    </div>
+</section>
+<!--End FAQ Section -->

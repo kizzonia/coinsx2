@@ -1,0 +1,60 @@
+
+            <div class="col-lg-3 widget-area">
+                <aside class="widget widget-nav-menu">
+                  <h3 class="widget-title">Services</h3>
+
+                    <ul class="widget-menu">
+                      <% @services.take(4).each do |s| %>
+                        <li>
+                          <%= link_to s.title, s %>
+                        </li>
+                        <% end %>
+
+                    </ul>
+                </aside>
+                <aside class="widget widget-nav-menu">
+                  <h3 class="widget-title">Trade Options</h3>
+
+                    <ul class="widget-menu">
+                      <% @tradeservices.each do |s| %>
+                        <li>
+                          <%= link_to s.title, s %>
+                        </li>
+                        <% end %>
+
+                    </ul>
+                </aside>
+                <aside class="widget widget-nav-menu">
+                  <h3 class="widget-title">About Us</h3>
+
+                    <ul class="widget-menu">
+                      <% @abouts.take(4).each do |s| %>
+                        <li>
+                          <%= link_to s.title, s %>
+                        </li>
+                        <% end %>
+
+                    </ul>
+                </aside>
+
+                <aside class="widget widget_media_image">
+                    <div class="banner-img-box ttm-textcolor-white text-left">
+                        <div class="featured-content featured-content-banner">
+                            <i class="flaticon flaticon-call"></i>
+                            <div class="featured-title ttm-box-title">
+                                <h5>How Can We Help?</h5>
+                            </div>
+                            <div class="featured-desc">
+                                <p>If you need any help, please<br> feel free to contact us.</p>
+                            </div>
+                            <ul>
+                              <% @welcomes.each do |s| %>
+                                  <li><i class="fa fa-phone"></i>+ <%= s.phone %></li>
+
+                                  <li><i class="fa fa-envelope-o"></i><a href="mailto:<%= s.footer %>"><%= s.footer %></a></li>
+                                <% end %>
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>

@@ -1,0 +1,202 @@
+<!-- leftbar-tab-menu -->
+<div class="leftbar-tab-menu">
+    <div class="main-icon-menu">
+        <a href="#" class="logo logo-metrica d-block text-center">
+            <span>
+              <% @welcomes.take(1).each do |w| %>
+              <img src="<%= w.logo2_url.to_s %>" alt="logo-large" class="logo-sm">
+              <% end %>
+                        </span>
+        </a>
+        <div class="main-icon-menu-body">
+            <div class="position-reletive h-100" data-simplebar style="overflow-x: hidden;">
+                <ul class="nav nav-tabs" role="tablist" id="tab-menu">
+
+                    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Dashboard" data-bs-trigger="hover">
+                        <a href="#MetricaDashboard" id="dashboard-tab" class="nav-link">
+                            <i class="ti ti-smart-home menu-icon"></i>
+                        </a><!--end nav-link-->
+                    </li><!--end nav-item-->
+                    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Wallets" data-bs-trigger="hover">
+                        <a href="#MetricaApps" id="apps-tab" class="nav-link">
+                            <i class="ti ti-apps menu-icon"></i>
+                        </a><!--end nav-link-->
+                    </li><!--end nav-item-->
+
+                    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Exchange" data-bs-trigger="hover">
+                        <a href="#MetricaUikit" id="uikit-tab" class="nav-link">
+                            <i class="ti ti-planet menu-icon"></i>
+                        </a><!--end nav-link-->
+                    </li><!--end nav-item-->
+
+                    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Help Center" data-bs-trigger="hover">
+                        <a href="#MetricaPages" id="pages-tab" class="nav-link">
+                            <i class="ti ti-files menu-icon"></i>
+                        </a><!--end nav-link-->
+                    </li><!--end nav-item-->
+
+                    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Settings" data-bs-trigger="hover">
+                        <a href="#MetricaAuthentication" id="authentication-tab" class="nav-link">
+                            <i class="ti ti-shield-lock menu-icon"></i>
+                        </a><!--end nav-link-->
+                    </li><!--end nav-item-->
+                </ul><!--end nav-->
+            </div><!--end /div-->
+        </div><!--end main-icon-menu-body-->
+        <div class="pro-metrica-end">
+            <!-- <a href="#" class="profile">
+                <img src="assets/images/users/user-4.jpg" alt="profile-user" class="rounded-circle thumb-sm">
+            </a> -->
+        </div><!--end pro-metrica-end-->
+    </div>
+    <!--end main-icon-menu-->
+
+    <div class="main-menu-inner">
+        <!-- LOGO -->
+        <div class="topbar-left">
+            <a href="#" class="logo">
+                <span>
+                    <!-- <img src="assets/images/logo-dark.png" alt="logo-large" class="logo-lg logo-dark">
+                    <img src="assets/images/logo.png" alt="logo-large" class="logo-lg logo-light"> -->
+
+                </span>
+            </a><!--end logo-->
+
+        </div><!--end topbar-left-->
+        <!--end logo-->
+        <div class="menu-body navbar-vertical tab-content" data-simplebar>
+            <div id="MetricaDashboard" class="main-icon-menu-pane tab-pane" role="tabpanel"
+                aria-labelledby="dasboard-tab">
+                <div class="title-box">
+                    <h6 class="menu-title">Dashboard</h6>
+                </div>
+
+                <ul class="nav flex-column">
+                  <li class="nav-item">
+                    <%= link_to "Account Overview", root_path, class: "nav-link" %>
+                  </li>
+
+                  <li class="nav-item">
+                    <%= link_to "Exchange", trades_path, class: "nav-link" %>
+                  </li>
+                </ul><!--end nav-->
+            </div><!-- end Dashboards -->
+
+            <div id="MetricaApps" class="main-icon-menu-pane tab-pane" role="tabpanel"
+                aria-labelledby="apps-tab">
+                <div class="title-box">
+                    <h6 class="menu-title">Wallet Transactions</h6>
+                </div>
+
+                <div class="collapse navbar-collapse" id="sidebarCollapse">
+                    <!-- Navigation -->
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#sidebarAnalytics" data-bs-toggle="collapse" role="button"
+                                aria-expanded="false" aria-controls="sidebarAnalytics">
+                                Deposits
+                            </a>
+                            <div class="collapse " id="sidebarAnalytics">
+                                <ul class="nav flex-column">
+                                  <li class="nav-item">
+                                    <%= link_to new_deposit_path, class: "nav-link" do %>
+                                      Deposit Funds <% end %>                                    </li><!--end nav-item-->
+                                  <li class="nav-item">
+                                    <%= link_to deposits_path, class: "nav-link" do %>
+                                     Deposit History <% end %>
+                                  </li><!--end nav-item-->
+                                </ul><!--end nav-->
+                            </div><!--end sidebarAnalytics-->
+                        </li><!--end nav-item-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#sidebarAnalytics" data-bs-toggle="collapse" role="button"
+                                aria-expanded="false" aria-controls="sidebarAnalytics">
+                                Withdrawals
+                            </a>
+                            <div class="collapse " id="sidebarAnalytics">
+                                <ul class="nav flex-column">
+                                  <li class="nav-item">
+                                    <%= link_to new_withdraw_path, class: "nav-link" do %>
+                                      Withdraw Funds <% end %>
+                                  </li><!--end nav-item-->
+                                  <li class="nav-item">
+
+                                      <%= link_to withdraws_path, class: "nav-link" do %>
+                                      Withdrawal  History <% end %>
+                                  </li><!--end nav-item-->
+                                </ul><!--end nav-->
+                            </div><!--end sidebarAnalytics-->
+                        </li><!--end nav-item-->
+
+                    </ul><!--end navbar-nav--->
+                </div><!--end sidebarCollapse-->
+            </div><!-- end Crypto -->
+
+            <div id="MetricaUikit" class="main-icon-menu-pane  tab-pane" role="tabpanel"
+                aria-labelledby="uikit-tab">
+                <div class="title-box">
+                    <h6 class="menu-title">Exchange</h6>
+                </div>
+                <div class="collapse navbar-collapse" id="sidebarCollapse_2">
+                    <!-- Navigation -->
+                    <ul class="navbar-nav">
+                      <li class="nav-item">
+                        <%= link_to "Trade History", trades_path, class: "nav-link" %>
+                      </li>
+                      <li class="nav-item">
+                        <%= link_to "Options", trades_path, class: "nav-link" %>
+                      </li>
+                      <li class="nav-item">
+                        <%= link_to "Rewards", trades_path, class: "nav-link" %>
+                      </li>
+                    </ul><!--end navbar-nav--->
+                </div><!--end sidebarCollapse_2-->
+            </div><!-- end Others -->
+
+            <div id="MetricaPages" class="main-icon-menu-pane tab-pane" role="tabpanel" aria-labelledby="pages-tab">
+                <div class="title-box">
+                    <h6 class="menu-title">Help Center</h6>
+                </div>
+                <ul class="nav flex-column">
+
+                  <li class="nav-item">
+                    <%= link_to abouts_path, class: "nav-link" do %>
+                  Help Center <% end %>
+
+                  </li><!--end nav-item-->
+                  <li class="nav-item">
+                    <%= link_to plans_path, class: "nav-link" do %>
+                  Pricing  <% end %>
+                  </li><!--end nav-item-->
+                  <li class="nav-item">
+                    <%= link_to blogs_path, class: "nav-link" do %>
+                  Blogs <% end %>
+                  </li><!--end nav-item-->
+                  <li class="nav-item">
+                    <%= link_to faqs_path, class: "nav-link" do %>
+                  FAQ's <% end %>
+                  </li><!--end nav-item-->
+
+
+                </ul><!--end nav-->
+            </div><!-- end Pages -->
+
+            <div id="MetricaAuthentication" class="main-icon-menu-pane tab-pane" role="tabpanel"
+                aria-labelledby="authentication-tab">
+                <div class="title-box">
+                    <h6 class="menu-title">Settings</h6>
+                </div>
+                <ul class="nav flex-column">
+                  <li class="nav-item">
+                    <%= link_to  destroy_user_session_path, method: :delete, class: "nav-link" do %>
+                    <i class="ti-shift-left"></i><span>Log Out</span>
+                      <% end %>
+                  </li><!--end nav-item-->
+                </ul><!--end nav-->
+            </div><!-- end Authentication-->
+        </div>
+        <!--end menu-body-->
+    </div><!-- end main-menu-inner-->
+</div>
+<!-- end leftbar-tab-menu-->

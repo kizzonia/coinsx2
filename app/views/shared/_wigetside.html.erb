@@ -1,0 +1,36 @@
+<div class="widget-area">
+    <div class="search-widget mb-50">
+        <div class="search-wrap">
+            <input type="search" placeholder="Searching..." name="s" class="search-input" value="">
+            <button type="submit" value="Search"><i class="flaticon-search"></i></button>
+        </div>
+    </div>
+    <div class="categories mb-50">
+        <div class="widget-title">
+            <h3 class="title">Markets</h3>
+        </div>
+        <ul>
+
+            <% @abouttrades.take(4).each do |a| %>
+            <li>
+            <%= link_to a.title, a%>
+            </li>
+              <% end %>
+
+
+              </ul>
+    </div>
+    <div class="categories mb-50">
+        <div class="widget-title">
+            <h3 class="title">Services</h3>
+        </div>
+        <ul>
+          <% @services.take(4).each do |a| %>
+            <li>
+              <%= link_to a.title, a%>
+
+            </li>
+            <% end %>
+              </ul>
+    </div>
+</div>

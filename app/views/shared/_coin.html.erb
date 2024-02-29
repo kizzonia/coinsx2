@@ -1,0 +1,54 @@
+<section aria-label="section" class="mt90 sm-mt-0">
+    <div class="container">
+<div class="row">
+  <div class="col-md-6 text-center">
+    <div style="width:100%; max-width:100% !important;" class="btcwdgt-chart"></div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="item_info">
+                  <% @headers.take(1).each do |h| %>
+
+                    <h2><%= h.asset_title %></h2>
+                    <p><%= h.asset_sub_title %></p>
+                    <% end %>
+
+
+                      <div class="row">
+                        <% @tassets.take(9).each  do |t| %>
+                        <div class="col-md-4 " style="margin-bottom: 35px">
+                          <div class="item_author">
+                              <div class="author_list_pp">
+                                  <a href="author.html">
+                                      <img class="lazy" src="<%= t.tassetimg_url.to_s %>" alt="">
+                                      <i class="fa fa-check"></i>
+                                  </a>
+                              </div>
+                              <div class="author_list_info">
+                                  <a href="<%= t.link %>"><%= t.title %>-<%= t.name %></a>
+                              </div>
+                          </div>
+                        </div>
+                        <% end %>
+                      </div>
+
+
+                    <div class="spacer-40"></div>
+
+                    <!-- <div class="de_tab">
+
+                    <ul class="de_nav">
+                        <li class="active"><span>Bids</span></li>
+                        <li><span>History</span></li>
+                    </ul>
+
+                  </div> -->
+
+
+
+                </div>
+            </div>
+        </div>
+</div>
+</section>

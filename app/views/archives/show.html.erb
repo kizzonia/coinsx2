@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @archive.title %>
+</p>
+
+<p>
+  <strong>Month:</strong>
+  <%= @archive.month %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @archive.year %>
+</p>
+
+<p>
+  <strong>Slug:</strong>
+  <%= @archive.slug %>
+</p>
+
+<p>
+  <strong>Archimg:</strong>
+  <%= @archive.archimg %>
+</p>
+
+<%= link_to 'Edit', edit_archive_path(@archive) %> |
+<%= link_to 'Back', archives_path %>

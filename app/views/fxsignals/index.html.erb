@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Fxsignals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Body</th>
+      <th>Entry point</th>
+      <th>Exit point</th>
+      <th>Slug</th>
+      <th>Stop loss</th>
+      <th>Sell point1</th>
+      <th>Sell point2</th>
+      <th>Tradetype</th>
+      <th>Odds</th>
+      <th>Status</th>
+      <th>Date</th>
+      <th>Pairs</th>
+      <th>Leverage</th>
+      <th>Call type</th>
+      <th>Exchange</th>
+      <th>Stop loss</th>
+      <th>Sub</th>
+      <th>Info</th>
+      <th>Archive</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fxsignals.each do |fxsignal| %>
+      <tr>
+        <td><%= fxsignal.body %></td>
+        <td><%= fxsignal.entry_point %></td>
+        <td><%= fxsignal.exit_point %></td>
+        <td><%= fxsignal.slug %></td>
+        <td><%= fxsignal.stop_loss %></td>
+        <td><%= fxsignal.sell_point1 %></td>
+        <td><%= fxsignal.sell_point2 %></td>
+        <td><%= fxsignal.tradetype %></td>
+        <td><%= fxsignal.odds %></td>
+        <td><%= fxsignal.status %></td>
+        <td><%= fxsignal.date %></td>
+        <td><%= fxsignal.pairs %></td>
+        <td><%= fxsignal.leverage %></td>
+        <td><%= fxsignal.call_type %></td>
+        <td><%= fxsignal.exchange %></td>
+        <td><%= fxsignal.stop_loss %></td>
+        <td><%= fxsignal.sub %></td>
+        <td><%= fxsignal.info %></td>
+        <td><%= fxsignal.archive_id %></td>
+        <td><%= link_to 'Show', fxsignal %></td>
+        <td><%= link_to 'Edit', edit_fxsignal_path(fxsignal) %></td>
+        <td><%= link_to 'Destroy', fxsignal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fxsignal', new_fxsignal_path %>

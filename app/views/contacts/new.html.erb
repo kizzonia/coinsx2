@@ -1,0 +1,92 @@
+  <!-- Breadcrumbs Start -->
+  <div class="rs-breadcrumbs img3">
+      <div class="breadcrumbs-inner text-center">
+          <h1 class="page-title">Contact</h1>
+          <ul>
+              <li title="Braintech - IT Solutions and Technology Startup HTML Template">
+                  <a class="active" href="index.html">Home</a>
+              </li>
+             <li>Contact</li>
+          </ul>
+      </div>
+  </div>
+  <!-- Breadcrumbs End -->
+
+  <!-- Contact Section Start -->
+  <div class="rs-contact pt-120 md-pt-80">
+      <div class="container">
+          <div class="row">
+
+            <% @welcomes.each do |a| %>
+              <div class="col-lg-4 md-mb-60">
+                 <div class="contact-box">
+                      <div class="sec-title mb-45">
+                          <span class="sub-text new-text white-color">Let's Talk</span>
+                          <h2 class="title white-color"><%= a.title %></h2>
+                      </div>
+                     <div class="address-box mb-25">
+                         <div class="address-icon">
+                             <i class="fa fa-home"></i>
+                         </div>
+                         <div class="address-text">
+                              <span class="label">Email:</span>
+                                 <div class="desc">
+                              <%= a.footer %>
+                              </div>
+                            </div>
+                     </div>
+                     <div class="address-box mb-25">
+                         <div class="address-icon">
+                             <i class="fa fa-phone"></i>
+                         </div>
+                         <div class="address-text">
+                             <span class="label">Phone:</span>
+                             <div class="desc"><%= a.phone %> </div>
+                         </div>
+                     </div>
+                     <div class="address-box">
+                         <div class="address-icon">
+                             <i class="fa fa-map-marker"></i>
+                         </div>
+                         <div class="address-text">
+                             <span class="label">Address:</span>
+                             <div class="desc"><%= a.address %></div>
+                         </div>
+                     </div>
+                 </div>
+              </div>
+
+              <% end %>
+
+              <div class="col-lg-8 pl-70 md-pl-15">
+                  <div class="contact-widget">
+                     <div class="sec-title2 mb-40">
+                         <span class="sub-text contact mb-15">Get In Touch</span>
+                         <h2 class="title testi-title">Fill The Form Below</h2>
+
+                     </div>
+                      <div id="form-messages"></div>
+                      <form id="contact-form" method="post" action="https://rstheme.com/products/html/braintech/mailer.php">
+                          <fieldset>
+
+
+
+                                <%= render 'form', contact: @contact %>
+
+
+
+
+                          </fieldset>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="map-canvas pt-120 md-pt-80">
+          <iframe src="https://maps.google.com/maps?q=rstheme&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"></iframe>
+      </div>
+  </div>
+  <!-- Contact Section Start -->
+
+
+  <%= render "shared/feedbacks" %>

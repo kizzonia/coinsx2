@@ -1,0 +1,141 @@
+
+
+<!-- team-section -->
+<section class="ttm-row team-section clearfix">
+    <div class="container">
+        <div class="row"><!-- row -->
+            <div class="col-lg-9 col-xl-10 col-md-9">
+                <!-- section-title -->
+                <% if Header.exists? %>
+                <% @headers.take(1).each do |h|%>
+                <div class="section-title style2 clearfix">
+                    <div class="title-header">
+                        <h5>About us</h5>
+                        <h2 class="title"><%= h.boards_title %></h2>
+                    </div>
+                    <div class="title-desc">
+                      <%= h.boards_sub_title %></div>
+                </div>
+                <% end %>
+                <% else %>
+                <div class="section-title style2 clearfix">
+                    <div class="title-header">
+                        <h5>About us</h5>
+                        <h2 class="title">Meet our <span>Leadership</span></h2>
+                    </div>
+                    <div class="title-desc">The positive distinction within the World Inspiring of Success and Connections of People and Organizations.</div>
+                </div><!-- section-title end -->
+                <% end %>
+            </div>
+
+        </div>
+        <!-- row end -->
+        <!-- row -->
+        <div class="row">
+            <div class="team-slide owl-carousel" data-item="3" data-nav="false" data-dots="false" data-auto="false">
+                <!-- featured-imagebox-team -->
+                <% if Board.exists? %>
+                <% @boards.each do |b| %>
+                <div class="featured-imagebox featured-imagebox-team style1">
+                    <div class="featured-thumbnail"><!-- featured-thumbnail -->
+
+                        <%= image_tag b.boardimg_url.to_s, class:"img-fluid" %>
+                        <div class="ttm-social-links-wrapper">
+
+                        </div>
+                    </div>
+                    <div class="featured-content box-shadow">
+                        <div class="featured-title"><!-- featured-title -->
+                            <h5><%= link_to b.name, b %></h5>
+                        </div>
+                        <p class="category"><%= b.title %></p><!-- category -->
+                    </div>
+                </div>
+              <% end %>
+              <% else %>
+                <div class="featured-imagebox featured-imagebox-team style1">
+                    <div class="featured-thumbnail"><!-- featured-thumbnail -->
+                        <img class="img-fluid lazyload" data-src="<%= asset_path 'team-member/team-img01.jpg' %>" alt="image">
+                        <div class="ttm-social-links-wrapper">
+                            <ul class="social-icons list-inline"><!-- social-icons -->
+                                <li class="social-facebook"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li class="social-twitter"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                <li class="social-linkedin"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                <li class="social-googleplus"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="featured-content box-shadow">
+                        <div class="featured-title"><!-- featured-title -->
+                            <h5><a href="team-details.html">Jennifer Garcia</a></h5>
+                        </div>
+                        <p class="category">IT Service Officer</p><!-- category -->
+                    </div>
+                </div><!-- featured-imagebox-team end-->
+                <!-- featured-imagebox-team -->
+                <div class="featured-imagebox featured-imagebox-team style1">
+                    <div class="featured-thumbnail"><!-- featured-thumbnail -->
+                        <img class="img-fluid lazyload" data-src="<%= asset_path 'team-member/team-img02.jpg' %>" alt="image">
+                        <div class="ttm-social-links-wrapper">
+                            <ul class="social-icons list-inline"><!-- social-icons -->
+                                <li class="social-facebook"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li class="social-twitter"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                <li class="social-linkedin"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                <li class="social-googleplus"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="featured-content box-shadow">
+                        <div class="featured-title"><!-- featured-title -->
+                            <h5><a href="team-details.html">Robert Liam</a></h5>
+                        </div>
+                        <p class="category">Web Designer</p><!-- category -->
+                    </div>
+                </div><!-- featured-imagebox-team end-->
+                <!-- featured-imagebox-team -->
+                <div class="featured-imagebox featured-imagebox-team style1">
+                    <div class="featured-thumbnail"><!-- featured-thumbnail -->
+                        <img class="img-fluid lazyload" data-src="<%= asset_path 'team-member/team-img03.jpg' %>" alt="image">
+                        <div class="ttm-social-links-wrapper">
+                            <ul class="social-icons list-inline"><!-- social-icons -->
+                                <li class="social-facebook"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li class="social-twitter"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                <li class="social-linkedin"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                <li class="social-googleplus"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="featured-content box-shadow">
+                        <div class="featured-title"><!-- featured-title -->
+                            <h5><a href="team-details.html">Jessica Ethan</a></h5>
+                        </div>
+                        <p class="category">Project Manager</p><!-- category -->
+                    </div>
+                </div><!-- featured-imagebox-team end-->
+                <!-- featured-imagebox-team -->
+                <div class="featured-imagebox featured-imagebox-team style1">
+                    <div class="featured-thumbnail"><!-- featured-thumbnail -->
+                        <img class="img-fluid lazyload" data-src="<%= asset_path 'team-member/team-img04.jpg' %>" alt="image">
+                        <div class="ttm-social-links-wrapper">
+                            <ul class="social-icons list-inline"><!-- social-icons -->
+                                <li class="social-facebook"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li class="social-twitter"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                <li class="social-linkedin"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                <li class="social-googleplus"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="featured-content box-shadow">
+                        <div class="featured-title"><!-- featured-title -->
+                            <h5><a href="team-details.html">Amanda Brown</a></h5>
+                        </div>
+                        <p class="category">Consultant Officer</p><!-- category -->
+                    </div>
+                </div><!-- featured-imagebox-team end-->
+                <% end %>
+
+            </div>
+        </div><!-- row end-->
+    </div>
+</section>
+<!-- team-section end -->

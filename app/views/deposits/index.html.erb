@@ -1,0 +1,82 @@
+<div class="container-fluid">
+
+  <div class="row">
+      <div class="col-sm-12">
+          <div class="page-title-box">
+              <div class="float-end">
+                  <ol class="breadcrumb">
+                      <li class=""><a href="#">Home</a>
+                      </li><!--end nav-item-->
+                    \ .. <li class=""><a href="#">Deposits</a>
+                      </li><!--end nav-item-->
+                    \..  <li class="">+investments</li>
+                  </ol>
+              </div>
+              <h4 class="page-title">History</h4>
+          </div><!--end page-title-box-->
+      </div><!--end col-->
+  </div>
+<%= render "accounts/topbox" %>
+
+
+
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title mt-0 mb-3">Deposit History</h4>
+                <p><%= link_to 'New Deposit', new_deposit_path, class: "btn btn-primary"%>
+</p>
+
+                <div class="table-responsive browser_user">
+                    <table class="table mb-0">
+
+  <thead class="thead-light">
+    <tr>
+      <th class="border-top-0">Amount</th>
+      <th class="border-top-0">Payment type</th>
+      <th class="border-top-0">Email</th>
+      <th class="border-top-0">Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if Deposit.where(user_id: current_user).exists?%>
+    <% @deposits.each do |deposit| %>
+      <tr>
+        <td><%= deposit.amount %></td>
+        <td><%= deposit.payment_type %></td>
+        <td><%= deposit.email %></td>
+        <td><% if deposit.status? %><span class="status online"> </span>
+        <span class="pdd-left-20">Deposit Approved</span>
+        <% else %>
+        <span class="status away"> </span>
+        <span class="pdd-left-20">Request Pending</span>
+  <% end %>
+  </td>
+        </tr>
+    <% end %>
+    <% else %>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>No Data</td>
+      <td></td>
+      <td></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>

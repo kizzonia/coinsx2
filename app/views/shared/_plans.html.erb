@@ -1,0 +1,155 @@
+<% if Plan.exists? %>
+
+
+
+<!-- Pricing section start -->
+<div class="rs-pricing style2  modify1  gray-color pt-110 pb-150 md-pt-75 md-pb-80">
+    <div class="container">
+      <% @headers.each do |h| %>
+        <div class="sec-title2 text-center mb-30">
+            <div class="sub-text"><%= h.plans_title %></div>
+            <h2 class=" title title5 pb-20">
+                <%= raw(h.plans_sub_title) %>
+            </h2>
+        </div>
+        <% end %>
+
+       <div class="row">
+         <% @plans.each do |p| %>
+           <div class="col-lg-4 md-pb-30">
+               <div class="pricing-table table-btn">
+                   <div class="pricing-badge secondary-bg">
+                       <%= p.name %>
+                   </div>
+                   <div class="pricing-icon">
+                       <img src="<%= asset_path 'pricing/main-home/style2/1.png'%>" alt="">
+                   </div>
+                   <div class="pricing-table-price">
+                        <div class="pricing-table-bags">
+                            <span class="pricing-currency">$</span>
+                            <span class="table-price-text"><%= p.amount %></span>
+                            <span class="table-period"><%= p.duration %></span>
+                        </div>
+                   </div>
+                   <div class="pricing-table-body">
+                       <ul>
+                           <li><i class="fa fa-check"></i><span><%= p.mini %></span></li>
+                           <li><i class="fa fa-check"></i><span><%= p.maxi %></span></li>
+                           <li><i class="fa fa-close"></i><span><%= raw(p.body) %></span></li>
+                       </ul>
+                   </div>
+                   <div class="btn-part">
+                     <%= link_to new_deposit_path, class: "readon buy-now table-btn" do %>
+                        Get Started
+                        <% end %>
+                   </div>
+               </div>
+           </div>
+           <% end %>
+
+       </div>
+    </div>
+</div>
+<!-- Pricing section end -->
+
+
+<% else %>
+<!-- Pricing section start -->
+<div class="rs-pricing style2  modify1  gray-color pt-110 pb-150 md-pt-75 md-pb-80">
+    <div class="container">
+        <div class="sec-title2 text-center mb-30">
+            <div class="sub-text">Pricing</div>
+            <h2 class=" title title5 pb-20">
+                Choose your pricing plan
+            </h2>
+        </div>
+       <div class="row">
+           <div class="col-lg-4 md-pb-30">
+               <div class="pricing-table table-btn">
+                   <div class="pricing-badge secondary-bg">
+                       Silver
+                   </div>
+                   <div class="pricing-icon">
+                       <img src="<%= asset_path 'pricing/main-home/style2/1.png'%>" alt="">
+                   </div>
+                   <div class="pricing-table-price">
+                        <div class="pricing-table-bags">
+                            <span class="pricing-currency">$</span>
+                            <span class="table-price-text">29.99</span>
+                            <span class="table-period">Monthly Package</span>
+                        </div>
+                   </div>
+                   <div class="pricing-table-body">
+                       <ul>
+                           <li><i class="fa fa-check"></i><span>Powerful Admin Panel</span></li>
+                           <li><i class="fa fa-check"></i><span>1 Native Android App</span></li>
+                           <li><i class="fa fa-close"></i><span>Multi-Language Support</span></li>
+                           <li><i class="fa fa-check"></i><span>Support via E-mail and Phone</span></li>
+                       </ul>
+                   </div>
+                   <div class="btn-part">
+                       <a class="readon buy-now table-btn" href="shop-single.html">Buy Now</a>
+                   </div>
+               </div>
+           </div>
+           <div class="col-lg-4 md-pb-30">
+               <div class="pricing-table">
+                   <div class="pricing-badge secondary-bg">
+                       Gold
+                   </div>
+                   <div class="pricing-icon">
+                       <img src="assets/images/pricing/main-home/style2/2.png" alt="">
+                   </div>
+                  <div class="pricing-table-price">
+                       <div class="pricing-table-bags">
+                           <span class="pricing-currency">$</span>
+                           <span class="table-price-text">39.99</span>
+                           <span class="table-period">Monthly Package</span>
+                       </div>
+                  </div>
+                   <div class="pricing-table-body">
+                       <ul>
+                            <li><i class="fa fa-check"></i><span>Powerful Admin Panel</span></li>
+                            <li><i class="fa fa-check"></i><span>2 Native Android App</span></li>
+                            <li><i class="fa fa-check"></i><span>Multi-Language Support</span></li>
+                            <li><i class="fa fa-check"></i><span>Support via E-mail and Phone</span></li>
+                       </ul>
+                   </div>
+                   <div class="btn-part">
+                       <a class="readon buy-now table-btn" href="shop-single.html">Buy Now</a>
+                   </div>
+               </div>
+           </div>
+           <div class="col-lg-4">
+               <div class="pricing-table">
+                   <div class="pricing-badge secondary-bg">
+                       Platinum
+                   </div>
+                   <div class="pricing-icon">
+                       <img src="assets/images/pricing/main-home/style2/3.png" alt="">
+                   </div>
+                    <div class="pricing-table-price">
+                         <div class="pricing-table-bags">
+                             <span class="pricing-currency">$</span>
+                             <span class="table-price-text">79.99</span>
+                             <span class="table-period">Monthly Package</span>
+                         </div>
+                    </div>
+                   <div class="pricing-table-body">
+                       <ul>
+                            <li><i class="fa fa-check"></i><span>Powerful Admin Panel</span></li>
+                            <li><i class="fa fa-check"></i><span>3 Native Android App</span></li>
+                            <li><i class="fa fa-check"></i><span>Multi-Language Support</span></li>
+                            <li><i class="fa fa-check"></i><span>Support via E-mail and Phone</span></li>
+                       </ul>
+                   </div>
+                   <div class="btn-part">
+                       <a class="readon buy-now table-btn" href="shop-single.html">Buy Now</a>
+                   </div>
+               </div>
+           </div>
+       </div>
+    </div>
+</div>
+<!-- Pricing section end -->
+<% end %>

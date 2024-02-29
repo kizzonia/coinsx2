@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%  @welcomes = Welcome.all  %>
+  <% @welcomes.take(1).each do |w| %>
+  <title><%=w.title %> XCHANGER || <%= w.desc %> </title>
+  <meta name="description" content="<%= w.desc %>">
+  <% end %>
+
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <!-- Responsive -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+  <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+  <!--Start of Tawk.to Script-->
+  <meta name="theme-color" content="#ffffff">
+  <script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}, 'google_translate_element');
+  }
+  </script>
+
+  <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/65b780970ff6374032c6096b/1hlacsk91';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+<%= favicon_link_tag asset_path('favicon.png') %>
+
+
+</head>
+
+<body class="defult-home">
+
+  <% unless flash.empty? %>
+ <script type="text/javascript">
+     <% flash.each do |f| %>
+     <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+      toastr['<%= type %>']('<%= f[1] %>');
+     <% end %>
+ </script>
+
+<% end %>
+
+<% @abouts = About.all.order('created_at DESC') %>
+<% @services = Service.all.order('created_at DESC') %>
+<% @welcomes = Welcome.all %>
+<% @headers = Header.all %>
+<% @plans = Plan.all%>
+
+<% @abouttrades = Abouttrade.all.order('created_at DESC')%>
+
+<% @tradeservices = Tradeservice.all.order('created_at ASC') %>
+
+<% @tradeplans = Tradeplan.all.order('created_at DESC') %>
+
+<% @fxsignals = Fxsignal.all.order('created_at DESC') %>
+
+<!--Preloader area start here-->
+<!-- <div id="loader" class="loader">
+    <div class="loader-container"></div>
+</div> -->
+<!--Preloader area End here-->
+<div class="main-content">
+
+
+  <%= render "shared/header" %>
+
+  <%= yield %>
+
+</div>
+<%= render "shared/footer" %>
+
+
+
+<!-- Search Modal Start -->
+<!-- <div aria-hidden="true" class="modal fade search-modal" role="dialog" tabindex="-1">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span class="flaticon-cross"></span>
+    </button>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="search-block clearfix">
+                <form>
+                    <div class="form-group">
+                        <input class="form-control" placeholder="Search Here..." type="text">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- Search Modal End -->
+<script>
+  (function(b,i,t,C,O,I,N) {
+    window.addEventListener('load',function() {
+      if(b.getElementById(C))return;
+      I=b.createElement(i),N=b.getElementsByTagName(i)[0];
+      I.src=t;I.id=C;N.parentNode.insertBefore(I, N);
+    },false)
+  })(document,'script','https://widgets.bitcoin.com/widget.js','btcwdgt');
+</script>
+  <%= javascript_include_tag 'main' %>
+
+
+  </body>
+</html>

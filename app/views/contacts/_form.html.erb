@@ -1,0 +1,37 @@
+  <%= simple_form_for(@contact) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+                            <div class="row">
+
+
+                                      <div class="col-lg-6 mb-30 col-md-6 col-sm-6">
+                                        <%= f.input :name, class:"from-control", placeholder: "Name" %>
+
+                                      </div>
+                                      <div class="col-lg-6 mb-30 col-md-6 col-sm-6">
+                                        <%= f.input :email, class:"from-control", placeholder: "your email" %>
+
+                                      </div>
+                                      <div class="col-lg-6 mb-30 col-md-6 col-sm-6">
+                                        <%= f.input :phone, class:"from-control", placeholder: "Your Phone Number" %>
+
+                                      </div>
+                                      <div class="col-lg-6 mb-30 col-md-6 col-sm-6">
+                                          <input class="from-control" type="text" id="website" name="website" placeholder="Extra References" required="">
+                                      </div>
+
+                                      <div class="col-lg-12 mb-30">
+                                        <%= f.input :body, placeholder: "Your Message ", :as => :text, :input_html => { 'rows' => 10, 'cols' => 10 } %>
+
+                                      </div>
+                                  </div>
+
+
+                                  <div class="btn-part">
+                                      <div class="form-group mb-0">
+                                        <%= f.button :submit, "Submit", class: "readon learn-more submit" %>
+
+                                      </div>
+                                  </div>
+
+  <% end %>

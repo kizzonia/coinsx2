@@ -1,0 +1,119 @@
+<% if About.exists? %>
+
+<!-- Abouttrade Section Start -->
+<div id="rs-about" class="rs-about style1 pt-130 pb-190 md-pt-80 md-pb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-12 md-mb-50">
+                <div class="rs-animation-shape">
+                    <div class="pattern">
+                       <img src="<%= asset_path 'about/main-home/about-part-1.png' %>" alt="">
+                    </div>
+                    <div class="middle">
+                       <img class="dance" src="<%= asset_path 'about/main-home/about-part-2.png' %>" alt="">
+                    </div>
+                    <div class="bottom-shape">
+                       <img class="dance2" src="<%= asset_path 'about/main-home/about-part-3.png' %>" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-12 pl-40 md-pl-15 md-pt-200 sm-pt-0">
+              <% @headers.take(1).each do |h| %>
+                <div class="sec-title mb-30">
+                    <div class="sub-text">Our Promise</div>
+                    <h2 class="title pb-20">
+                        <%= h.servicemain_title %>
+                    </h2>
+                    <div class="desc pr-90 md-pr-0">
+                      <%= h.servicemain_sub_title %>.
+                    </div>
+                </div>
+                <% end %>
+                <!-- Skillbar Section Start -->
+                <div class="row">
+                    <div class="col-lg-10">
+                        <div class="rs-skillbar style1">
+                          <div style="width:100%; max-width:100% !important;" class="btcwdgt-chart"></div>
+
+                       </div>
+                    </div>
+                </div>
+               <!-- Skillbar Section End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About Section End -->
+<% else %>
+
+<!-- Abouttrade Section Start -->
+<div id="rs-about" class="rs-about style1 pt-130 pb-190 md-pt-80 md-pb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-12 md-mb-50">
+                <div class="rs-animation-shape">
+                    <div class="pattern">
+                       <img src="<%= asset_path 'about/main-home/about-part-1.png' %>" alt="">
+                    </div>
+                    <div class="middle">
+                       <img class="dance" src="<%= asset_path 'about/main-home/about-part-2.png' %>" alt="">
+                    </div>
+                    <div class="bottom-shape">
+                       <img class="dance2" src="<%= asset_path 'about/main-home/about-part-3.png' %>" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-12 pl-40 md-pl-15 md-pt-200 sm-pt-0">
+                <div class="sec-title mb-30">
+                    <div class="sub-text">About Us</div>
+                    <h2 class="title pb-20">
+                        We Are Increasing Business Success With Technology
+                    </h2>
+                    <div class="desc pr-90 md-pr-0">
+                       Over 25 years working in IT services developing software applications and mobile apps for clients all over the world.
+                    </div>
+                </div>
+                <!-- Skillbar Section Start -->
+                <div class="row">
+                    <div class="col-lg-10">
+                        <div class="rs-skillbar style1">
+                           <div class="cl-skill-bar">
+                              <!-- Start Skill Bar -->
+                              <span class="skillbar-title">Software Development</span>
+                              <div class="skillbar" data-percent="92">
+                                  <p class="skillbar-bar"></p>
+                                  <span class="skill-bar-percent"></span>
+                              </div>
+                              <!-- Start Skill Bar -->
+                              <span class="skillbar-title">Cyber Security</span>
+                              <div class="skillbar" data-percent="80">
+                                  <p class="skillbar-bar"></p>
+                                  <span class="skill-bar-percent"></span>
+                              </div>
+                              <!-- Start Skill Bar -->
+                              <span class="skillbar-title">Artificial Intelligence</span>
+                              <div class="skillbar" data-percent="95">
+                                  <p class="skillbar-bar"></p>
+                                  <span class="skill-bar-percent"></span>
+                              </div>
+                              <!-- Start Skill Bar -->
+                              <span class="skillbar-title">Web Development</span>
+                              <div class="skillbar" data-percent="78">
+                                  <p class="skillbar-bar"></p>
+                                  <span class="skill-bar-percent"></span>
+                              </div>
+                              <div class="btn-part mt-55">
+                                  <a class="readon learn-more" href="contact.html">Learn-More</a>
+                              </div>
+                          </div>
+                       </div>
+                    </div>
+                </div>
+               <!-- Skillbar Section End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About Section End -->
+
+<% end %>

@@ -1,0 +1,24 @@
+
+<%= simple_form_for(@deposit) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :plan,:collection => @plans,:label_method => :name, :value_method => :roi,:label => "Select A Plan" ,:include_blank => false %>
+    <%= f.input :payment_type,:collection => @pms,:label_method => :title, :value_method => :title,:label => "Select A Payment Option" ,:include_blank => false %>
+
+    <%= f.input :amount, placeholder: "Amount"%>
+    <%= f.input :email, placeholder: "Please Provide Your Registered Email" %>
+
+  </div>
+
+  <div class="form-group mb-0 row">
+      <div class="col-12">
+          <div class="d-grid mt-3">
+                <%= f.button :submit, "Proceed To Payments", class: "btn btn-primary" do %>
+                <i class="fas fa-sign-in-alt ms-1"></i>
+                <% end %>
+              </div>
+          </div><!--end col-->
+         </div> <!--end form-group-->
+<% end %>

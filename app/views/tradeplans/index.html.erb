@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tradeplans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Amount</th>
+      <th>Name</th>
+      <th>Referal</th>
+      <th>Duration</th>
+      <th>Plan</th>
+      <th>Plan name</th>
+      <th>Mini</th>
+      <th>Maxi</th>
+      <th>Body</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tradeplans.each do |tradeplan| %>
+      <tr>
+        <td><%= tradeplan.amount %></td>
+        <td><%= tradeplan.name %></td>
+        <td><%= tradeplan.referal %></td>
+        <td><%= tradeplan.duration %></td>
+        <td><%= tradeplan.plan %></td>
+        <td><%= tradeplan.plan_name %></td>
+        <td><%= tradeplan.mini %></td>
+        <td><%= tradeplan.maxi %></td>
+        <td><%= tradeplan.body %></td>
+        <td><%= link_to 'Show', tradeplan %></td>
+        <td><%= link_to 'Edit', edit_tradeplan_path(tradeplan) %></td>
+        <td><%= link_to 'Destroy', tradeplan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tradeplan', new_tradeplan_path %>

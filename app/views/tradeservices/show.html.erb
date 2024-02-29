@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @tradeservice.title %>
+</p>
+
+<p>
+  <strong>Slug:</strong>
+  <%= @tradeservice.slug %>
+</p>
+
+<p>
+  <strong>Icon:</strong>
+  <%= @tradeservice.icon %>
+</p>
+
+<p>
+  <strong>Sub title:</strong>
+  <%= @tradeservice.sub_title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @tradeservice.body %>
+</p>
+
+<p>
+  <strong>Tserviceimg:</strong>
+  <%= @tradeservice.tserviceimg %>
+</p>
+
+<%= link_to 'Edit', edit_tradeservice_path(@tradeservice) %> |
+<%= link_to 'Back', tradeservices_path %>

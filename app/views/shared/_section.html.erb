@@ -1,0 +1,83 @@
+
+            <% if Section.exists? %>
+
+            <% @sections.take(1).each do |a| %>
+
+            <div class="rs-about style3 pt-120 pb-120 md-pt-75 md-pb-80">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-5">
+                            <div class="sec-title2 mb-30">
+                                <div class="sub-text">Our Company</div>
+                                <h2 class=" title title3 pb-20">
+                                    <%= a.title %>.
+                                </h2>
+                                <div class="desc desc2">
+                                  <%= a.body %>
+                                </div>
+                                <div class="btn-part mt-40">
+                                    <%= link_to "Discover More", abouttrades_path, class: "readon discover more" %>
+
+                                <%= link_to "Sign Up", new_user_registration_path, class: "readon discover more" %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 md-pt-40">
+                            <div class="rs-animation-image">
+                                <div class="pattern-img">
+                                   <img src="<%= asset_path 'about/style2/round.png'%>" alt="">
+                                </div>
+                                <div class="middle-img">
+                                   <img class="dance3" src="<%= asset_path 'about/style2/about1.png'%>" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% end %>
+
+
+            <% else %>
+
+
+                        <!-- About Section Start -->
+                        <div class="rs-about style3 pt-120 pb-120 md-pt-75 md-pb-80">
+                            <div class="container">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-5">
+                                        <div class="sec-title2 mb-30">
+                                            <div class="sub-text">Our Company</div>
+                                            <h2 class=" title title3 pb-20">
+                                                We’ve been triumphing all these 40 years.
+                                            </h2>
+                                            <div class="desc desc2">
+                                                Bring to the table win-win survival strategies done to ensure dotted proactive domination. Customers we can for done working a new normal that has evolved from generation on the runway heading towards a streamlined. Now you will be able to insert any section template to your live site instantly.
+                                            </div>
+                                            <div class="btn-part mt-40">
+                                                <a class="readon discover more" href="contact.html">Learn More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7 md-pt-40">
+                                        <div class="rs-animation-image">
+                                            <div class="pattern-img">
+                                               <img src="<%= asset_path 'about/style2/round.png'%>" alt="">
+                                            </div>
+                                            <div class="middle-img">
+                                               <img class="dance3" src="<%= asset_path 'about/style2/about1.png'%>" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- About Section End -->
+
+                        <!-- Progress Section Start -->
+
+                        <!-- Progress Section End -->
+
+
+
+            <% end %>
