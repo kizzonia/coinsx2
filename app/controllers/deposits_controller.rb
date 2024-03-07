@@ -32,7 +32,7 @@ def create
     if @deposit.save
       user = User.find_by_id(@deposit.user_id)
       deposit = @deposit
-      DepositMailer.deposit_email(user, deposit).deliver
+      DepositMailer.deposit_email(user, deposit).deliver_later
       format.html { redirect_to @deposit, notice: 'We have received your deposit request we will contact you soon.' }
       format.json { render :show, status: :created, location: @deposit }
     else

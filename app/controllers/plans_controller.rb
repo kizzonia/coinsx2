@@ -1,4 +1,5 @@
 class PlansController < InheritedResources::Base
+  layout "accounts"
   before_action :find_plans, only: [ :show, :edit, :update, :destroy]
   before_action :authenticate_adminuser!, except: [:index, :show]
   def index
