@@ -12,9 +12,10 @@ def index
 end
 
 def show
-  @pms = Pm.all.order('created_at DESC')
+  @pms = Pm.all.order('created_at ASC')
   @welcomes = Welcome.all
-  @txhash = @deposit.txhashes.build
+  @headers = Header.all
+  # @txhash = @deposit.txhashes.build
 
 end
 
