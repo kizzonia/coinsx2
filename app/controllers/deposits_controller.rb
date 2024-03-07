@@ -12,6 +12,8 @@ def index
 end
 
 def show
+  @deposits = Deposit.where(user_id: current_user).order('created_at DESC')
+  @accounts = Account.where(user_id: current_user).order('created_at DESC')
   @pms = Pm.all.order('created_at ASC')
   @welcomes = Welcome.all
   @headers = Header.all

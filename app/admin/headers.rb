@@ -33,7 +33,9 @@ ActiveAdmin.register Header do
               :servicemain_title,
               :servicemain_sub_title,
               :tradeplan_title,
-              :tradeplan_sub_title
+              :tradeplan_sub_title,
+              :deposit_title,
+              :dins
   #
   # or
   #
@@ -117,6 +119,9 @@ ActiveAdmin.register Header do
       f.input :cta1
       f.input :cta2
 
+      para "Deposit Title & desc"
+      f.input :deposit_title
+      f.input :dins
 
     end
     f.actions
