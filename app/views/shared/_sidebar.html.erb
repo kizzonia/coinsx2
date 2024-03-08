@@ -4,7 +4,8 @@
         <a href="#" class="logo logo-metrica d-block text-center">
             <span>
               <% @welcomes.take(1).each do |w| %>
-              <img src="<%= w.logoimg_url.to_s %>" alt="logo-large" class="logo-sm">
+              <img src="<%= asset_path "favicon.png" %>" alt="logo-large" class="logo-sm" style="height:30px; ">
+
               <% end %>
                         </span>
         </a>
