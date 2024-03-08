@@ -18,6 +18,7 @@ def show
   @welcomes = Welcome.all
   @headers = Header.all
   # @txhash = @deposit.txhashes.build
+  @withdraws = Withdraw.where(user_id: current_user).order('created_at DESC')
 
 end
 
