@@ -121,7 +121,7 @@ ActiveAdmin.register Header do
 
       para "Deposit Title & desc"
       f.input :deposit_title
-      f.input :dins
+      f.input :dins,  as: :quill_editor
 
     end
     f.actions
