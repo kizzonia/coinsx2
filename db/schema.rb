@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_01_17_213204) do
+ActiveRecord::Schema.define(version: 2024_03_07_221457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -133,6 +133,16 @@ ActiveRecord::Schema.define(version: 2024_01_17_213204) do
     t.index ["slug"], name: "index_boards_on_slug"
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "body"
+    t.string "phone"
+    t.string "website"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "deposits", force: :cascade do |t|
     t.string "payment_type"
     t.string "amount"
@@ -232,6 +242,8 @@ ActiveRecord::Schema.define(version: 2024_01_17_213204) do
     t.string "tradeplan_sub_title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "deposit_title"
+    t.string "dins"
   end
 
   create_table "plans", force: :cascade do |t|
