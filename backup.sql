@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 15.6 (Debian 15.6-1.pgdg110+2)
--- Dumped by pg_dump version 15.6 (Debian 15.6-1.pgdg110+2)
+-- Dumped from database version 16.2 (Debian 16.2-1.pgdg120+2)
+-- Dumped by pg_dump version 16.2 (Debian 16.2-1.pgdg120+2)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -778,7 +778,9 @@ CREATE TABLE "public"."headers" (
     "tradeplan_title" character varying,
     "tradeplan_sub_title" character varying,
     "created_at" timestamp(6) without time zone NOT NULL,
-    "updated_at" timestamp(6) without time zone NOT NULL
+    "updated_at" timestamp(6) without time zone NOT NULL,
+    "deposit_title" character varying,
+    "dins" character varying
 );
 
 
@@ -1453,10 +1455,14 @@ COPY "public"."abouttrades" ("id", "title", "sub_title", "body", "link", "slug",
 
 COPY "public"."accounts" ("id", "account_type", "wallet", "balance", "user_id", "created_at", "updated_at", "first_name", "last_name", "address", "city", "state", "country", "zip_code", "slug", "rate", "compound", "roi", "currency", "tid", "status") FROM stdin;
 1		longihfiehsdohfohsijsijish	0.0	11	2024-01-17 13:44:15.974007	2024-01-17 13:44:15.974007	dave	skeen	hse 1 plot2 winners highway	abuja	Federal capital territory	Nigeria	\N	dave	\N	\N	\N	\N	\N	f
-2		hAWqwiudISP[whiueo2q82380329	0.0	12	2024-01-22 13:19:09.439296	2024-01-22 13:19:09.439296	Mark	Gaffen	5733 pleasant palms St	Las Vegas	Nevada	United States	\N	mark	\N	\N	\N	\N	\N	f
 3		bc1qwrqsv9tz8kyr0pgyx2lvsas2mcax8hfpd7jk59	0.0	13	2024-01-24 00:17:21.589617	2024-01-24 00:17:21.589617	Rayline 	Mann				United States	\N	rayline	\N	\N	\N	\N	\N	f
 4		None	0.0	14	2024-02-01 20:28:27.425443	2024-02-01 20:28:27.425443	David	Ogendi	Nakuru	Nakuru		Kenya	\N	david	\N	\N	\N	\N	\N	f
-5		bc1qrjx7r8c0mnz32xltygvhuaympky6u7nl3q7ywj	0.0	17	2024-02-22 12:09:53.57023	2024-02-22 12:09:53.57023	MARK	GAFFEN	5894 PLANSANTS PALMS STREET	NORTH LAS VEGAS	NV	United States	\N	mark-68644960-f8f3-4684-8490-32ccf02fea7a	\N	\N	\N	\N	\N	f
+6		oiujyhtgresdrftgyhujikolpgfd	0.0	22	2024-03-07 21:17:04.627135	2024-03-07 21:17:04.627135	Mathew	Scarlett	680 Hayes st, hazleton, pa	Hazleton	PA	United States	\N	mathew	\N	\N	\N	\N	\N	f
+7		lkjhgdrtyuiopiuytgfhjklopi8uytgfdcvbnhjkloiuyhgfc	0.0	23	2024-03-08 16:17:38.418983	2024-03-08 16:17:38.418983	Navy  LLC	Central	680 Hayes st, hazleton, pa	Hazleton	PA	United States	\N	navy-llc	\N	\N	\N	\N	\N	f
+2	PREMIUM	hAWqwiudISP[whiueo2q82380329	200,000.00	12	2024-01-22 13:19:09.439296	2024-03-11 14:57:01.216849	Mark	Gaffen	5733 pleasant palms St	Las Vegas	Nevada	United States	\N	mark	\N	\N	\N	\N	\N	f
+5	PREMIUM	bc1qrjx7r8c0mnz32xltygvhuaympky6u7nl3q7ywj	200,000.00	12	2024-02-22 12:09:53.57023	2024-03-11 14:58:11.005847	MARK	GAFFEN	5894 PLANSANTS PALMS STREET	NORTH LAS VEGAS	NV	United States	\N	mark-68644960-f8f3-4684-8490-32ccf02fea7a	\N	\N	\N	\N	\N	f
+9	Pro+	edorichie.blockchain.com	$100,000.00	25	2024-03-12 10:27:01.088643	2024-03-12 10:59:27.523468	Solomon	Cox	4256 Raford Dr	Honolulu	Hi	United States	\N	solomon	\N	\N	\N	\N	\N	f
+10		jhgfdghjkloikjuhygfdghjkloikjuhygtfrdsfghjkloikjuhygfdx	60,000	26	2024-03-19 23:25:22.547087	2024-03-19 23:37:41.766225	Navy  LLC	Central	680 Hayes st, hazleton, pa	Hazleton	PA	United States	\N	navy-llc-5304d4b3-a346-4ebc-8ddb-b335a2d82c50	\N	\N	\N	\N	\N	f
 \.
 
 
@@ -1473,7 +1479,7 @@ COPY "public"."active_admin_comments" ("id", "namespace", "body", "resource_type
 --
 
 COPY "public"."admin_users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") FROM stdin;
-1	admin@example.com	$2a$12$TJ4uTtVM6QHmXbUNudqwfeMnOYwhmf6CkY9SXG8GlqZUGlEiZsSX6	\N	\N	2024-01-25 09:46:25.037634	2022-12-23 22:21:34.090958	2024-01-25 09:46:25.038707
+1	admin@example.com	$2a$12$TJ4uTtVM6QHmXbUNudqwfeMnOYwhmf6CkY9SXG8GlqZUGlEiZsSX6	\N	\N	2024-03-18 11:29:24.573587	2022-12-23 22:21:34.090958	2024-03-18 11:29:24.573919
 \.
 
 
@@ -1543,6 +1549,10 @@ COPY "public"."boards" ("id", "title", "name", "body", "boardimg", "slug", "crea
 --
 
 COPY "public"."contacts" ("id", "name", "email", "body", "phone", "website", "created_at", "updated_at") FROM stdin;
+1	Denis Berger	denisberger.web@gmail.com	Hi bcoinxprofits.com,\r\n\r\nI found your details on Google.com and I have looked at your website and realized your website has great design but your website ranking is not good on all search engines Google, AOL, Yahoo and Bing.\r\n\r\nOur main focus will be to help generate more sales & online traffic.\r\n\r\nWe can place your website on Google's 1st page. We will improve your website’s position on Google and get more traffic.\r\n\r\nIf interested, kindly provide me your name, phone number, and email.\r\n\r\nYour sincerely,\r\nDenis	1234567890	\N	2024-03-04 18:48:04.061982	2024-03-04 18:48:04.061982
+2	Denis Berger	denisberger.web@gmail.com	Hi bcoinxprofits.com,\r\n\r\nI found your details on Google.com and I have looked at your website and realized your website has great design but your website ranking is not good on all search engines Google, AOL, Yahoo and Bing.\r\n\r\nOur main focus will be to help generate more sales & online traffic.\r\n\r\nWe can place your website on Google's 1st page. We will improve your website’s position on Google and get more traffic.\r\n\r\nIf interested, kindly provide me your name, phone number, and email.\r\n\r\nYour sincerely,\r\nDenis	1234567890	\N	2024-03-04 23:41:45.326794	2024-03-04 23:41:45.326794
+3	Greta Bivens	greta.bivens@googlemail.com	Hi!\r\n\r\nIt is with sad regret to inform you that LeadsFly is shutting down!\r\n\r\nWe have made available all our consumer and business leads for the entire world on our way out.\r\n\r\nWe have the following available worldwide:\r\n\r\nConsumer Records: 294,582,351\r\nBusiness Records: 25,215,278\r\n\r\nVisit us here: https://leadsfly.biz/bcoinxprofits.com/\r\n\r\nBest regards,\r\nGreta	06-31162009	\N	2024-03-14 10:35:20.655291	2024-03-14 10:35:20.655291
+4	Lynne Furst	lynne.furst76@gmail.com	Hi,\r\n\r\nWant thousands of clients? We have compiled a list of all consumers and business's across 149 countries for you.\r\n\r\nWe have a special that is running today and valid till the end of the day. Come check us out:\r\n\r\nhttps://bcoinxprofits.leadsmax.biz/\r\n\r\nConsumer Records: 294,582,351\r\nBusiness Records: 25,215,278\r\n\r\nSelling at $99 today only.	(03) 6229 9437	\N	2024-03-25 09:41:34.797379	2024-03-25 09:41:34.797379
 \.
 
 
@@ -1551,8 +1561,22 @@ COPY "public"."contacts" ("id", "name", "email", "body", "phone", "website", "cr
 --
 
 COPY "public"."deposits" ("id", "payment_type", "amount", "plan", "email", "status", "user_id", "created_at", "updated_at", "confirmed", "account_id") FROM stdin;
-1	\N	50,000.00		edorichie@proton.me	\N	12	2024-01-19 12:34:17.627918	2024-01-19 12:34:17.627918	\N	\N
-2	\N	50,000.00		edorichie@proton.me	\N	12	2024-01-19 12:34:36.234532	2024-01-19 12:34:36.234532	\N	\N
+3	Bitcoin	60,000		Daveskeen24@gmail.com	\N	22	2024-03-07 21:51:16.323236	2024-03-07 21:51:16.323236	\N	\N
+4	Bitcoin	60,000		Daveskeen24@gmail.com	\N	22	2024-03-07 22:08:59.309348	2024-03-07 22:08:59.309348	\N	\N
+1	bitcoin	50,000.00	PREMIUM	edorichie@proton.me	t	12	2024-01-19 12:34:17.627918	2024-03-08 14:11:20.070197	\N	\N
+2	bitcoin	50,000.00	PREMIUM	edorichie@proton.me	t	12	2024-01-19 12:34:36.234532	2024-03-08 14:29:10.282237	\N	\N
+5	Bitcoin	$50,000.00	PREMIUM	edorichie@proton.me	t	12	2024-03-08 14:20:12.859813	2024-03-11 14:49:35.40648	\N	\N
+6	Bitcoin	$50,000.00	PREMIUM	edorichie@proton.me	t	12	2024-03-08 14:20:49.021718	2024-03-11 14:51:31.480869	\N	\N
+10	Bitcoin	$50,000.00	Pro+	solomoncox1960@rescueteam.com	t	25	2024-03-12 10:30:19.429292	2024-03-12 10:53:16.494886	\N	\N
+11	Bitcoin	$50,000.00	Pro+	solomoncox1960@rescueteam.com	t	25	2024-03-12 10:35:41.40592	2024-03-12 10:55:00.105134	\N	\N
+12	Bitcoin	$50,000.00	Pro+	solomoncox1960@rescueteam.com	t	25	2024-03-18 11:28:20.191833	2024-03-18 11:38:09.921877	\N	\N
+13	Bitcoin	$50,000.00	Pro+	solomoncox1960@rescueteam.com	t	25	2024-03-18 11:39:36.120701	2024-03-18 11:39:54.944278	\N	\N
+15	Bitcoin	$50,000.00	Pro+	solomoncox1960@rescueteam.com	t	25	2024-03-18 11:40:59.084994	2024-03-18 11:42:03.08543	\N	\N
+16	Bitcoin	$50,000.00	Pro+	solomoncox1960@rescueteam.com	t	25	2024-03-18 11:41:46.757442	2024-03-18 11:42:25.745271	\N	\N
+17	Bitcoin	$50,000.00	Pro+	solomoncox1960@rescueteam.com	t	25	2024-03-18 11:43:17.976168	2024-03-18 11:44:53.894637	\N	\N
+18	Bitcoin	$50,000.00	Pro+	solomoncox1960@rescueteam.com	t	25	2024-03-18 11:43:50.394059	2024-03-18 11:47:13.221265	\N	\N
+19	Bitcoin	$50,000.00	Pro+	solomoncox1960@rescueteam.com	t	25	2024-03-18 11:44:31.074389	2024-03-18 11:47:36.83658	\N	\N
+20	Bitcoin	600000		Daveskeen24@gmail.com	t	26	2024-03-19 23:25:46.580496	2024-03-19 23:35:13.320976	\N	\N
 \.
 
 
@@ -1611,8 +1635,8 @@ COPY "public"."fxsignals" ("id", "body", "entry_point", "exit_point", "slug", "s
 -- Data for Name: headers; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY "public"."headers" ("id", "abouts_title", "abouts_sub_title", "services_title", "services_sub_title", "boards_title", "boards_sub_title", "features_title", "features_sub_title", "feedbacks_title", "feedbacks_sub_title", "blogs_title", "blogs_sub_title", "projects_title", "projects_sub_title", "cta1", "cta2", "headerimg", "plans_title", "plans_sub_title", "abouttrade_title", "abouttrade_sub_title", "tradeservices_title", "tradeservices_sub_title", "tradesignal_title", "tradesignal_sub_title", "servicemain_title", "servicemain_sub_title", "tradeplan_title", "tradeplan_sub_title", "created_at", "updated_at") FROM stdin;
-1	About Us	We are a licensed firm that provides crypto loans and computerized resource speculation to both individuals and organizations. 	Our Services	What We Offer	Our team		Why Choose Us	One of the biggest major traders in the world of digital assets 	Feedbacks 	What our Clients Say about Us	Daily Insights	Join  our information band wagon directly on your hands 					\N	Our Packages 	Here are our packages <br /> tailored for your  <span>success</span>	Our Trade Models	The sudden surge and tank moments that occur in the crypto market on a regular basis can also be captured with less risk and more rewards using our reinforcement ML algorithm. 	Our trade signal models	The sudden surge and tank moments that occur in the crypto market on a regular basis can also be captured with less risk and more rewards using our reinforcement ML algorithm. 	Our trade signal models		What we deliver	Access Funds & Sophisticated Trading Solutions   We Give  customers access to unmatched resources, trading knowledge, and market information. 			2022-12-26 02:58:33.905041	2024-01-02 11:16:23.623599
+COPY "public"."headers" ("id", "abouts_title", "abouts_sub_title", "services_title", "services_sub_title", "boards_title", "boards_sub_title", "features_title", "features_sub_title", "feedbacks_title", "feedbacks_sub_title", "blogs_title", "blogs_sub_title", "projects_title", "projects_sub_title", "cta1", "cta2", "headerimg", "plans_title", "plans_sub_title", "abouttrade_title", "abouttrade_sub_title", "tradeservices_title", "tradeservices_sub_title", "tradesignal_title", "tradesignal_sub_title", "servicemain_title", "servicemain_sub_title", "tradeplan_title", "tradeplan_sub_title", "created_at", "updated_at", "deposit_title", "dins") FROM stdin;
+1	About Us	We are a licensed firm that provides crypto loans and computerized resource speculation to both individuals and organizations. 	Our Services	What We Offer	Our team		Why Choose Us	One of the biggest major traders in the world of digital assets 	Feedbacks 	What our Clients Say about Us	Daily Insights	Join  our information band wagon directly on your hands 					\N	Our Packages 	Here are our packages <br /> tailored for your  <span>success</span>	Our Trade Models	The sudden surge and tank moments that occur in the crypto market on a regular basis can also be captured with less risk and more rewards using our reinforcement ML algorithm. 	Our trade signal models	The sudden surge and tank moments that occur in the crypto market on a regular basis can also be captured with less risk and more rewards using our reinforcement ML algorithm. 	Our trade signal models		What we deliver	Access Funds & Sophisticated Trading Solutions   We Give  customers access to unmatched resources, trading knowledge, and market information. 			2022-12-26 02:58:33.905041	2024-03-08 16:14:11.263484	Deposit Instructions & T&C	<p>**1. Deposits Only to Designated Addresses:**</p><p>   - Deposits of cryptocurrencies are only accepted to the specific wallet addresses provided by Bcoins X Profits. Ensure that you verify and use the correct wallet address before initiating any transactions.</p><p>**2. Verification of Wallet Address:**</p><p>   - Before initiating a deposit, double-check the accuracy of the wallet address to which you intend to send the cryptocurrency. Bcoins X Profits is not responsible for losses resulting from the use of incorrect wallet addresses.</p><p>**3. Cross-Check Transaction Details:**</p><p>   - Verify the transaction details, including the destination address and the amount to be deposited, before confirming any transactions. Inaccurate information may lead to irreversible loss.</p><p>**4. Confirmation Period:**</p><p>   - Allow for a confirmation period to ensure the successful processing of your deposit. Transactions may take some time to be confirmed on the blockchain.</p><p>**5. Unsupported Assets:**</p><p>   - Bcoins X Profits supports specific cryptocurrencies. Deposits of unsupported assets may result in the loss of funds. Refer to our official list of supported cryptocurrencies.</p><p>**6. Minimum Deposit Requirements:**</p><p>   - Adhere to any minimum deposit requirements specified by Bcoins X Profits. Transactions falling below the specified minimum may not be processed or may incur additional fees.</p><p>**7. External Fees:**</p><p>   - Be aware of any external fees associated with the transfer of cryptocurrency. Bcoins X Profits is not responsible for fees imposed by third-party wallets or platforms.</p>
 \.
 
 
@@ -1684,6 +1708,7 @@ COPY "public"."schema_migrations" ("version") FROM stdin;
 20240117133510
 20240117213204
 20240205231557
+20240307221457
 \.
 
 
@@ -1760,6 +1785,14 @@ COPY "public"."users" ("id", "email", "encrypted_password", "reset_password_toke
 17	markgaffen@gmx.com	$2a$12$rGsaKDVaK23AKVBvNxB6Q.NvibrhC/62pJELpH7auVaV6v9ttGdI6	\N	\N	\N	0	\N	\N	\N	\N	\N	\N	\N	\N	0	\N	\N	2024-02-22 12:05:33.829078	2024-02-22 12:05:33.829078	t	markgaffen		2027135586
 18	dada@gmail.com	$2a$12$wwsfq/sIdH8mGzoENakI2O2/VhTmz73sV2CMEFK.tIfMxisYhTGm.	\N	\N	\N	0	\N	\N	\N	\N	\N	\N	\N	\N	0	\N	\N	2024-02-25 22:03:03.68801	2024-02-25 22:03:03.68801	t	daveiofdi		
 19	annie76@devaza.id	$2a$12$qKhwaX8jkX7qgdpuSdPcQ./0L7RWEN7CHM.AKMxon.hoH0bJJgaTi	\N	\N	\N	0	\N	\N	\N	\N	\N	\N	\N	\N	0	\N	\N	2024-02-27 16:20:40.077686	2024-02-27 16:20:40.077686	t	annie76@devaza.id	annie76@devaza.id	7400329923
+20	freeman.upton@bocah.team	$2a$12$q.aHoMEFqvEMGZOXr4WsaOCeNTogv1MzPtmTdGKtvh9uG5B4JGoN2	\N	\N	\N	0	\N	\N	\N	\N	\N	\N	\N	\N	0	\N	\N	2024-03-01 17:01:40.023759	2024-03-01 17:01:40.023759	t	freeman.upton@bocah.team	freeman.upton@bocah.team	7587641952
+21	timothy.fincke@goodpostman.com	$2a$12$qZEbeYuW.TrHPFJaEz0sV.5pkfZecSai77XdIxRdfHigYBY9t/Vma	\N	\N	\N	0	\N	\N	\N	\N	\N	\N	\N	\N	0	\N	\N	2024-03-03 17:20:56.855087	2024-03-03 17:20:56.855087	t	timothy.fincke@goodpostman.com	timothy.fincke@goodpostman.com	7723581129
+22	daveskeen244@gmail.com	$2a$12$CeF6mrL/IF9rmzdhHX6UOurTZj5ovc3BQ5NgmwcEQiU.i2FXVzcmO	\N	\N	\N	0	\N	\N	\N	\N	\N	\N	\N	\N	0	\N	\N	2024-03-06 11:47:09.522361	2024-03-06 11:47:09.522361	t	kizogff	dsd	dffd
+23	omranc@gmail.com	$2a$12$aW60ShqhaqQLQFE0xjXJdeAFCcMjp8VIQoWqlhSZV23iZFl9uIYGW	\N	\N	\N	0	\N	\N	\N	\N	\N	\N	\N	\N	0	\N	\N	2024-03-08 16:17:05.023048	2024-03-08 16:17:05.023048	t	kizoito		
+24	stefan38@banglemail.com	$2a$12$shg8cGfJ21BPPYDUSWp3y.7DGjmvISuqfJ7gI0Q8q9YtkTh9kRDNi	\N	\N	\N	0	\N	\N	\N	\N	\N	\N	\N	\N	0	\N	\N	2024-03-11 16:15:40.61961	2024-03-11 16:15:40.61961	t	stefan38@banglemail.com	stefan38@banglemail.com	7012039627
+25	solomoncox1960@rescueteam.com	$2a$12$gxa9RgtqHYLn7Jwbq5XyG.A0S3AetpHqoeeVSMtZZf4JmxBQySW9y	\N	\N	\N	0	\N	\N	\N	\N	\N	\N	\N	\N	0	\N	\N	2024-03-12 10:18:14.067639	2024-03-12 10:18:14.067639	t	SOLOMON COX	billieoneal2@gmail.com	5104138387
+26	daaa3@gmail.com	$2a$12$IIwQB4Ozjjnl6v55lbWMHOIf5ojgAzFJ0lKw7mU8SCWH/ucLqSL0a	\N	\N	\N	0	\N	\N	\N	\N	\N	\N	\N	\N	0	\N	\N	2024-03-19 23:25:02.657242	2024-03-19 23:25:02.657242	f	koklmkl		
+27	alexander.christiansen76@recodz.com	$2a$12$q8BUqU0oWzvqXgZZivQGW.LkvBFdzzJm8KhvxVu6T9dG84OsOjnj.	\N	\N	\N	0	\N	\N	\N	\N	\N	\N	\N	\N	0	\N	\N	2024-03-25 09:51:33.427379	2024-03-25 09:51:33.427379	t	alexander.christiansen76@recodz.com	alexander.christiansen76@recodz.com	+447459704048
 \.
 
 
@@ -1798,7 +1831,7 @@ SELECT pg_catalog.setval('"public"."abouttrades_id_seq"', 5, true);
 -- Name: accounts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."accounts_id_seq"', 5, true);
+SELECT pg_catalog.setval('"public"."accounts_id_seq"', 10, true);
 
 
 --
@@ -1847,14 +1880,14 @@ SELECT pg_catalog.setval('"public"."boards_id_seq"', 1, false);
 -- Name: contacts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."contacts_id_seq"', 1, false);
+SELECT pg_catalog.setval('"public"."contacts_id_seq"', 4, true);
 
 
 --
 -- Name: deposits_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."deposits_id_seq"', 2, true);
+SELECT pg_catalog.setval('"public"."deposits_id_seq"', 20, true);
 
 
 --
@@ -1952,7 +1985,7 @@ SELECT pg_catalog.setval('"public"."tradeservices_id_seq"', 6, true);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"public"."users_id_seq"', 19, true);
+SELECT pg_catalog.setval('"public"."users_id_seq"', 27, true);
 
 
 --
