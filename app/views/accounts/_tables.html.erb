@@ -2,66 +2,69 @@
   <% if Deposit.where(user_id: current_user.id).exists? %>
 
   <div class="col-lg-4">
-    <div class="card">
-      <div class="card-header">
-        <div class="row align-items-center">
-          <div class="col">
-            <h4 class="card-title">Deposit History</h4>
-          </div><!--end col-->
-          <div class="col-auto">
-            <%= link_to deposits_path, class: "text-primary" do %>
-              View all
-              <% end %>
-
-          </div><!--end col-->
-        </div>  <!--end row-->
-      </div><!--end card-header-->
-      <div class="card-body">
-        <ul class="list-unsyled m-0 ps-0 transaction-history">
-          <% @deposits.each do |d| %>
-
-          <li class="align-items-center d-flex justify-content-between">
-            <div class="media">
-              <div class="thumb-xs bg-soft-primary rounded-circle d-flex justify-content-center align-items-center">
-                <i class="mdi mdi-arrow-top-right-thick font-20"></i>
-              </div>
-              <div class="media-body align-self-center ms-3">
-                <div class="transaction-data">
-                  <h5 class="m-0 font-14"><%= d.payment_type %></h5>
-                  <p class="text-muted mb-0"><%= d.created_at %></p>
-                </div>
-              </div><!--end media body-->
-            </div>
-            <span class="text-success"><%= d.amount %></span>
-          </li>
-          <% end %>
-
-        </ul>
-      </div><!--end card-body-->
-    </div><!--end card-->
-  </div>
-  <% else %>
-
-  <div class="col-lg-4">
-    <div class="card">
-      <div class="card-header">
-        <div class="row align-items-center">
-          <div class="col">
-            <h4 class="card-title">Deposit History</h4>
-          </div><!--end col-->
-          <div class="col-auto">
-            <a href="#" class="text-primary">Make Deposit</a>
-
-          </div><!--end col-->
-        </div>  <!--end row-->
-      </div><!--end card-header-->
-      <div class="card-body">
-        <div class="text-center">
-          <p>No Data</p>
-        </div>
-      </div><!--end card-body-->
-    </div><!--end card-->
-  </div>
+    <!-- TradingView Widget BEGIN -->
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container" >
+      <div class="tradingview-widget-container__widget"></div>
+      <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com" rel="noopener" target="_blank"><span class="blue-text">crypto</span></a> by TradingView</div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+        {
+          "colorTheme": "light",
+          "dateRange": "12M",
+          "showChart": true,
+          "locale": "en",
+          "largeChartUrl": "",
+          "isTransparent": false,
+          "showSymbolLogo": true,
+          "showFloatingTooltip": false,
+          "width": "380",
+          "height": "660",
+          "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
+          "plotLineColorFalling": "rgba(41, 98, 255, 1)",
+          "gridLineColor": "rgba(42, 46, 57, 0)",
+          "scaleFontColor": "rgba(120, 123, 134, 1)",
+          "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
+          "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
+          "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
+          "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
+          "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
+          "tabs": [
+          {
+            "title": "crypto",
+            "symbols": [
+            {
+              "s": "BINANCE:BTCUSDT"
+            },
+            {
+              "s": "BINANCE:SHIBUSDT"
+            },
+            {
+              "s": "BINANCE:SOLUSDT"
+            },
+            {
+              "s": "BINANCE:ETHUSDT"
+            },
+            {
+              "s": "BINANCE:DOGEUSDT"
+            },
+            {
+              "s": "BINANCE:ADAUSDT"
+            },
+            {
+              "s": "BINANCE:MATICUSDT"
+            },
+            {
+              "s": "BINANCE:ALGOUSDT"
+            }
+            ]
+          }
+          ]
+        }
+      </script>
+    </div>
+    <!-- TradingView Widget END -->
+    <!-- TradingView Widget END -->
+  </div><!--end card-->
 
 
   <% end %>
