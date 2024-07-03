@@ -1,12 +1,14 @@
 <% if Feedback.exists? %>
 <div class="rs-testimonial main-home style2 bg5 pt-120 pb-120 md-pt-80 md-pb-80">
     <div class="container">
+      <% @headers.each do |h| %>
       <div class="sec-title2 text-center mb-45">
-          <span class="sub-text white-color">Testimonial</span>
+          <span class="sub-text white-color"> <%= h.feedbacks_title %></span>
           <h2 class="title testi-title white-color">
-             What Saying Our Customers
+             <%= h.feedbacks_sub_title %>
           </h2>
       </div>
+      <% end %>
         <div class="rs-carousel owl-carousel"
             data-loop="true"
             data-items="2"
