@@ -15,7 +15,7 @@ services:
           name: coinsx2
           property: connectionString
       - key: RAILS_MASTER_KEY
-      #   sync: false
+        sync: false
       # - key: AWS_REGION # Imported from Heroku app
       #   value: us-east-2
       # - key: AWS_ACCESS_KEY_ID
