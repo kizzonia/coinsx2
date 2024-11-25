@@ -6,12 +6,16 @@ class TradesController < InheritedResources::Base
 
         @users = User.where(user_id: current_user)
         @accounts = Account.where(user_id: current_user).order('created_at DESC')
-      
+
   end
   private
 
     def trade_params
-      params.require(:trade).permit(:currency, :deposit, :expiration, :status, :tradetype, :entry, :rate, :return, :user_id)
+      params.require(:trade).permit(:plan,
+    :enddate,
+    :goal,
+    :bonus,
+    :current, :currency, :deposit, :expiration, :status, :tradetype, :entry, :rate, :return, :user_id)
     end
 
 end
