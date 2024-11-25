@@ -31,6 +31,8 @@
 
 
       <div class="card-body">
+        <% @trades.each do |t| %>
+
         <div class="col-lg-4">
                               <div class="card ">
                                   <div class="card-header">
@@ -39,47 +41,50 @@
                                               <div class="media">
                                                   <div class="media-body align-self-center">
                                                       <h5 class="m-0 font-15">Active</h5>
-                                                      <p class="text-muted fw-semibold mb-0">tradetype</p>
+                                                      <p class="text-muted fw-semibold mb-0"><%= t.tradetype %></p>
                                                   </div><!--end media-body-->
                                               </div><!--end media-->
                                           </div><!--end col-->
                                           <div class="col-auto">
-                                              <span class="badge bg-soft-success">Active</span>
-                                              <span class="badge bg-soft-success">claim profit</span>
+                                              <button class="badge bg-soft-success">History</button>
+                                              <button class="badge bg-soft-success">claim profit</button>
 
                                           </div><!--end col-->
                                       </div>  <!--end row-->
                                   </div><!--end card-header-->
                                   <div class="card-body">
                                       <div class="row">
-                                        <div class="col-md-6">
+
+                                        <div class="col-md-6 col-sm-6">
                                           <p class="mb-0 "> <span class="text-muted">Current Plan</span></p>
 
-                                            <h4 class="m-0 font-24 text-muted fw-bold">Silver</h4>
+                                            <h4 class="m-0 font-24  fw-bold">Silver</h4>
                                         </div><!--end col-->
-                                          <div class="col-md-6">
-                                              <p class="mb-0 ">Start Date : <span class="text-muted">10/05/2021</span></p>
-                                              <p class="">End Date : <span class="text-muted">20/05/2021</span></p>
+                                          <div class="col-md-6 col-sm-6">
+                                              <p class="mb-0 ">Start Date : <span class="text-muted"><%= t.created_at %></span></p>
+                                              <p class="">Duration : <span class="text-muted">30 days</span></p>
                                           </div><!--end col-->
 
-                                          <div class="col-md-6">
+                                          <br>
+
+                                          <div class="col-md-6 col-sm-6">
 
                                             <h3 class="m-0 font-24 text-muted fw-bold">Goal</h3>
                                         </div><!--end col-->
-                                          <div class="col-md-6">
+                                          <div class="col-md-6 col-sm-6">
                                             <h3 class="m-0 font-24 text-muted fw-bold">72000USD</h3>
 
                                           </div><!--end col-->
-                                          <div class="col-md-6">
+                                          <div class="col-md-6 col-sm-6">
                                               <p class="mb-0 ">Invested: <span class="text-muted">20000USD</span></p>
                                               <p class="">Est rate : <span class="text-muted">2% Daily</span></p>
                                           </div><!--end col-->
 
-                                          <div class="col-md-6">
+                                          <div class="col-md-6 col-sm-6">
                                               <p class="mb-0 ">ROI : <span class="text-muted">15555USD</span></p>
                                               <p class="">BONUS: <span class="text-muted">2444USD</span></p>
                                           </div><!--end col-->
-                                          <div class="col-md-6">
+                                          <div class="col-md-6 col-sm-6">
                                             <p class="mb-0 "> <span class="text-muted">Current Progress</span></p>
 
                                             <h3 class="m-0 font-24 text-muted fw-bold">72000USD</h3>
@@ -91,7 +96,7 @@
                               </div>
                                           </div><!--end col-->
                                       </div><!--end row-->
-                                      <a href="#" class="btn btn-sm btn-outline-primary float-end ">claim</a> 
+                                      <a href="#" class="btn btn-sm btn-outline-primary float-end ">claim</a>
                                       <ul class="list-inline socials mb-0">
                                           <li class="list-inline-item me-0">
                                               <a href="#" class=""><i class="fab fa-facebook-f"></i></a>
@@ -109,6 +114,9 @@
                                   </div><!--end card-body-->
                               </div><!--end card-->
                           </div>
+                          <% end %>
+
+
       </div><!--end card-body-->
     </div><!--end card-->
   </div>

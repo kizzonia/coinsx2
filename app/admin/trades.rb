@@ -5,7 +5,11 @@ ActiveAdmin.register Trade do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :currency, :deposit, :expiration, :status, :tradetype, :entry, :rate, :return, :user_id
+  permit_params :currency, :deposit, :expiration, :plan,
+:enddate,
+:goal,
+:bonus,
+:current, :status, :tradetype, :entry, :rate, :return, :user_id
   #
   # or
   #
@@ -22,6 +26,11 @@ ActiveAdmin.register Trade do
         f.input :currency, :as => :select, :collection => ['BTC/USD', 'ETH/USD', 'LTC/USD', 'BCH/GB', 'EOS/USD']
         f.input :deposit
         f.input :expiration
+        f.input :plan
+        f.input :enddate
+         f.input :goal
+          f.input :bonus
+          f.input :current
         f.input :status
         f.input :tradetype
         f.input :entry
