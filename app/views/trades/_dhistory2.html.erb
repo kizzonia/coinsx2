@@ -31,7 +31,10 @@
 
 
       <div class="card-body">
+        <div class="row">
+
         <% @trades.each do |t| %>
+
 
         <div class="col-lg-4">
                               <div class="card ">
@@ -46,8 +49,8 @@
                                               </div><!--end media-->
                                           </div><!--end col-->
                                           <div class="col-auto">
-                                              <button class="badge bg-soft-success">History</button>
-                                              <button class="badge bg-soft-success">claim profit</button>
+                                              <button class="badge badge-warning">History</button>
+                                              <button class="badge badge-success">claim profit</button>
 
                                           </div><!--end col-->
                                       </div>  <!--end row-->
@@ -99,6 +102,7 @@
                               </div>
                                           </div><!--end col-->
                                       </div><!--end row-->
+                                      <br>
                                       <a href="#" class="btn btn-sm btn-outline-primary float-end ">claim</a>
                                       <ul class="list-inline socials mb-0">
                                           <li class="list-inline-item me-0">
@@ -118,7 +122,7 @@
                               </div><!--end card-->
                           </div>
                           <% end %>
-
+</div>
 
       </div><!--end card-body-->
     </div><!--end card-->
