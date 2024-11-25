@@ -22,7 +22,7 @@ ActiveAdmin.register Trade do
         f.input :currency, :as => :select, :collection => ['BTC/USD', 'ETH/USD', 'LTC/USD', 'BCH/GB', 'EOS/USD']
         f.input :deposit
         f.input :expiration
-        f.input :status, as: :select, :collection => ["WON", "LOSE"]
+        f.input :status
         f.input :tradetype
         f.input :entry
         f.input :rate
